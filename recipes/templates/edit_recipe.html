@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %} Edit Recipe - {{ recipe.name }} {% endblock %}
+
+{% block header %}
+	<h2>Edit Recipes - {{ recipe.name }}</h2>
+{% endblock %}
+
+{% block content %}
+	<form method="post" action="">
+		{{ form }}
+		<table>
+			{{ formset }}
+		</table>
+		{% csrf_token %}
+		<input type="submit" />
+	</form>
+{% endblock %}

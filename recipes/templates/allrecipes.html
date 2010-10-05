@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %} All Recipes {% endblock %}
+
+{% block header %}
+	<h2>All Recipes</h2>
+{% endblock %}
+
+{% block content %}
+	{% for r in recipes %}
+		<h3 class="recipetitle">{{ r.name }}</h3>
+		<ul class="blurb">
+			<li><strong>Added on:</strong> {{ r.date_added|date:"F j Y" }} by {{ r.user.username }}</li>
+			<li><strong>Yields:</strong> {{ r.servings }} servings.</li>
+			<li><strong>Preparation time:</strong> {{ r.prep_time }} minutes.</li>
+			<li><strong>Cooking time:</strong> {{ r.cook_time }} minutes.</li>
+		</ul>
+		<ul class="ingredients">
+			{% for i in r.ingredients.all %}
+				<li>{{ i.quantity }} {{ i.unit }} {{ i.ingredient.name }}</li>
+			{% endfor %}
+		</ul>
+		<pre>
+			{{ r.directions }}
+		</pre>
+	{% endfor %}
+{% endblock %}

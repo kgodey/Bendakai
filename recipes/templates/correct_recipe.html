@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %} Correct Recipe {% endblock %}
+
+{% block header %}
+	<h2> Correct Recipe </h2>
+{% endblock %}
+
+{% block content %}
+	<div id = "junk">
+		<pre>{{ junk.text }}</pre>
+	</div>
+	<div id="correct_form">
+	<form method="post" action="">
+		{{ form }}
+		<table>
+			{{ formset }}
+		</table>
+		{% csrf_token %}
+		<input type="hidden" name="junk_id" value="{{ junk.id }}" />
+		<input type="submit" />
+	</form>
+	</div>
+{% endblock %}

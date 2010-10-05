@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="{{ media_url }}/style.css" type="text/css">
+		<title>{% block title %} {% endblock %}</title>
+		{% block extrahead %} {% endblock %}
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="header">
+				<h1>Recipe Manager</h1>
+				<ul id="nav">
+					<li>All Recipes</li>
+					<li>Junk Recipes</li>
+					<li>Correct a Recipe</li>
+					<li>Add a Recipe</li>
+				</ul>
+				{% block header %}
+				{% endblock %}
+			</div>
+			<div id="content">
+				{% block content %}
+				{% endblock %}
+			</div>
+		</div>
+	<body>
+</html>
