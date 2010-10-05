@@ -21,7 +21,7 @@ def all_recipes(request):
 #		recipes = paginator.page(page)
 #	except (EmptyPage, InvalidPage):
 #		recipes = paginator.page(paginator.num_pages)
-	return render_to_response('allrecipes.html', {'recipes': recipes,}, context_instance=RequestContext(request))
+	return render_to_response('recipes/allrecipes.html', {'recipes': recipes,}, context_instance=RequestContext(request))
 
 
 def add_recipe(request):
@@ -35,7 +35,7 @@ def add_recipe(request):
 	else:
 		form = RecipeForm()
 		formset = RecipeIngredientsFormset()
-	return render_to_response('add_recipe.html', {'form': form, 'formset': formset}, context_instance=RequestContext(request))
+	return render_to_response('recipes/add_recipe.html', {'form': form, 'formset': formset}, context_instance=RequestContext(request))
 
 
 def correct_recipe(request):
@@ -53,12 +53,12 @@ def correct_recipe(request):
 		junk = JunkRecipe.objects.filter(is_added=False).order_by('?')[0]
 		form = RecipeForm()
 		formset = RecipeIngredientsFormset()
-	return render_to_response('correct_recipe.html', {'form': form, 'formset': formset, 'junk': junk}, context_instance=RequestContext(request))
+	return render_to_response('recipes/correct_recipe.html', {'form': form, 'formset': formset, 'junk': junk}, context_instance=RequestContext(request))
 
 
 def view_recipe(request, id):
 	recipe = get_object_or_404(Recipe, id=id)
-	return render_to_response('view_recipe.html', {'recipe': recipe,}, context_instance=RequestContext(request))
+	return render_to_response('recipes/view_recipe.html', {'recipe': recipe,}, context_instance=RequestContext(request))
 
 
 def edit_recipe(request, id):
@@ -74,7 +74,7 @@ def edit_recipe(request, id):
 	else:
 		form = RecipeForm(instance=recipe)
 		formset = RecipeIngredientsFormset(instance=recipe)
-	return render_to_response('edit_recipe.html', {'recipe': recipe, 'form': form, 'formset': formset}, context_instance=RequestContext(request))
+	return render_to_response('recipes/edit_recipe.html', {'recipe': recipe, 'form': form, 'formset': formset}, context_instance=RequestContext(request))
 
 
 def all_junk_recipes(request):
@@ -91,7 +91,7 @@ def all_junk_recipes(request):
 #		junk_recipes = paginator.page(page)
 #	except (EmptyPage, InvalidPage):
 #		junk_recipes = paginator.page(paginator.num_pages)
-	return render_to_response('allrecipes.html', {'junk_recipes': junk_recipes,}, context_instance=RequestContext(request))
+	return render_to_response('recipes/allrecipes.html', {'junk_recipes': junk_recipes,}, context_instance=RequestContext(request))
 
 
 def ingredient_ajax(request):

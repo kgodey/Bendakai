@@ -1,6 +1,6 @@
-{% extends "base.html" %}
+{% extends "recipes/base.html" %}
 
-{% block title %} Edit Recipe - {{ recipe.name }} {% endblock %}
+{% block title %} Add Recipe {% endblock %}
 
 {% block extrahead %}
 <script type="text/javascript">
@@ -19,7 +19,7 @@ $(document).ready(function() {
 {% endblock %}
 
 {% block content %}
-	<h2>Edit Recipes - {{ recipe.name }}</h2>
+	<h2> Add Recipe </h2>
 	<form method="post" action="">
 		{{ form.as_p }}
 		<table>
