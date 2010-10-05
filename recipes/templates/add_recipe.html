@@ -2,13 +2,26 @@
 
 {% block title %} Add Recipe {% endblock %}
 
+{% block extrahead %}
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".recipeingredient_ingredient_field").autocomplete({
+		source: "/ajax/ingredient"
+	});
+	$(".recipeingredient_unit_field").autocomplete({
+		source: "/ajax/unit"
+	});
+});
+</script>
+{% endblock %}
+
 {% block header %}
 {% endblock %}
 
 {% block content %}
 	<h2> Add Recipe </h2>
 	<form method="post" action="">
-		{{ form }}
+		{{ form.as_p }}
 		<table>
 			{{ formset }}
 		</table>

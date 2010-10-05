@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.paginator import Paginator
 from django.template import RequestContext
+from django.utils import simplejson as json
 
 def all_recipes(request):
 	try:
@@ -93,3 +94,28 @@ def all_junk_recipes(request):
 	return render_to_response('allrecipes.html', {'junk_recipes': junk_recipes,}, context_instance=RequestContext(request))
 
 
+def ingredient_ajax(request):
+	if request.method == 'GET':
+		if 'term' in request.GET:
+			query = request.GET['term']
+			ingredients = Ingredient.objects.filter(name__icontains=query).order_by('name')
+			responselist = []
+			for i in ingredients:
+				responselist.append(i.name)
+			response = json.dumps(responselist)
+			return HttpResponse(response, mimetype='application/json')
+		else:
+			return HttpResponse('[]', mimetype='application/json')
+
+def unit_ajax(request):
+	if request.method == 'GET':
+		if 'term' in request.GET:
+			query = request.GET['term']
+			units = MeasurementUnit.objects.filter(name__icontains=query).order_by('name')
+			responselist = []
+			for u in units:
+				responselist.append(u.name)
+			response = json.dumps(responselist)
+			return HttpResponse(response, mimetype='application/json')
+		else:
+			return HttpResponse('[]', mimetype='application/json')

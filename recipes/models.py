@@ -40,7 +40,7 @@ class Recipe(models.Model):
 	cook_time = models.IntegerField(blank=True, null=True, help_text="In minutes.")
 	directions = models.TextField()
 	date_added = models.DateTimeField(default=datetime.datetime.now)
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(User, blank=True, null=True)
 	photos = models.ManyToManyField(Photo, blank=True, null=True)
 	main_photos = models.ManyToManyField(Photo, blank=True, null=True, related_name="main_photos")
 	is_public = models.BooleanField(default=True)
