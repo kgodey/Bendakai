@@ -1,0 +1,109 @@
+/** Reset stylesheet (YUI) */
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+	margin:0;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img { 
+	border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol,ul {
+	list-style:none;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { border:0;
+}
+
+/* Actual Styling */
+
+/** BODY AND STRUCTURE **/
+
+body {
+	background-color: #ABAA8B;
+	font-family: Helvetica Neue, Helvetica, sans-serif;
+	font-size: 16px;
+}
+
+#wrapper{
+	width: 800px;
+	margin: auto;
+	overflow: auto;
+	min-height: 100%;
+	background-color: #E6DD98;
+}
+
+#header {
+	padding: 20px;
+	background-color: #617447;
+	color: #fff;
+	overflow: auto;
+}
+
+#headingdiv {
+	float: left;
+}
+
+#navdiv {
+	float: right;
+}
+
+#header a {
+	color: #E6DD98;
+	text-decoration: none;
+}
+
+#header ul {
+	display: inline;
+}
+
+#header li {
+	display: inline;
+	padding-right: 20px;
+}
+
+#content {
+	padding: 20px;
+}
+
+/** HEADERS **/
+
+h1 {
+	font-size: 36px;
+}
+
+h2 {
+	font-size: 32px;
+}
+
+h3 {
+	font-size: 28px;
+}
+
+h4 {
+	font-size: 24px;
+}
+
+h5 {
+	font-size: 20px;
+}
+
+h6 {
+	font-size: 18px;
+}
