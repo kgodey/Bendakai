@@ -1,19 +1,23 @@
-<html>
+{% load staticmedia %}<html>
 	<head>
-		<link rel="stylesheet" href="{{ media_url }}/style.css" type="text/css">
+		<link rel="stylesheet" href="{% mediaurl 'recipes/style.css' %}" type="text/css">
 		<title>{% block title %} {% endblock %}</title>
 		{% block extrahead %} {% endblock %}
 	</head>
 	<body>
 		<div id="wrapper">
 			<div id="header">
-				<h1>Recipe Manager</h1>
-				<ul id="nav">
-					<li>All Recipes</li>
-					<li>Junk Recipes</li>
-					<li>Correct a Recipe</li>
-					<li>Add a Recipe</li>
-				</ul>
+				<div id="headingdiv">
+					<h1>Recipe Manager</h1>
+				</div>
+				<div id="navdiv">
+					<ul id="nav">
+						<li><a href="/">All Recipes</a></li>
+						<li><a href="/correct/">Correct Recipe</a></li>
+						<li><a href="/add/">Add Recipe</a></li>
+						<li><a href="login/">Login</a></li>
+					</ul>
+				</div>
 				{% block header %}
 				{% endblock %}
 			</div>

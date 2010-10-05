@@ -3,16 +3,16 @@
 {% block title %} Correct Recipe {% endblock %}
 
 {% block header %}
-	<h2> Correct Recipe </h2>
 {% endblock %}
 
 {% block content %}
+	<h2> Correct Recipe </h2>
 	<div id = "junk">
 		<pre>{{ junk.text }}</pre>
 	</div>
 	<div id="correct_form">
 	<form method="post" action="">
-		{{ form }}
+		{{ form.as_p }}
 		<table>
 			{{ formset }}
 		</table>

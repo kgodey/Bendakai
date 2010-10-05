@@ -3,12 +3,12 @@
 {% block title %} Edit Recipe - {{ recipe.name }} {% endblock %}
 
 {% block header %}
-	<h2>Edit Recipes - {{ recipe.name }}</h2>
 {% endblock %}
 
 {% block content %}
+	<h2>Edit Recipes - {{ recipe.name }}</h2>
 	<form method="post" action="">
-		{{ form }}
+		{{ form.as_p }}
 		<table>
 			{{ formset }}
 		</table>

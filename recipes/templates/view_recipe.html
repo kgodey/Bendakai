@@ -3,10 +3,10 @@
 {% block title %} {{ recipe.name }} {% endblock %}
 
 {% block header %}
-	<h2>View Recipe</h2>
 {% endblock %}
 
 {% block content %}
+	<h2>View Recipe</h2>
 	<h3 class="recipetitle">{{ recipe.name }}</h3>
 	<ul class="blurb">
 		<li><strong>Added on:</strong> {{ recipe.date_added|date:"F j Y" }} by {{ recipe.user.username }}</li>
