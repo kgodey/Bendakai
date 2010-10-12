@@ -29,7 +29,9 @@ def add_recipe(request):
 	if request.method == 'POST':
 		form = RecipeForm(request.POST, request.FILES)
 		if form.is_valid():
-			recipe = form.save()
+			recipe = form.save(commit=False)
+			recipe.user = request.user
+			recipe.save()
 			formset = RecipeIngredientsFormset(request.POST, request.FILES, instance=recipe)
 			if formset.is_valid():
 				formset.save()
