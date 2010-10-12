@@ -24,18 +24,20 @@ $(document).ready(function() {
 	<h2> Add Recipe </h2>
 	<form method="post" action="">
 		{{ form.as_table }}
+		<table>
 			{% for f in formset.forms %}
 				<div class='table'>
-			    <table class='no_error'>
-			        {{ f.as_table }}
-			    </table>
+					<table class='no_error'>
+						{{ f.as_table }}
+					</table>
+				<div>
 			{% endfor %}
-			<input type="button" value="Add More" id="add_more">
 			<script>
-			    $('#add_more').click(function() {
-			        cloneMore('div.table:last', 'service');
-			    });
-			</script>
+				$('#add_more').click(function() {
+					cloneMore('div.table:last', 'service');
+				});
+			</script>			
+		</table>
 		{% csrf_token %}
 		<input type="submit" />
 	</form>
