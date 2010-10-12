@@ -107,6 +107,7 @@ def ingredient_ajax(request):
 		else:
 			return HttpResponse('[]', mimetype='application/json')
 
+
 def unit_ajax(request):
 	if request.method == 'GET':
 		if 'term' in request.GET:
@@ -119,3 +120,7 @@ def unit_ajax(request):
 			return HttpResponse(response, mimetype='application/json')
 		else:
 			return HttpResponse('[]', mimetype='application/json')
+
+
+def login(request):
+	return render_to_response('recipes/login.html', context_instance=RequestContext(request))
