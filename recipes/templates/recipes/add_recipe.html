@@ -13,6 +13,7 @@ $(document).ready(function() {
 	});
 });
 </script>
+<script type="text/javascript" src="{% mediaurl 'recipes/forms.js' %}"></script>
 {% endblock %}
 
 {% block header %}
@@ -21,9 +22,20 @@ $(document).ready(function() {
 {% block content %}
 	<h2> Add Recipe </h2>
 	<form method="post" action="">
-		{{ form.as_p }}
+		{{ form.as_table }}
 		<table>
-			{{ formset }}
+			{% for f in formset.forms %}
+				<div class='table'>
+			    <table class='no_error'>
+			        {{ f.as_table }}
+			    </table>
+			{% endfor %}
+			<input type="button" value="Add More" id="add_more">
+			<script>
+			    $('#add_more').click(function() {
+			        cloneMore('div.table:last', 'service');
+			    });
+			</script>
 		</table>
 		{% csrf_token %}
 		<input type="submit" />
