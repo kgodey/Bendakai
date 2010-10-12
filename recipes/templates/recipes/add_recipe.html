@@ -23,7 +23,7 @@ $(document).ready(function() {
 {% block content %}
 	<h2> Add Recipe </h2>
 	<form method="post" action="">
-		{{ form.as_table }}
+		{{ form.as_p }}
 		<table>
 			{{ formset.management_form }}
 			{% for f in formset.forms %}
