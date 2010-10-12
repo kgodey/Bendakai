@@ -6,6 +6,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.core.paginator import Paginator
 from django.template import RequestContext
 from django.utils import simplejson as json
+from django.contrib.auth.decorators import login_required
 
 def all_recipes(request):
 	try:
@@ -23,7 +24,7 @@ def all_recipes(request):
 #		recipes = paginator.page(paginator.num_pages)
 	return render_to_response('recipes/allrecipes.html', {'recipes': recipes,}, context_instance=RequestContext(request))
 
-
+@login_required
 def add_recipe(request):
 	if request.method == 'POST':
 		form = RecipeForm(request.POST, request.FILES)
