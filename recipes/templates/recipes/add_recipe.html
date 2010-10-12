@@ -25,6 +25,7 @@ $(document).ready(function() {
 	<form method="post" action="">
 		{{ form.as_table }}
 		<table>
+			{{ formset.management_form }}
 			{% for f in formset.forms %}
 				<div class='table'>
 					<table class='no_error'>
