@@ -127,3 +127,11 @@ def unit_ajax(request):
 
 def login(request):
 	return render_to_response('recipes/login.html', context_instance=RequestContext(request))
+
+
+def userpage(request, username):
+	if request.user.username == username:
+		recipes = Recipe.objects.filter(user__username = username)
+		return render_to_response('recipes/userpage.html', {'recipes': recipes,}, context_instance=RequestContext(request))
+	else:
+		return render_to_response('recipes/forbidden.html', context_instance=RequestContext(request))

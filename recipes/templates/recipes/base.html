@@ -18,7 +18,12 @@
 						<li><a href="/">All Recipes</a></li>
 						<li><a href="/correct/">Correct Recipe</a></li>
 						<li><a href="/add/">Add Recipe</a></li>
-						<li><a href="/login/">Login</a></li>
+						{% if user.is_authenticated %}
+							<li><a href="/">My Recipes</a></li>
+							<li><a href="/">Logout</a></li>
+						{% else %}
+							<li><a href="/login/">Login</a></li>
+						{% endif %}
 					</ul>
 				</div>
 				{% block header %}
