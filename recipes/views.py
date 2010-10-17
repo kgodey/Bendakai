@@ -7,6 +7,7 @@ from django.core.paginator import Paginator
 from django.template import RequestContext
 from django.utils import simplejson as json
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 def all_recipes(request):
 	try:
@@ -128,6 +129,10 @@ def unit_ajax(request):
 def login(request):
 	return render_to_response('recipes/login.html', context_instance=RequestContext(request))
 
+
+def logout_view(request):
+	logout(request)
+	return render_to_response('recipes/loggedout.html', context_instance=RequestContext(request))
 
 def userpage(request, username):
 	if request.user.username == username:
