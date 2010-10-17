@@ -11,7 +11,7 @@ urlpatterns = patterns('',
 	url(r'^junk/$', views.all_junk_recipes, name='all_junk_recipes'),
 	url(r'^edit/(?P<id>\d+)/$', views.edit_recipe, name='edit_recipe'),
 	url(r'^login/$', views.login, name='login'),
-	url(r'^logout/$', views.login, name='logout'),
+	url(r'^logout/$', views.logout_view, name='logout'),
 	url(r'^users/(?P<username>\w+)/$', views.userpage, name='userpage'),
 	url(r'^(?P<id>\d+)/$', views.view_recipe, name='view_recipe'),
 )
