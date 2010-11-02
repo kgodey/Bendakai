@@ -12,20 +12,24 @@
 			<div id="header">
 				<div id="headingdiv">
 					<h1>Recipe Manager</h1>
-					{% block header %}
-					{% endblock %}
 				</div>
 				<div id="navdiv">
-					<ul id="nav">
-						<li><a href="/">All Recipes</a></li>
-						<li><a href="/add/">Add Recipe</a></li>
-						{% if user.is_authenticated %}
-							<li><a href="{% url userpage username=user.username %}">My Recipes</a></li>
-							<li><a href="{% url logout %}">Logout</a></li>
-						{% else %}
-							<li><a href="{% url login %}">Login</a></li>
-						{% endif %}
-					</ul>
+					<div id="nav-left">
+						{% block header %}
+						{% endblock %}
+					</div>
+					<div id="nav-right">
+						<ul id="nav">
+							<li><a href="/">All Recipes</a></li>
+							<li><a href="/add/">Add Recipe</a></li>
+							{% if user.is_authenticated %}
+								<li><a href="{% url userpage username=user.username %}">My Recipes</a></li>
+								<li><a href="{% url logout %}">Logout</a></li>
+							{% else %}
+								<li><a href="{% url login %}">Login</a></li>
+							{% endif %}
+						</ul>
+					</div>
 				</div>
 			</div>
 			<div id="content">
