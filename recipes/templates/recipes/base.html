@@ -12,6 +12,8 @@
 			<div id="header">
 				<div id="headingdiv">
 					<h1>Recipe Manager</h1>
+					{% block header %}
+					{% endblock %}
 				</div>
 				<div id="navdiv">
 					<ul id="nav">
@@ -25,8 +27,6 @@
 						{% endif %}
 					</ul>
 				</div>
-				{% block header %}
-				{% endblock %}
 			</div>
 			<div id="content">
 				{% block content %}
