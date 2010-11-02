@@ -16,7 +16,6 @@
 				<div id="navdiv">
 					<ul id="nav">
 						<li><a href="/">All Recipes</a></li>
-						<li><a href="/correct/">Correct Recipe</a></li>
 						<li><a href="/add/">Add Recipe</a></li>
 						{% if user.is_authenticated %}
 							<li><a href="{% url userpage username=user.username %}">My Recipes</a></li>
