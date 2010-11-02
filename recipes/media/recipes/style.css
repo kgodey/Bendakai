@@ -53,11 +53,12 @@ body {
 
 #header {
 	padding: 20px 40px;
-	color: #617447;
+	color: #fff;
 	overflow: auto;
 	font-weight: 800;
 	background-color: #E6DD98;
 	border-bottom: 5px double #617447;
+	background-image:url('space.jpg');
 }
 
 #headingdiv {
