@@ -4,10 +4,10 @@
 {% block title %} All Recipes {% endblock %}
 
 {% block header %}
+	<h2>All Recipes</h2>
 {% endblock %}
 
 {% block content %}
-	<h2>All Recipes</h2>
 	{% for r in recipes %}
 		<h3 class="recipetitle">{{ r.name }}</h3>
 		<ul class="blurb">
