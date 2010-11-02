@@ -50,7 +50,7 @@ body {
 }
 
 #header {
-	padding: 20px 40px;
+	padding: 10px 40px;
 	color: #fff;
 	overflow: auto;
 	font-weight: 800;
@@ -58,12 +58,20 @@ body {
 
 #headingdiv {
 	float: left;
+	clear: both;
 }
 
 #navdiv {
-	float: right;
+	clear: both;
 }
 
+#nav-left {
+	float: left;
+}
+
+#nav-right {
+	float: right;
+}
 
 #header ul {
 	display: inline;
@@ -75,7 +83,7 @@ body {
 }
 
 #content {
-	padding: 20px 40px;
+	padding: 40px;
 	background-color: #fff;
 }
 
@@ -95,7 +103,7 @@ h2 {
 h3 {
 	font-size: 26px;
 	font-style: italic;
-	padding: 10px 0px;
+	padding-bottom: 10px;
 }
 
 h4 {
