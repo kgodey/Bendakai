@@ -13,6 +13,7 @@ $(document).ready(function() {
 	});
 });
 </script>
+<script type="text/javascript" src="{% mediaurl 'recipes/forms.js' %}"></script>
 {% endblock %}
 
 {% block header %}
@@ -21,10 +22,23 @@ $(document).ready(function() {
 {% block content %}
 	<h2>Edit Recipes - {{ recipe.name }}</h2>
 	<form method="post" action="">
-		{{ form.as_p }}
+		{{ form.as_table }}
 		<table>
-			{{ formset }}
+			{{ formset.management_form }}
+			{% for f in formset.forms %}
+				<div class='table'>
+					<table class='no_error'>
+						{{ f.as_table }}
+					</table>
+				</div>
+			{% endfor %}		
 		</table>
+		<input type="button" value="Add More" id="add_more">
+		<script>
+			$('#add_more').click(function() {
+				cloneMore('div.table:last', 'ingredients');
+			});
+		</script>
 		{% csrf_token %}
 		<input type="submit" />
 	</form>

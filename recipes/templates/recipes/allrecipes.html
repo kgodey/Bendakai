@@ -10,19 +10,18 @@
 	{% for r in recipes %}
 		<h3 class="recipetitle">{{ r.name }}</h3>
 		<ul class="blurb">
-			<li><strong>Added on:</strong> {{ r.date_added|date:"F j Y" }} by {{ r.user.username }}</li>
+			<li>Added on {{ r.date_added|date:"F j Y" }} by {{ r.user.username }}</li>
 			<li><strong>Yields:</strong> {{ r.servings }} servings.</li>
 			<li><strong>Preparation time:</strong> {{ r.prep_time }} minutes.</li>
 			<li><strong>Cooking time:</strong> {{ r.cook_time }} minutes.</li>
 		</ul>
+		<h4>Ingredients</h4>
 		<ul class="ingredients">
 			{% for i in r.ingredients.all %}
 				<li>{{ i.quantity }} {{ i.unit }} {{ i.ingredient.name }}</li>
 			{% endfor %}
 		</ul>
-		<p>&nbsp;</p>
-		<pre>
-			{{ r.directions }}
-		</pre>
+		<h4>Directions</h4>
+		<p>{{ r.directions }}</p>
 	{% endfor %}
 {% endblock %}
