@@ -83,13 +83,13 @@ body {
 
 h1 {
 	font-size: 36px;
+	color: #CCCCCC;
 }
 
 h2 {
-	font-size: 28px;
+	font-size: 24px;
 	font-variant: small-caps;
-	color: #ABAA8B;
-	padding: 10px;
+	color: #999966;
 }
 
 h3 {
