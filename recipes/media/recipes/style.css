@@ -91,16 +91,19 @@ h2 {
 	font-size: 28px;
 	font-variant: small-caps;
 	color: #ABAA8B;
-	padding: 10px 0px;
+	padding: 10px;
 }
 
 h3 {
 	font-size: 26px;
 	font-style: italic;
+	padding: 10px 0px;
 }
 
 h4 {
-	font-size: 24px;
+	font-size: 20px;
+	font-variant: small-caps;
+	padding: 10px 0px;
 }
 
 h5 {
@@ -120,7 +123,7 @@ strong {
 	font-weight: 700;
 }
 
-ul.blurb {
-	font-size: 12px;
-	padding: 10px 0px;
+ul.blurb, ul.ingredients {
+	font-size: 14px;
+	padding: 0px 10px;
 }
