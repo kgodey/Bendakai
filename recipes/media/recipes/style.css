@@ -40,23 +40,21 @@ body {
 	font-family: Warnock Pro;
 	font-size: 16px;
 	height: 100%;
-	background-image:url('urban_circles.jpg');
+	background-image:url('space.jpg');
 }
 
 #wrapper{
-	width: 960px;
+	width: 860px;
 	margin: auto;
 	overflow: auto;
 	min-height: 100%;
-	background-color: #fff;
 }
 
 #header {
 	padding: 20px 40px;
-	color: #617447;
+	color: #fff;
 	overflow: auto;
 	font-weight: 800;
-	background-color: #E6DD98;
 	border-bottom: 5px double #617447;
 }
 
@@ -80,6 +78,7 @@ body {
 
 #content {
 	padding: 20px 40px;
+	background-color: #fff;
 }
 
 /** HEADERS **/
