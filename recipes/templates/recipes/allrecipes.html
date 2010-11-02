@@ -19,7 +19,7 @@
 		<h4>Ingredients</h4>
 		<ul class="ingredients">
 			{% for i in r.ingredients.all %}
-				<li>{{ i.quantity|html_fraction }} {{ i.unit }} {{ i.ingredient.name }}</li>
+				<li>{{ i.quantity|html_fraction|safe }} {{ i.unit }} {{ i.ingredient.name }}</li>
 			{% endfor %}
 		</ul>
 		<h4>Directions</h4>
