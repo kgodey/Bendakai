@@ -40,7 +40,6 @@ body {
 	font-family: Warnock Pro;
 	font-size: 16px;
 	height: 100%;
-	background-image:url('space.jpg');
 }
 
 #wrapper{
@@ -55,7 +54,6 @@ body {
 	color: #fff;
 	overflow: auto;
 	font-weight: 800;
-	border-bottom: 5px double #617447;
 }
 
 #headingdiv {
@@ -115,8 +113,13 @@ h6 {
 }
 
 a {
-	color: #130F5B;
+	color: #7799AA;
 	text-decoration: none;
+	font-weight: 600;
+}
+
+a:hover{
+	color: #CCCCCC;
 }
 
 strong {
