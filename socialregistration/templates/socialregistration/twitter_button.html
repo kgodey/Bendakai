@@ -1,4 +1,5 @@
 {% load twitter_tags socialregistration_tags %}
+{% load staticmedia %}
 <form class="connect-button" name="login" method="post" action="{% url twitter_redirect %}">
 {% social_csrf_token %}
 {% if next %}
