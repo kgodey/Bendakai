@@ -9,8 +9,8 @@ Though I'd like a smidgeon of credit, so just leave this bit in here. K?
 */
 
 /*Pick Your Fonts*/
-body, h3, h4, h5, h6, .run-in, dt {font-family: "museo-sans-1","museo-sans-2", Helvetica, Arial, sans-serif;}
-h1, h2, .pullquote, blockquote, .sidenote h1, aside h1, .pullquote, .drop-cap, cite  {font-family: "museo-slab-1","museo-slab-2", Helvetica, Arial, sans-serif;}
+body, h3, h4, h5, h6, .run-in, dt {font-family: "Warnock Pro", Garamond, Georgia, serif;}
+h1, h2, .pullquote, blockquote, .sidenote h1, aside h1, .pullquote, .drop-cap, cite  {font-family: Helvetica, Arial, sans-serif;}
 
 /*Size & Vertical Rhythm*/
 body{font-size:87.5%;font-size:14px;line-height:1.5em;}
