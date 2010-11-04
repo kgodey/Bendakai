@@ -3,7 +3,7 @@ from fractions import Fraction
 
 class FractionField(forms.RegexField):
 	def __init__(self, *args, **kwargs):
-		super(self, FractionField).__init__(r'^((?:\d+\.?\d*/?\d*)(?: \d+/\d+)?)$', *args, **kwargs)
+		super(FractionField, self).__init__(r'^((?:\d+\.?\d*/?\d*)(?: \d+/\d+)?)$', *args, **kwargs)
 	
 	def to_python(self, value):
 		value = super(self, FractionField).to_python(value)
