@@ -9,7 +9,18 @@
 	<h2>View Recipe</h2>
 	<h3 class="recipetitle">{{ recipe.name }}</h3>
 	<ul class="blurb">
-		<li><strong>Added on:</strong> {{ recipe.date_added|date:"F j Y" }} by {{ recipe.user.username }}</li>
+		{% ifequal r.user request.user %} 
+		<li><a href="{% url edit_recipe id=r.slug %}">Edit Recipe</a></li>
+		{% endifequal %}
+		<li>Added on {{ r.date_added|date:"F j Y" }} by {% ifequal r.user request.user %} you. 
+		{% else %} 
+			{% if r.user.first_name %} {{ r.user.first_name }} 
+				{% if r.user.last_name %} {{ r.user.last_name }} 
+				{% endif %} 
+			{% else %} 
+				{{ r.user.username }}. 
+			{% endif %}
+		{% endifequal %}</li>
 		<li><strong>Yields:</strong> {{ recipe.servings }} servings.</li>
 		<li><strong>Preparation time:</strong> {{ recipe.prep_time }} minutes.</li>
 		<li><strong>Cooking time:</strong> {{ recipe.cook_time }} minutes.</li>
