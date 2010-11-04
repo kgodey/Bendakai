@@ -4,6 +4,7 @@ from models import Recipe, Ingredient, RecipeIngredient, MeasurementUnit
 from django.contrib.auth.models import User
 from django import forms
 from django.template.defaultfilters import slugify
+from fields import FractionField
 
 
 class RecipeForm(ModelForm):
@@ -15,6 +16,7 @@ class RecipeForm(ModelForm):
 class RecipeIngredientForm(ModelForm):
 	ingredient_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'recipeingredient_ingredient_field'}))
 	unit_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'recipeingredient_unit_field'}))
+	quantity = FractionField(widget=forms.TextInput(attrs={'class': 'recipeingredient_quantity_field'}))
 	
 	class Meta:
 		model = RecipeIngredient
