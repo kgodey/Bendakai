@@ -1,5 +1,6 @@
 {% extends "recipes/base.html" %}
 {% load recipes %}
+{% load markup %}
 
 {% block title %} All Recipes {% endblock %}
 
@@ -34,6 +35,6 @@
 			{% endfor %}
 		</ul>
 		<h4>Directions</h4>
-		<p>{{ r.directions }}</p>
+		{{ r.directions|markdown }}
 	{% endfor %}
 {% endblock %}

@@ -1,4 +1,6 @@
 {% extends "recipes/base.html" %}
+{% load recipes %}
+{% load markup %}
 
 {% block title %} {{request.user.username}}'s Recipes {% endblock %}
 
@@ -28,12 +30,10 @@
 		</ul>
 		<ul class="ingredients">
 			{% for i in r.ingredients.all %}
-				<li>{{ i.quantity }} {{ i.unit }} {{ i.ingredient.name }}</li>
+				<li>{% if i.quantity %}{{ i.quantity|html_fraction|safe }} {% endif %} {% if i.unit %} {{ i.unit }} {% endif %} {{ i.ingredient.name }}</li>
 			{% endfor %}
 		</ul>
 		<p>&nbsp;</p>
-		<pre>
-			{{ r.directions }}
-		</pre>
+		{{ r.directions|markdown }}
 	{% endfor %}
 {% endblock %}
