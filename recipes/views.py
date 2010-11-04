@@ -41,7 +41,7 @@ def add_recipe(request):
 		formset = RecipeIngredientsFormset()
 	return render_to_response('recipes/add_recipe.html', {'form': form, 'formset': formset}, context_instance=RequestContext(request))
 
-
+@login_required
 def correct_recipe(request):
 	if request.method == 'POST':
 		junk = JunkRecipe.objects.get(id=request.POST['junk_id'])
@@ -64,9 +64,11 @@ def view_recipe(request, id):
 	recipe = get_object_or_404(Recipe, id=id)
 	return render_to_response('recipes/view_recipe.html', {'recipe': recipe,}, context_instance=RequestContext(request))
 
-
+@login_required
 def edit_recipe(request, id):
 	recipe = get_object_or_404(Recipe, id=id)
+	if not recipe.user == request.user:
+		return render_to_response('forbidden.html', context_instance=RequestContext(request))
 	if request.method == 'POST':
 		form = RecipeForm(request.POST, request.FILES, instance=recipe)
 		formset = RecipeIngredientsFormset(request.POST, request.FILES, instance=recipe)
