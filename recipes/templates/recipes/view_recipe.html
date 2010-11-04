@@ -10,7 +10,7 @@
 	<h3 class="recipetitle">{{ recipe.name }}</h3>
 	<ul class="blurb">
 		{% ifequal r.user request.user %} 
-		<li><a href="{% url edit_recipe id=r.slug %}">Edit Recipe</a></li>
+		<li><a href="{% url edit_recipe id=r.id %}">Edit Recipe</a></li>
 		{% endifequal %}
 		<li>Added on {{ r.date_added|date:"F j Y" }} by {% ifequal r.user request.user %} you. 
 		{% else %} 
