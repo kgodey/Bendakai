@@ -1,0 +1,22 @@
+{% extends "recipes/base.html" %}
+
+{% block title %} Recipe Manager Introduction {% endblock %}
+
+{% block header %}
+	<h2>Introduction</h2>
+{% endblock %}
+
+{% block content %}
+<h4>Submit a Recipe!</h4>
+<p>Login <a href="{% url login %}">here</a> using Facebook, Twitter or OpenID and <a href="{% url add_recipe %}">add a recipe.</a>. I'm currently collecting recipes to use as data for my recommendations. Please enter the recipes correctly in the provided fields (and please suggest improvements.) Also note that by submitting recipes and not marking them "private", you grant me an worldwide non-exclusive right to use them as I please. (I plan to release an XML dataset of these recipes to other people that might want to do recipe-based research.)
+
+<h4>About the Project</h4>
+<p>This is <a href="http://kritigodey.com">Kriti Godey's</a> honours project. It is a web application that will store recipes and help plan meals by recommending recipes based on user preference, general rating and (eventually) nutrition and price.</p>
+
+<h4>Upcoming Features</h4>
+<ul>
+	<li>Associating your accounts so you can login from multiple ones.</li>
+	<li>A system for reviewing recipes and ingredients</li>
+	<li>The ability to upload pictures for recipes</li>
+</ul>
+{% endblock %}

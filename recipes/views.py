@@ -140,3 +140,7 @@ def userpage(request, username):
 		return render_to_response('recipes/userpage.html', {'recipes': recipes,}, context_instance=RequestContext(request))
 	else:
 		return render_to_response('recipes/forbidden.html', context_instance=RequestContext(request))
+
+
+def homepage(request):
+	return render_to_response('recipes/index.html', context_instance=RequestContext(request))
