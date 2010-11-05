@@ -11,4 +11,6 @@ class FractionField(forms.RegexField):
 		if len(split_value) > 1:
 			fraction_float = float(Fraction(split_value[1]))
 			return float(split_value[0]) + fraction_float
+		elif len(split_value) == 1:
+			return float(Fraction(split_value[0]))
 		return float(value) if value else None

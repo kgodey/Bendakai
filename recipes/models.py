@@ -61,7 +61,10 @@ class RecipeIngredient(models.Model):
 	unit = models.ForeignKey(MeasurementUnit, null=True, blank=True)
 	preparation = models.CharField(max_length=255, blank=True, null=True)
 	optional = models.BooleanField(default=False)
-
+	
+	def __unicode__(self):
+		return '%s (%s)'%(self.ingredient.name, self.recipe.name)
+	
 
 class JunkRecipe(models.Model):
 	text = models.TextField()
