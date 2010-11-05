@@ -69,7 +69,7 @@ def view_recipe(request, id):
 def edit_recipe(request, id):
 	recipe = get_object_or_404(Recipe, id=id)
 	if not recipe.user == request.user:
-		return render_to_response('forbidden.html', context_instance=RequestContext(request))
+		return render_to_response('recipes/forbidden.html', context_instance=RequestContext(request))
 	if request.method == 'POST':
 		form = RecipeForm(request.POST, request.FILES, instance=recipe)
 		formset = RecipeIngredientsFormset(request.POST, request.FILES, instance=recipe)
@@ -143,7 +143,8 @@ def userpage(request, username):
 		recipes = Recipe.objects.filter(user__username = username)
 		return render_to_response('recipes/userpage.html', {'recipes': recipes,}, context_instance=RequestContext(request))
 	else:
-		return render_to_response('recipes/forbidden.html', context_instance=RequestContext(request))
+		recipes = Recipe.objects.filter(user__username = username, is_public=True)
+		return render_to_response('recipes/userpage.html', {'recipes': recipes,}, context_instance=RequestContext(request))
 
 
 def homepage(request):

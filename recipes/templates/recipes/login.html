@@ -1,10 +1,16 @@
 {% extends "recipes/base.html" %}
+{% block header %}
+<h2>Log in</h2>
+{% endblock %}
 {% block content %}
-	{% load facebook_tags %}
+<h3>Login</h3>
+<p class="spaced">You can log in using Facebook, Twitter or your OpenID URL.</p>
+<p class="spaced">	{% load facebook_tags %}
 	{% facebook_button %}
-	{% facebook_js %}
-	{% load twitter_tags %}
-	{% twitter_button %}
-	{% load openid_tags %}
-	{% openid_form %}
+	{% facebook_js %}</p>
+<p class="spaced">	{% load twitter_tags %}
+	{% twitter_button %}</p>
+<p class="spaced">	{% load openid_tags %}
+	{% openid_form %}</p>
+<p class="spaced">If you have none of these, a sign up form will be coming soon.</p>
 {% endblock %}

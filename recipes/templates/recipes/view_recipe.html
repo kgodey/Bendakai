@@ -9,28 +9,7 @@
 {% endblock %}
 
 {% block content %}
-	<h3 class="recipetitle">{{ recipe.name }}</h3>
-	<ul class="blurb">
-		{% ifequal r.user request.user %} 
-		<li><a href="{% url edit_recipe id=r.id %}">Edit Recipe</a></li>
-		{% endifequal %}
-		<li>Added on {{ r.date_added|date:"F j Y" }} by {% ifequal r.user request.user %} you. 
-		{% else %} 
-			{% if r.user.first_name %} {{ r.user.first_name }} 
-				{% if r.user.last_name %} {{ r.user.last_name }} 
-				{% endif %} 
-			{% else %} 
-				{{ r.user.username }}. 
-			{% endif %}
-		{% endifequal %}</li>
-		<li><strong>Yields:</strong> {{ recipe.servings }} servings.</li>
-		<li><strong>Preparation time:</strong> {{ recipe.prep_time }} minutes.</li>
-		<li><strong>Cooking time:</strong> {{ recipe.cook_time }} minutes.</li>
-	</ul>
-	<ul class="ingredients">
-		{% for i in recipe.ingredients.all %}
-			<li>{% if i.quantity %}{{ i.quantity|html_fraction|safe }} {% endif %} {% if i.unit %} {{ i.unit }} {% endif %} {{ i.ingredient.name }}</li>
-		{% endfor %}
-	</ul>
-	{{ r.directions|markdown }}
+{% with recipe as r %}
+	{% include "recipes/recipe.html" %} 
+{% endwith %}
 {% endblock %}

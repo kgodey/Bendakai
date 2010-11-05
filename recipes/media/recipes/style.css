@@ -49,8 +49,8 @@ body {
 }
 
 #header {
-	padding: 10px 40px;
-	color: #fff;
+	padding: 10px 20px;
+	color: #F79300;
 	font-weight: 800;
 	overflow: auto;
 }
@@ -73,16 +73,16 @@ body {
 }
 
 #header ul {
-	display: inline;
 }
 
 #header li {
 	display: inline;
 	padding-right: 20px;
+	font-size: 18px;
 }
 
 #content {
-	padding: 40px;
+	padding: 10px 40px 20px 40px;
 	background-color: #fff;
 }
 
@@ -90,25 +90,27 @@ body {
 
 h1 {
 	font-size: 36px;
-	color: #CCCCCC;
+	color: #E3DFB2;
 }
 
 h2 {
 	font-size: 24px;
 	font-variant: small-caps;
-	color: #999966;
+	color: #fff;
 }
 
 h3 {
 	font-size: 26px;
 	font-style: italic;
-	padding-bottom: 10px;
+	padding: 20px 0px 5px 0px;
+	color: #853D03;
 }
 
 h4 {
 	font-size: 20px;
-	font-variant: small-caps;
+	font-style: italic;
 	padding: 10px 0px;
+	color: #416704;
 }
 
 h5 {
@@ -119,14 +121,21 @@ h6 {
 	font-size: 18px;
 }
 
-a {
-	color: #7799AA;
+#header a {
+	color: #BAE2E4;
 	text-decoration: none;
-	font-weight: 600;
+	font-weight: 500;
+	text-transform: lowercase;
+	font-variant: small-caps;
 }
 
-a:hover{
-	color: #CCCCCC;
+a {
+	color: #316D77;
+	text-decoration: none;
+}
+
+#header a:hover, a:hover{
+	color: #F79300;
 }
 
 strong {
@@ -134,6 +143,36 @@ strong {
 }
 
 ul.blurb, ul.ingredients {
-	font-size: 14px;
 	padding: 0px 10px;
+}
+
+p.byline {
+	padding-bottom: 15px;
+	font-size: 12px;
+}
+
+ol { 
+	list-style-type: decimal;
+	padding-left: 20px;
+} 
+
+hr.recipe_separator {
+
+	display: block;
+	position: relative;
+	padding: 0;
+	margin: 20px 0px auto;
+	width: 100%;
+	clear: both;
+	border: none;
+	border-top: 1px solid #AAA;
+	border-bottom: 1px solid #FFF;
+	font-size: 1px;
+	line-height: 0;
+	overflow: visible;
+
+}
+
+p.spaced {
+	padding: 10px 0px;
 }

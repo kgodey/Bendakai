@@ -3,6 +3,7 @@
 <!--		<link class="type-a-file" rel="stylesheet" media="screen" type="text/css" href="{% mediaurl 'recipes/reset.css' %}" />
 		<link class="type-a-file" rel="stylesheet" media="screen" type="text/css" href="{% mediaurl 'recipes/taf-seafarer-m.css' %}" /> -->
 		<link rel="stylesheet" href="{% mediaurl 'recipes/style.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% mediaurl 'recipes/warnock_pro/stylesheet.css' %}" type="text/css">
 		<script type="text/javascript" src="{% mediaurl 'recipes/jquery.min.js' %}"></script>
 		<script type="text/javascript" src="{% mediaurl 'recipes/jquery-ui.min.js' %}"></script>
 		<title>{% block title %} {% endblock %}</title>
@@ -22,6 +23,7 @@
 					</div>
 					<div id="nav-right">
 						<ul id="nav">
+							<li><a href="{% url homepage %}">Home</a></li>
 							<li><a href="{% url all_recipes %}">All Recipes</a></li>
 							<li><a href="{% url add_recipe %}">Add Recipe</a></li>
 							{% if user.is_authenticated %}
