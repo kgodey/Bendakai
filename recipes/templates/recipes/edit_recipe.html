@@ -22,31 +22,7 @@ $(document).ready(function() {
 {% endblock %}
 
 {% block content %}
-<form method="post" action="">
-	<table>
-	{{ form.as_table }}
-		{{ formset.management_form }}
-		{% for f in formset.forms %}
-			<tr class='formset_form'>
-				<td><table class='no_error'>
-					{{ f.as_table }}
-				</table></td>
-			</tr>
-		{% endfor %}		
-	</table>
-	<input type="button" value="Add More" id="add_more">
-	<script>
-		$('#add_more').click(function() {
-			var newForm = cloneMore('tr.formset_form:last', 'ingredients');
-			$(newForm).find(".recipeingredient_ingredient_field").autocomplete({
-				source: "/ajax/ingredient"
-			});
-			$(newForm).find(".recipeingredient_unit_field").autocomplete({
-				source: "/ajax/unit"
-			});
-		});
-	</script>
-	{% csrf_token %}
-	<input type="submit" />
-</form>
+<h3>Edit Recipe</h3>
+<p class="spaced"><strong>Editing recipes does not work yet. Please check back soon.</strong></p>
+{% include "recipes/recipe_form.html" %}
 {% endblock %}

@@ -176,3 +176,65 @@ hr.recipe_separator {
 p.spaced {
 	padding: 10px 0px;
 }
+
+#recipe_form th, tr{
+	font-size: 12px;
+	padding: 15px;
+}
+
+#recipe_form th {
+	width: 150px;
+}
+
+label{
+	font-weight: bold;
+	text-align: right;
+	font-size: 16px;
+}
+
+input[type="text"]{ /*width of text boxes. IE6 does not understand this attribute*/
+	height: 25px;
+}
+
+input#id_name {
+	width: 350px;
+}
+
+textarea#id_directions{
+	width: 350px;
+	height: 200px;
+}
+
+textarea#id_source{
+	width: 350px;
+	height: 50px;
+}
+
+#recipeingredient_forms {
+	overflow: auto;
+}
+
+.recipeingredient_form  {
+	width: 220px;
+	display: block;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 3px double #416704;
+}
+
+.recipeingredient_form p {
+	padding-right: 10px;
+	line-height: 40px;
+}
+
+.recipeingredient_form input {
+	height: 20px;
+	width: 100px;
+}
+
+.recipeingredient_form label {
+	font-size: 12px;
+	font-weight: 400;
+}

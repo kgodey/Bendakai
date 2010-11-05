@@ -5,7 +5,7 @@
 	<h3 class="recipetitle">{{ r.name }}</h3>
 	<p class="byline">Added on {{ r.date_added|date:"F j Y" }} by {% ifequal r.user request.user %} <a href="{% url userpage username=r.user.username %}">you {% if not r.is_public %} <strong>(Private)</strong> {% endif %}</a>
 	{% else %} 
-		<a href="{% url userpage username=r.user.username %}">{{ r.user.get_full_name }}</a>
+		<a href="{% url userpage username=r.user.username %}">{% firstof r.user.get_full_name r.user.username %}</a>
 	{% endifequal %}  {% ifequal r.user request.user %} <a href="{% url edit_recipe id=r.id %}">(edit recipe)</a>
 		{% endifequal %}</p>
 	<ul class="blurb">

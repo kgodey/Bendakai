@@ -1,2 +1,8 @@
-<h1>openid.html</h1>
-<p>This is the error template which is shown when a user logs in via OpenID and something goes wrong.</p>
+{% extends "recipes/base.html" %}
+{% block header %}
+<h2>Error!</h2>
+{% endblock %}
+{% block content %}
+<h3>Uh oh!</h3>
+<p>Your OpenID login attempt did not work. Please try again. If this is a recurring problem, <a href="mailto:kriti.godey@gmail.com">e-mail me</a> to let me know.</p>
+{% endblock %}

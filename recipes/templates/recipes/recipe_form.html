@@ -1,0 +1,30 @@
+<div id="recipe_form">
+	<form method="post" action="">
+		<table>
+		{{ form.as_table }}		
+		</table>
+		{{ formset.management_form }}
+		<h4>Ingredients</h4>
+		<div id="recipeingredient_forms">
+		{% for f in formset.forms %}
+			<div class="recipeingredient_form">
+				{{ f.as_p }}
+			</div>
+		{% endfor %}
+		</div>
+		<input type="button" value="Add another ingredient" id="add_more">
+		<script>
+			$('#add_more').click(function() {
+				var newForm = cloneMore('div.recipeingredient_form:last', 'ingredients');
+				$(newForm).find(".recipeingredient_ingredient_field").autocomplete({
+					source: "/ajax/ingredient", delay: 30
+				});
+				$(newForm).find(".recipeingredient_unit_field").autocomplete({
+					source: "/ajax/unit", delay: 30
+				});
+			});
+		</script>
+		{% csrf_token %}
+		<input type="submit" / value="Save recipe">
+	</form>
+</div>

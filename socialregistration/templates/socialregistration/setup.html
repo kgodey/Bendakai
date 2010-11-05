@@ -1,15 +1,23 @@
+{% extends "recipes/base.html" %}
 {% load socialregistration_tags %}
-<h1>Setup</h1>
-
+{% block header %}
+<h2>Account Setup</h2>
+{% endblock %}
+{% block content %}
+<h3>Account Setup</h3>
 {% if error %}
-	<p>Your session timed out. Please try again.</p>
+	<p class="spaced">Your session timed out. Please try again.</p>
 {% else %}
+	<p class="spaced">Please fill in the following details for your account:</p>
 	<form action="." method="post">
 	    <table>
-	        {{ form }}
+	        {{ form.as_table }}
 	    </table>
 	    {% social_csrf_token %}
-	    <input type="submit" value="save" />
+	    <p class="spaced"><input type="submit" value="Save" /></p>
 	</form>
 {% endif %}
+{% endblock %}
+
+
 

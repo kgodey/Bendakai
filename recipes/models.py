@@ -57,10 +57,10 @@ class Recipe(models.Model):
 class RecipeIngredient(models.Model):
 	recipe = models.ForeignKey(Recipe, related_name='ingredients')
 	ingredient = models.ForeignKey(Ingredient)
-	preparation = models.CharField(max_length=255, blank=True, null=True)
-	optional = models.BooleanField(default=False)
 	quantity = models.FloatField(null=True, blank=True)
 	unit = models.ForeignKey(MeasurementUnit, null=True, blank=True)
+	preparation = models.CharField(max_length=255, blank=True, null=True)
+	optional = models.BooleanField(default=False)
 
 
 class JunkRecipe(models.Model):
