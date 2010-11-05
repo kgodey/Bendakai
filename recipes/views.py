@@ -11,7 +11,7 @@ from django.contrib.auth import logout
 
 def all_recipes(request):
 	try:
-		recipes = Recipe.objects.filter(is_public=True)
+		recipes = Recipe.objects.filter(is_public=True).order_by('-date_added')[:5]
 	except Recipe.DoesNotExist:
 		raise Http404
 #	paginator = Paginator(recipes, 5)

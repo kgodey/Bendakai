@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response
 
 urlpatterns = patterns('',
 	url(r'^$', views.homepage, name='homepage'),
-	url(r'^all/$', views.all_recipes, name='all_recipes'),
+	url(r'^recent/$', views.all_recipes, name='all_recipes'),
 	url(r'^add/$', views.add_recipe, name='add_recipe'),
 	url(r'^ajax/ingredient/$', views.ingredient_ajax, name='ingredient_ajax'),
 	url(r'^ajax/unit/$', views.unit_ajax, name='unit_ajax'),
