@@ -18,29 +18,35 @@ $(document).ready(function() {
 {% endblock %}
 
 {% block header %}
+	<h2>Edit Recipe</h2>
 {% endblock %}
 
 {% block content %}
-	<h2>Edit Recipes - {{ recipe.name }}</h2>
-	<form method="post" action="">
-		{{ form.as_table }}
-		<table>
-			{{ formset.management_form }}
-			{% for f in formset.forms %}
-				<div class='table'>
-					<table class='no_error'>
-						{{ f.as_table }}
-					</table>
-				</div>
-			{% endfor %}		
-		</table>
-		<input type="button" value="Add More" id="add_more">
-		<script>
-			$('#add_more').click(function() {
-				cloneMore('div.table:last', 'ingredients');
+<form method="post" action="">
+	<table>
+	{{ form.as_table }}
+		{{ formset.management_form }}
+		{% for f in formset.forms %}
+			<tr class='formset_form'>
+				<td><table class='no_error'>
+					{{ f.as_table }}
+				</table></td>
+			</tr>
+		{% endfor %}		
+	</table>
+	<input type="button" value="Add More" id="add_more">
+	<script>
+		$('#add_more').click(function() {
+			var newForm = cloneMore('tr.formset_form:last', 'ingredients');
+			$(newForm).find(".recipeingredient_ingredient_field").autocomplete({
+				source: "/ajax/ingredient"
 			});
-		</script>
-		{% csrf_token %}
-		<input type="submit" />
-	</form>
+			$(newForm).find(".recipeingredient_unit_field").autocomplete({
+				source: "/ajax/unit"
+			});
+		});
+	</script>
+	{% csrf_token %}
+	<input type="submit" />
+</form>
 {% endblock %}
