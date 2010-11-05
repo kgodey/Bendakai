@@ -45,14 +45,12 @@ body {
 #wrapper{
 	width: 860px;
 	margin: auto;
-	overflow: auto;
 	min-height: 100%;
 }
 
 #header {
 	padding: 10px 40px;
 	color: #fff;
-	overflow: auto;
 	font-weight: 800;
 }
 
