@@ -36,6 +36,7 @@ def add_recipe(request):
 			formset = RecipeIngredientsFormset(request.POST, request.FILES, instance=recipe)
 			if formset.is_valid():
 				formset.save()
+				return render_to_response('recipes/view_recipe.html', {'recipe': recipe,}, context_instance=RequestContext(request))
 	else:
 		form = RecipeForm()
 		formset = RecipeIngredientsFormset()
@@ -77,6 +78,7 @@ def edit_recipe(request, id):
 			if formset.is_valid():
 				formset.save()
 				recipe.save()
+				return render_to_response('recipes/view_recipe.html', {'recipe': recipe,}, context_instance=RequestContext(request))
 	else:
 		form = RecipeForm(instance=recipe)
 		formset = RecipeIngredientsFormset(instance=recipe)

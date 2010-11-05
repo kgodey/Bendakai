@@ -37,7 +37,13 @@ $(document).ready(function() {
 		<input type="button" value="Add More" id="add_more">
 		<script>
 			$('#add_more').click(function() {
-				cloneMore('div.table:last', 'ingredients');
+				var newForm = cloneMore('div.table:last', 'ingredients');
+				$(newForm).find(".recipeingredient_ingredient_field").autocomplete({
+					source: "/ajax/ingredient"
+				});
+				$(newForm).find(".recipeingredient_unit_field").autocomplete({
+					source: "/ajax/unit"
+				});
 			});
 		</script>
 		{% csrf_token %}
