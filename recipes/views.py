@@ -142,12 +142,13 @@ def logout_view(request):
 	return render_to_response('recipes/loggedout.html', context_instance=RequestContext(request))
 
 def userpage(request, username):
+	recipe_user = User.objects.get(username = username)
 	if request.user.username == username:
 		recipes = Recipe.objects.filter(user__username = username)
-		return render_to_response('recipes/userpage.html', {'recipes': recipes,}, context_instance=RequestContext(request))
+		return render_to_response('recipes/userpage.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
 	else:
 		recipes = Recipe.objects.filter(user__username = username, is_public=True)
-		return render_to_response('recipes/userpage.html', {'recipes': recipes,}, context_instance=RequestContext(request))
+		return render_to_response('recipes/userpage.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
 
 
 def homepage(request):

@@ -2,10 +2,10 @@
 {% load recipes %}
 {% load markup %}
 
-{% block title %} {% ifnotequal request.user recipes.0.user %} {% firstof recipes.0.user.get_full_name recipes.0.user.username %}'s {% else %} My {% endifnotequal %} Recipes {% endblock %}
+{% block title %} {% ifnotequal request.user recipe_user %} {% firstof recipe_user.get_full_name recipe_user.username %}'s {% else %} My {% endifnotequal %} Recipes {% endblock %}
 
 {% block header %}
-	<h2>{% ifnotequal request.user recipes.0.user %} {% firstof recipes.0.user.get_full_name recipes.0.user.username %}'s {% else %} My {% endifnotequal %} Recipes</h2>
+	<h2>{% ifnotequal request.user recipe_user %} {% firstof recipe_user.get_full_name recipe_user.username %}'s {% else %} My {% endifnotequal %} Recipes</h2>
 {% endblock %}
 
 {% block content %}

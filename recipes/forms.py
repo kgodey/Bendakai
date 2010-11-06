@@ -20,17 +20,19 @@ class RecipeIngredientForm(ModelForm):
 	
 	class Meta:
 		model = RecipeIngredient
-		exclude = ('ingredient', 'unit', 'optional')
-		fields = ('ingredient_name', 'quantity', 'unit_name', 'preparation')
+		exclude = ('ingredient', 'unit')
+		fields = ('ingredient_name', 'quantity', 'unit_name', 'preparation', 'optional')
 	
 	def save(self, force_insert=False, force_update=False, commit=True):
 		m = super(RecipeIngredientForm, self).save(commit=False)
 		ingredient_name = self.cleaned_data['ingredient_name']
 		unit_name = self.cleaned_data['unit_name']
+		optional = self.cleaned_data['optional']
 		ingredient = Ingredient.objects.get_or_create(name__iexact=ingredient_name, defaults={'name': ingredient_name, 'slug': slugify(ingredient_name)})[0]
 		unit = MeasurementUnit.objects.get_or_create(name__iexact=unit_name, defaults={'name': unit_name, 'slug': slugify(unit_name)})[0]
 		m.ingredient = ingredient
 		m.unit = unit
+		m.optional = optional
 		if commit:
 			m.save()
 		return m
