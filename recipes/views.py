@@ -11,7 +11,7 @@ from django.contrib.auth import logout
 
 def all_recipes(request):
 	try:
-		recipes = Recipe.objects.filter(is_public=True).order_by('-date_added')[:5]
+		recipes = Recipe.objects.filter(is_public=True)[:5]
 	except Recipe.DoesNotExist:
 		raise Http404
 #	paginator = Paginator(recipes, 5)
@@ -38,6 +38,8 @@ def add_recipe(request):
 				formset.save()
 				recipe.save()
 				return render_to_response('recipes/view_recipe.html', {'recipe': recipe,}, context_instance=RequestContext(request))
+		else:
+			formset = RecipeIngredientsFormset(request.POST, request.FILES)
 	else:
 		form = RecipeForm()
 		formset = RecipeIngredientsFormset()

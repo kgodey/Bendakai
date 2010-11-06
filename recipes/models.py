@@ -49,7 +49,7 @@ class Recipe(models.Model):
 	source = models.TextField(blank=True, null=True)
 	
 	class Meta:
-		ordering = ['date_added']
+		ordering = ['-date_added']
 	
 	def __unicode__(self):
 		return self.name

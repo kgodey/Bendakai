@@ -9,10 +9,10 @@
 	{% endifequal %}  {% ifequal r.user request.user %} <a href="{% url edit_recipe id=r.id %}">(edit recipe)</a>
 		{% endifequal %}</p>
 	<ul class="blurb">
-		<li><strong>Yields:</strong> {{ r.servings }} servings.</li>
-		<li><strong>Preparation time:</strong> {{ r.prep_time }} minutes.</li>
-		<li><strong>Cooking time:</strong> {{ r.cook_time }} minutes.</li>
-		<li><strong>Source:</strong> {{ r.source|markdown }}</li>
+		{% if r.servings %}<li><strong>Yields:</strong> {{ r.servings }} servings.</li>{% endif %}
+		{% if r.prep_time %}<li><strong>Preparation time:</strong> {{ r.prep_time }} minutes.</li>{% endif %}
+		{% if r.cook_time %}<li><strong>Cooking time:</strong> {{ r.cook_time }} minutes.</li>{% endif %}
+		{% if r.source %}<li><strong>Source:</strong> {{ r.source|markdown }}</li>{% endif %}
 	</ul>
 	<h4>Ingredients</h4>
 	<ul class="ingredients">

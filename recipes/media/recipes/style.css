@@ -242,3 +242,7 @@ textarea#id_source{
 em {
 	font-style: italic;
 }
+
+ul.errorlist {
+	color: #fa0000;
+}
