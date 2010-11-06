@@ -36,6 +36,18 @@ class RecipeIngredientForm(ModelForm):
 		if commit:
 			m.save()
 		return m
+	
+	def __init__(self, *args, **kwargs):
+		instance = kwargs.get('instance', None)
+		initial = kwargs.pop('initial', None)
+		if instance is not None:
+			if initial is None:
+				initial = {}
+				initial['ingredient_name'] = instance.ingredient.name
+				initial['unit_name'] = instance.unit.name
+			if initial is not None:
+				kwargs['initial'] = initial
+		super(RecipeIngredientForm, self).__init__(*args, **kwargs)
 
 
 RecipeIngredientsFormset = inlineformset_factory(Recipe, RecipeIngredient, form=RecipeIngredientForm)
