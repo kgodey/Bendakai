@@ -38,6 +38,8 @@ def add_recipe(request):
 				formset.save()
 				recipe.save()
 				return render_to_response('recipes/view_recipe.html', {'recipe': recipe,}, context_instance=RequestContext(request))
+			else:
+				recipe.delete()
 		else:
 			formset = RecipeIngredientsFormset(request.POST, request.FILES)
 	else:
