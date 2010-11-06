@@ -7,17 +7,25 @@
 {% endblock %}
 
 {% block content %}
-<h4>Submit a Recipe!</h4>
-<p>Login <a href="{% url login %}">here</a> using Facebook, Twitter or OpenID and <a href="{% url add_recipe %}">add a recipe.</a>. I'm currently collecting recipes to use as data for my recommendations. Please enter the recipes correctly in the provided fields (and please suggest improvements.) Also note that by submitting recipes and not marking them "private", you grant me an worldwide non-exclusive right to use them as I please. (I plan to release an XML dataset of these recipes to other people that might want to do recipe-based research.)
+<h4>Submit a recipe!</h4>
+<p>I <em>really</em> need recipe data! <strong><a href="{% url login %}">Login here</a></strong> using Facebook, Twitter or OpenID and <a href="{% url add_recipe %}">add a recipe.</a>. Please make sure to enter each part of your recipe in the correct box. If you have questions, comments, suggestions, complaints, tips, advice, or you just want to say hello, e-mail me at <a href="mailto:kgodey@kritigodey.com">kgodey@kritigodey.com</a>. Bug reports are especially helpful.
 
-<h4>About the Project</h4>
-<p>This is <a href="http://kritigodey.com">Kriti Godey's</a> honours project. It is a web application that will store recipes and help plan meals by recommending recipes based on user preference, general rating and (eventually) nutrition and price.</p>
+<h4>About this project</h4>
+<p>I am a computer science student at <a href="http://www.oberlin.edu">Oberlin College</a> and this is the website for my honours project. I am working on recommendation systems for recipes/meal plans based on user preferences, communal ratings, nutritional data and (eventually) food costs. This website is pretty barebones right now, but eventually I hope that it will become actually useful. I need recipes (and ratings) with which to test various recommendation algorithms, and the current purpose of this website is to collect that data.</p>
 
-<h4>Upcoming Features</h4>
-<ul>
-	<li>Associating your accounts so you can login from multiple ones.</li>
-	<li>A system for reviewing recipes and ingredients</li>
-	<li>The ability to upload pictures for recipes</li>
-	<li>A tagging and categorising system</li>
-</ul>
+<h4>Planned features</h4>
+<ol>
+	<li>Editing and deleting recipes will actually work!</li>
+	<li>Search</li>
+	<li>More polished user accounts, which keep track of the ingredients you have.</li>	
+	<li>Nutritional information for all ingredients.</li>
+	<li>A system for recipe reviews and comments.</li>
+	<li>The ability to upload pictures for recipes.</li>
+	<li>A tagging and categorising system.</li>
+</ol>
+
+<h4>Licensing</h4>
+<p>By submitting a recipe that is <strong>indicated public</strong>, you are a granting me a worldwide, non-exclusive, royalty-free, sublicenseable and transferable license to use, reproduce, display and distribute. Please don't be scared by that, I would just like to make a dataset of recipes available from the recipes I collect here, in the hope that it would be beneficial to other people.</p>
+
+
 {% endblock %}

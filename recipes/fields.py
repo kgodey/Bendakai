@@ -1,5 +1,6 @@
 from django import forms
 from fractions import Fraction
+from django.core.exceptions import ValidationError
 
 class FractionField(forms.RegexField):
 	def __init__(self, *args, **kwargs):

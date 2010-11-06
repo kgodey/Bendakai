@@ -20,8 +20,8 @@ class RecipeIngredientForm(ModelForm):
 	
 	class Meta:
 		model = RecipeIngredient
-		exclude = ('ingredient', 'unit')
-		fields = ('ingredient_name', 'quantity', 'unit_name', 'preparation', 'optional')
+		exclude = ('ingredient', 'unit', 'optional')
+		fields = ('ingredient_name', 'quantity', 'unit_name', 'preparation')
 	
 	def save(self, force_insert=False, force_update=False, commit=True):
 		m = super(RecipeIngredientForm, self).save(commit=False)
