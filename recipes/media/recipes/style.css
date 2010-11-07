@@ -146,10 +146,6 @@ ul.blurb, ul.ingredients {
 	padding: 0px 10px;
 }
 
-p.byline {
-	padding-bottom: 15px;
-	font-size: 12px;
-}
 
 ol { 
 	list-style-type: decimal;
@@ -172,9 +168,18 @@ hr.recipe_separator {
 	overflow: visible;
 
 }
+p {
+	padding: 5px 0px 0px 0px;
+}
 
 p.spaced {
 	padding: 10px 0px;
+}
+
+p.byline {
+	padding-bottom: 15px;
+	font-size: 12px;
+	padding-top: 0px;
 }
 
 #recipe_form th, tr{
