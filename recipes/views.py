@@ -162,7 +162,7 @@ def search(request, searchterm):
 		Q_full_term
 	).distinct()
 	Q_by_words = None
-	for word in searchterm.split(' '):
+	for word in searchterm.split():
 		if Q_by_words is None:
 			Q_by_words = Q(ingredients__ingredient__name__icontains = word) | Q(directions__icontains = word) | Q(name__icontains = word)
 		else:

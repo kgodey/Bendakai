@@ -57,3 +57,6 @@ class AddIngredientForm(ModelForm):
 	class Meta:
 		model = Ingredient
 		exclude = ('slug',)
+
+class SearchForm(forms.Form):
+	searchterm = forms.CharField()
