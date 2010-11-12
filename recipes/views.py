@@ -157,15 +157,15 @@ def homepage(request):
 	return render_to_response('recipes/index.html', context_instance=RequestContext(request))
 
 def search(request, searchterm):
-	Q_full_term = Q(ingredients__ingredient__name__icontains = searchterm) | Q(directions__icontains = searchterm)
+	Q_full_term = Q(ingredients__ingredient__name__icontains = searchterm) | Q(directions__icontains = searchterm) | Q(name__icontains = searchterm)
 	full_term = Recipe.objects.filter(
 		Q_full_term
-	).distict()
+	).distinct()
 	Q_by_words = None
 	for word in searchterm.split(' '):
 		if Q_by_words is None:
-			Q_by_words = Q(ingredients__ingredient__name__icontains = word) | Q(directions__icontains = word)
+			Q_by_words = Q(ingredients__ingredient__name__icontains = word) | Q(directions__icontains = word) | Q(name__icontains = word)
 		else:
-			Q_by_words |= Q(ingredients__ingredient__name__icontains = word) | Q(directions__icontains = word)
-	by_words = Recipes.object.filter(Q_by_words).exclude(Q_full_term).distinct()
-	return render_to_response('recipes/search.html', {'full_term': full_term, 'by_words': by_words}, context_instance=RequestContext(request))
+			Q_by_words |= Q(ingredients__ingredient__name__icontains = word) | Q(directions__icontains = word) | Q(name__icontains = word)
+	by_words = Recipe.objects.filter(Q_by_words).exclude(pk__in = full_term).distinct()
+	return render_to_response('recipes/search.html', {'full_term': full_term, 'by_words': by_words, 'search_term': searchterm}, context_instance=RequestContext(request))
