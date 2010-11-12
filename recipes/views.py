@@ -8,6 +8,7 @@ from django.template import RequestContext
 from django.utils import simplejson as json
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.db.models import Q
 
 def all_recipes(request):
 	try:
@@ -155,5 +156,16 @@ def userpage(request, username):
 def homepage(request):
 	return render_to_response('recipes/index.html', context_instance=RequestContext(request))
 
-def search(request, search_term):
-	pass
+def search(request, searchterm):
+	Q_full_term = Q(ingredients__ingredient__name__icontains = searchterm) | Q(directions__icontains = searchterm)
+	full_term = Recipe.objects.filter(
+		Q_full_term
+	).distict()
+	Q_by_words = None
+	for word in searchterm.split(' '):
+		if Q_by_words is None:
+			Q_by_words = Q(ingredients__ingredient__name__icontains = word) | Q(directions__icontains = word)
+		else:
+			Q_by_words |= Q(ingredients__ingredient__name__icontains = word) | Q(directions__icontains = word)
+	by_words = Recipes.object.filter(Q_by_words).exclude(Q_full_term).distinct()
+	return render_to_response('recipes/search.html', {'full_term': full_term, 'by_words': by_words}, context_instance=RequestContext(request))

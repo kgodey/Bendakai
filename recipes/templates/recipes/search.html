@@ -1,0 +1,22 @@
+{% extends "recipes/base.html" %}
+{% load recipes %}
+{% load markup %}
+
+{% block title %} Search Results {% endblock %}
+
+{% block header %}
+	<h2>Search Results</h2>
+{% endblock %}
+
+{% block content %}
+	{% for r in full_term %}
+		{% include "recipes/recipe.html" %}
+		<hr class="recipe_separator"/>
+	{% endfor %}
+	{% for r in by_words %}
+		{% include "recipes/recipe.html" %}
+		{% if not forloop.last %}
+		<hr class="recipe_separator"/>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
