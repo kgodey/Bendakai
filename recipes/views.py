@@ -152,6 +152,8 @@ def userpage(request, username):
 		recipes = Recipe.objects.filter(user__username = username, is_public=True)
 		return render_to_response('recipes/userpage.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
 
-
 def homepage(request):
 	return render_to_response('recipes/index.html', context_instance=RequestContext(request))
+
+def search(request, search_term):
+	pass
