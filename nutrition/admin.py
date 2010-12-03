@@ -13,6 +13,7 @@ class FootnoteInline(admin.TabularInline):
 class NutrientValueInline(admin.TabularInline):
 	model = NutrientValue
 	fk_name = 'food'
+	readonly_fields = ('food', 'nutrient', 'source', 'derivation', 'inferred_from', 'data_sources')
 
 
 class FoodAdmin(admin.ModelAdmin):
