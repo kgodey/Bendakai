@@ -4,11 +4,13 @@ from .models import FoodGroup, Food, Nutrient, Source, Derivation, DataSource, N
 
 class WeightInline(admin.TabularInline):
 	model = Weight
+	fk_name = 'food'
 	readonly_fields = ('food')
 
 
 class FootnoteInline(admin.TabularInline):
 	model = Footnote
+	fk_name = 'food'
 	readonly_fields = ('food', 'nutrient')
 
 
