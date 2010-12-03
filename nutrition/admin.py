@@ -7,12 +7,6 @@ class WeightInline(admin.TabularInline):
 	fk_name = 'food'
 
 
-class FootnoteInline(admin.TabularInline):
-	model = Footnote
-	fk_name = 'food'
-	readonly_fields = ('nutrient')
-
-
 class NutrientValueInline(admin.TabularInline):
 	model = NutrientValue
 	fk_name = 'food'
@@ -23,7 +17,7 @@ class FoodAdmin(admin.ModelAdmin):
 	list_display = ('description', 'short_description', 'scientific_name', 'food_group', 'ndb_number')
 	list_filter = ('food_group', 'manufacturer', 'fndds_profile')
 	search_fields = ('description', 'short_description', 'scientific_name')
-	inlines = [NutrientValueInline, WeightInline, FootnoteInline]
+	inlines = [NutrientValueInline, WeightInline]
 
 
 admin.site.register(Food, FoodAdmin)
