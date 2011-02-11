@@ -1,4 +1,4 @@
-from models import Recipe, Ingredient, JunkRecipe, RecipeIngredient, Tag, Photo, MeasurementUnit
+from models import Recipe, Ingredient, JunkRecipe, RecipeIngredient, Photo, MeasurementUnit
 from forms import RecipeForm, RecipeIngredientsFormset
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth.models import User
