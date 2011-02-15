@@ -63,7 +63,7 @@ class Recipe(models.Model):
 
 class RecipeIngredient(models.Model):
 	recipe = models.ForeignKey(Recipe, related_name='ingredients')
-	ingredient = models.ForeignKey(Ingredient)
+	ingredient = models.ForeignKey(Ingredient, related_name='recipes')
 	quantity = models.FloatField(null=True, blank=True)
 	max_quantity = models.FloatField(null=True, blank=True) #new
 	unit = models.ForeignKey(MeasurementUnit, null=True, blank=True)
