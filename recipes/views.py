@@ -179,3 +179,7 @@ def search(request, searchterm):
 			Q_by_words |= Q(ingredients__ingredient__name__icontains = word) | Q(directions__icontains = word) | Q(name__icontains = word)
 	by_words = Recipe.objects.filter(Q_by_words).exclude(pk__in = full_term).distinct()
 	return render_to_response('recipes/search.html', {'full_term': full_term, 'by_words': by_words, 'search_term': searchterm}, context_instance=RequestContext(request))
+
+def junk_popout(request, junk_id):
+	junk = JunkRecipe.objects.get(id = junk_id)
+	return render_to_response('recipes/junk_popout.html', {'junk': junk,}, context_instance=RequestContext(request))

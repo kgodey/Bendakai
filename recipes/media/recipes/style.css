@@ -252,3 +252,7 @@ ul.errorlist {
 	color: #fa0000;
 	font-size: 12px;
 }
+
+form.newwindow {
+	padding-top: 10px;
+}
