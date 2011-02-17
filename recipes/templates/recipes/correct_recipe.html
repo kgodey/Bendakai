@@ -1,7 +1,7 @@
 {% extends "recipes/base.html" %}
 {% load staticmedia %}
 
-{% block title %} Input Recipe {% endblock %}
+{% block title %} Correct Recipe {% endblock %}
 
 {% block extrahead %}
 <script type="text/javascript">
@@ -18,12 +18,12 @@ $(document).ready(function() {
 {% endblock %}
 
 {% block header %}
-	<h2> Input Recipe </h2>
+	<h2> Correct Recipe </h2>
 {% endblock %}
 
 {% block content %}
-	<h3>Type In the Following Recipe</h3>
-	<p>The following recipe is available only in plaintext. Please type it into the form below in the appropriate boxes.</p>
+	<h3>Correct Recipe</h3>
+	<p>The following recipe is available only in plaintext. Please type it into the form below in the appropriate boxes. If there are no ingredients provided, please infer them from the recipe. Thank you!</p>
 	<pre>
 		{{ junk.text }}
 	</pre>
