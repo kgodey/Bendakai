@@ -31,7 +31,7 @@
 							<li><a href="{% url homepage %}">Home</a></li>
 							<li><a href="{% url all_recipes %}">Recent</a></li>
 							<li><a href="{% url add_recipe %}">Add Recipe</a></li>
-							<li><a href="{% url add_recipe %}">Correct Recipe</a></li>
+							<li><a href="{% url correct_recipe %}">Correct Recipe</a></li>
 							{% if user.is_authenticated %}
 								<li><a href="{% url userpage username=user.username %}">My Recipes</a></li>
 								<li><a href="{% url logout %}">Logout</a></li>
