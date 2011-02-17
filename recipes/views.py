@@ -9,6 +9,7 @@ from django.utils import simplejson as json
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.db.models import Q
+import random
 
 def all_recipes(request):
 	try:
@@ -50,18 +51,27 @@ def add_recipe(request):
 
 @login_required
 def correct_recipe(request):
+	junk = random.choice(JunkRecipe.objects.filter(is_added = False))
 	if request.method == 'POST':
-		junk = JunkRecipe.objects.get(id=request.POST['junk_id'])
 		form = RecipeForm(request.POST, request.FILES)
 		if form.is_valid():
-			recipe = form.save()
-			junk.is_added = True
-			junk.save()
+			recipe = form.save(commit=False)
+			recipe.user = request.user
+			recipe.save()
+			junk_id = request.POST['junkid']
+			junk_added = JunkRecipe.objects.get(id = junk_id)
 			formset = RecipeIngredientsFormset(request.POST, request.FILES, instance=recipe)
 			if formset.is_valid():
 				formset.save()
+				recipe.save()
+				junk_added.is_added = True
+				junk_added.save()
+				return render_to_response('recipes/view_recipe.html', {'recipe': recipe,}, context_instance=RequestContext(request))
+			else:
+				recipe.delete()
+		else:
+			formset = RecipeIngredientsFormset(request.POST, request.FILES)
 	else:
-		junk = JunkRecipe.objects.filter(is_added=False).order_by('?')[0]
 		form = RecipeForm()
 		formset = RecipeIngredientsFormset()
 	return render_to_response('recipes/correct_recipe.html', {'form': form, 'formset': formset, 'junk': junk}, context_instance=RequestContext(request))

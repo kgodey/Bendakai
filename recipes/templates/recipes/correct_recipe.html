@@ -1,16 +1,16 @@
 {% extends "recipes/base.html" %}
 {% load staticmedia %}
 
-{% block title %} Correct Recipe {% endblock %}
+{% block title %} Input Recipe {% endblock %}
 
 {% block extrahead %}
 <script type="text/javascript">
 $(document).ready(function() {
 	$(".recipeingredient_ingredient_field").autocomplete({
-		source: "/ajax/ingredient"
+		source: "/ajax/ingredient", delay: 30
 	});
 	$(".recipeingredient_unit_field").autocomplete({
-		source: "/ajax/unit"
+		source: "/ajax/unit", delay: 30
 	});
 });
 </script>
@@ -18,35 +18,14 @@ $(document).ready(function() {
 {% endblock %}
 
 {% block header %}
-	<h2> Correct Recipe </h2>
+	<h2> Input Recipe </h2>
 {% endblock %}
 
 {% block content %}
-	<div id = "junk">
-		<pre>{{ junk.text }}</pre>
-	</div>
-	<div id="correct_form">
-	<form method="post" action="">
-		{{ form.as_table }}
-		<table>
-			{{ formset.management_form }}
-			{% for f in formset.forms %}
-				<div class='table'>
-					<table class='no_error'>
-						{{ f.as_table }}
-					</table>
-				</div>
-			{% endfor %}		
-		</table>
-		<input type="button" value="Add More" id="add_more">
-		<script>
-			$('#add_more').click(function() {
-				cloneMore('div.table:last', 'ingredients');
-			});
-		</script>
-		{% csrf_token %}
-		<input type="hidden" name="junk_id" value="{{ junk.id }}" />
-		<input type="submit" />
-	</form>
-	</div>
+	<h3>Type In the Following Recipe</h3>
+	<p>The following recipe is available only in plaintext. Please type it into the form below in the appropriate boxes.</p>
+	<pre>
+		{{ junk.text }}
+	</pre>
+	{% include "recipes/recipe_form.html" %}
 {% endblock %}

@@ -25,6 +25,9 @@
 			});
 		</script>
 		{% csrf_token %}
-		<input type="submit" / value="Save recipe">
+		{% if junk %}
+			<input type="hidden" value="{{ junk.id }}" id="junkid" name="junkid"/>
+		{% endif %}
+		<input type="submit" value="Save recipe"/>
 	</form>
 </div>
