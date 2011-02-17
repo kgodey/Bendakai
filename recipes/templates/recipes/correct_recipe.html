@@ -23,9 +23,17 @@ $(document).ready(function() {
 
 {% block content %}
 	<h3>Correct Recipe</h3>
-	<p>The following recipe is available only in plaintext. Please type it into the form below in the appropriate boxes. If there are no ingredients provided, please infer them from the recipe. Thank you!</p>
-	<pre>
-		{{ junk.text }}
-	</pre>
-	{% include "recipes/recipe_form.html" %}
+	<p>The following recipe is available only in plaintext. Please type it into the form in the appropriate boxes. If there are no ingredients provided, please infer them from the recipe. Thank you!</p>
+	<table border=0>
+		<tr>
+			<td width="50%">
+				<pre>
+					{{ junk.text }}
+				</pre>
+			</td>
+			<td width="50%">
+				{% include "recipes/recipe_form.html" %}
+			</td>
+		</tr>
+	</table>
 {% endblock %}
