@@ -70,6 +70,8 @@ def correct_recipe(request):
 			else:
 				recipe.delete()
 		else:
+			junk_id = request.POST['junkid']
+			junk = JunkRecipe.objects.get(id = junk_id)
 			formset = RecipeIngredientsFormset(request.POST, request.FILES)
 	else:
 		form = RecipeForm()
