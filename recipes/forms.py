@@ -16,7 +16,7 @@ class RecipeForm(ModelForm):
 class RecipeIngredientForm(ModelForm):
 	ingredient_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'recipeingredient_ingredient_field'}))
 	quantity = FractionField(required=False, widget=forms.TextInput(attrs={'class': 'recipeingredient_quantity_field'}))
-	max_quantity = FractionField(required=False, widget=forms.TextInput(attrs={'class': 'recipeingredient_max_quantity_field'}))
+	max_quantity = FractionField(required=False, widget=forms.TextInput(attrs={}))
 	unit_name = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'recipeingredient_unit_field'}))
 	
 	class Meta:
