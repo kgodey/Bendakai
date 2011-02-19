@@ -2,6 +2,13 @@
 {% load recipes %}
 {% load markup %}
 
+{% block extrahead %}
+<meta property="og:title" content="{{ recipe.name }}" />
+<meta property="og:type" content="food" /><meta property="og:url" content="http://honours.kritigodey.com{% url view_recipe id=recipe.id %}" />
+<meta property="og:site_name" content="Recipe Manager" />
+<meta property="fb:admins" content="1243780428" />
+{% endblock %}
+
 {% block title %} {{ recipe.name }} {% endblock %}
 
 {% block header %}
