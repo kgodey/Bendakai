@@ -106,6 +106,8 @@ h3 {
 	color: #853D03;
 }
 
+
+
 h4 {
 	font-size: 20px;
 	font-style: italic;
@@ -249,6 +251,11 @@ span.helptext {
 	height: 20px;
 	width: 100px;
 	line-height: 40px;
+}
+
+h3 a {
+	color: #853D03;
+	padding: 20px 0px 5px 0px;
 }
 
 .recipeingredient_form label {
