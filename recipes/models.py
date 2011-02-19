@@ -67,7 +67,7 @@ class RecipeIngredient(models.Model):
 	quantity = models.FloatField(null=True, blank=True, help_text='<span class="helptext"><br/>Takes fractions or decimals.</span>')
 	max_quantity = models.FloatField(null=True, blank=True, help_text='<span class="helptext"><br/>For ranges of quantities.</span>')
 	unit = models.ForeignKey(MeasurementUnit, null=True, blank=True)
-	preparation = models.CharField(max_length=255, blank=True, null=True, help_text='<span class="helptext"><br/>Also for things like <em>to taste</em>.</span>')
+	preparation = models.CharField(max_length=255, blank=True, null=True, help_text='<span class="helptext"><br/>Things like <em>"to taste", "chopped", "large", "pre-cooked"</em> etc. go here.</span>')
 	optional = models.BooleanField(default=False)
 
 	def __unicode__(self):
