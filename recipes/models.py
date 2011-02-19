@@ -50,7 +50,7 @@ class Recipe(models.Model):
 	main_photos = models.ManyToManyField(Photo, blank=True, null=True, related_name='main_photos')
 	is_public = models.BooleanField(default=True)
 	creates_ingredient = models.ForeignKey(Ingredient, blank=True, null=True)
-	source = models.TextField(blank=True, null=True)
+	source = models.TextField(blank=True, null=True, help_text='Where or from whom did you get this recipe?')
 	average_rating = models.FloatField(default=0)	#new #TODO: insert validators to make sure it is between 1-5
 	notes = models.TextField(blank=True, null=True)
 	tags = TagField()	#new
@@ -65,7 +65,7 @@ class RecipeIngredient(models.Model):
 	recipe = models.ForeignKey(Recipe, related_name='ingredients')
 	ingredient = models.ForeignKey(Ingredient, related_name='recipes')
 	quantity = models.FloatField(null=True, blank=True)
-	max_quantity = models.FloatField(null=True, blank=True) #new
+	max_quantity = models.FloatField(null=True, blank=True, help_text='<span class="helptext"><br>For ranges of quantities.</span>') #new
 	unit = models.ForeignKey(MeasurementUnit, null=True, blank=True)
 	preparation = models.CharField(max_length=255, blank=True, null=True)
 	optional = models.BooleanField(default=False)

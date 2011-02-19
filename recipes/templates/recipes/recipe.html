@@ -13,11 +13,12 @@
 		{% if r.prep_time %}<li><strong>Preparation time:</strong> {{ r.prep_time }} minutes.</li>{% endif %}
 		{% if r.cook_time %}<li><strong>Cooking time:</strong> {{ r.cook_time }} minutes.</li>{% endif %}
 		{% if r.source %}<li><strong>Source:</strong> {{ r.source }}</li>{% endif %}
+		{% if r.notes %}<li><strong>Notes:</strong> {{ r.notes }}</li>{% endif %}
 	</ul>
 	<h4>Ingredients</h4>
 	<ul class="ingredients">
 		{% for i in r.ingredients.all %}
-			<li>{% if i.quantity %}{{ i.quantity|html_fraction|safe }} {% endif %} {% if i.unit %} {{ i.unit }} {% endif %} {{ i.ingredient.name }}{% if i.preparation %}, {{ i.preparation }} {% endif %} {% if i.optional %}<em>(optional)</em>{% endif %}</li>
+			<li>{% if i.quantity %}{{ i.quantity|html_fraction|safe }} {% endif %} {% if i.max_quantity %} to {{ i.max_quantity|html_fraction|safe }} {% endif %} {% if i.unit %} {{ i.unit }} {% endif %} {{ i.ingredient.name }}{% if i.preparation %}, {{ i.preparation }} {% endif %} {% if i.optional %}<em>(optional)</em>{% endif %}</li>
 		{% endfor %}
 	</ul>
 	<h4>Directions</h4>

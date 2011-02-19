@@ -215,6 +215,12 @@ textarea#id_source{
 	height: 50px;
 }
 
+textarea#id_notes{
+	width: 350px;
+	height: 50px;
+	margin-top: 10px;
+}
+
 #recipeingredient_forms {
 	overflow: auto;
 }
@@ -229,19 +235,26 @@ textarea#id_source{
 	border: 3px double #416704;
 }
 
+span.helptext {
+	font-size: 11px;
+	padding-top: 0px;
+	margin-top: 0px;
+}
+
 .recipeingredient_form p {
 	padding-right: 10px;
-	line-height: 40px;
 }
 
 .recipeingredient_form input {
 	height: 20px;
 	width: 100px;
+	line-height: 40px;
 }
 
 .recipeingredient_form label {
 	font-size: 12px;
 	font-weight: 400;
+	line-height: 40px;
 }
 
 em {

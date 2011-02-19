@@ -10,18 +10,19 @@ from fields import FractionField
 class RecipeForm(ModelForm):
 	class Meta:
 		model =  Recipe
-		fields = ('name', 'servings', 'prep_time', 'cook_time', 'directions', 'is_public', 'source')
+		fields = ('name', 'servings', 'prep_time', 'cook_time', 'directions', 'is_public', 'source', 'notes')
 
 
 class RecipeIngredientForm(ModelForm):
 	ingredient_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'recipeingredient_ingredient_field'}))
 	quantity = FractionField(required=False, widget=forms.TextInput(attrs={'class': 'recipeingredient_quantity_field'}))
+	max_quantity = FractionField(required=False, widget=forms.TextInput(attrs={'class': 'recipeingredient_max_quantity_field'}))
 	unit_name = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'recipeingredient_unit_field'}))
 	
 	class Meta:
 		model = RecipeIngredient
 		exclude = ('ingredient', 'unit')
-		fields = ('ingredient_name', 'quantity', 'unit_name', 'preparation', 'optional')
+		fields = ('ingredient_name', 'quantity', 'max_quantity', 'unit_name', 'preparation', 'optional')
 	
 	def save(self, force_insert=False, force_update=False, commit=True):
 		m = super(RecipeIngredientForm, self).save(commit=False)
