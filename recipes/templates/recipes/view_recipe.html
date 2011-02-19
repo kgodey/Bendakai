@@ -2,11 +2,11 @@
 {% load recipes %}
 {% load markup %}
 
-{% comment %}
+{% block extraog %}
 <meta property="og:title" content="{{ recipe.name }}" />
 <meta property="og:type" content="food" />
 <meta property="og:url" content="http://honours.kritigodey.com{% url view_recipe id=recipe.id %}" />
-{% endcomment %}
+{% endblock %}
 
 {% block title %} {{ recipe.name }} {% endblock %}
 
