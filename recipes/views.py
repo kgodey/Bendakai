@@ -51,7 +51,6 @@ def add_recipe(request):
 
 @login_required
 def correct_recipe(request):
-	junk = random.choice(JunkRecipe.objects.filter(is_added = False))
 	if request.method == 'POST':
 		form = RecipeForm(request.POST, request.FILES)
 		if form.is_valid():
@@ -59,13 +58,13 @@ def correct_recipe(request):
 			recipe.user = request.user
 			recipe.save()
 			junk_id = request.POST['junkid']
-			junk_added = JunkRecipe.objects.get(id = junk_id)
+			junk = JunkRecipe.objects.get(id = junk_id)
 			formset = RecipeIngredientsFormset(request.POST, request.FILES, instance=recipe)
 			if formset.is_valid():
 				formset.save()
 				recipe.save()
-				junk_added.is_added = True
-				junk_added.save()
+				junk.is_added = True
+				junk.save()
 				return render_to_response('recipes/view_recipe.html', {'recipe': recipe,}, context_instance=RequestContext(request))
 			else:
 				recipe.delete()
@@ -74,6 +73,7 @@ def correct_recipe(request):
 			junk = JunkRecipe.objects.get(id = junk_id)
 			formset = RecipeIngredientsFormset(request.POST, request.FILES)
 	else:
+		junk = random.choice(JunkRecipe.objects.filter(is_added = False))
 		form = RecipeForm()
 		formset = RecipeIngredientsFormset()
 	return render_to_response('recipes/correct_recipe.html', {'form': form, 'formset': formset, 'junk': junk}, context_instance=RequestContext(request))
