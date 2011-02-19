@@ -4,9 +4,11 @@
 
 {% block extrahead %}
 <meta property="og:title" content="{{ recipe.name }}" />
-<meta property="og:type" content="food" /><meta property="og:url" content="http://honours.kritigodey.com{% url view_recipe id=recipe.id %}" />
-<meta property="og:site_name" content="Recipe Manager" />
+<meta property="og:type" content="food" />
+<meta property="og:url" content="http://honours.kritigodey.com{% url view_recipe id=recipe.id %}" />
 <meta property="fb:admins" content="1243780428" />
+<meta property="fb:app_id" content="161323800560782" />
+<meta property="og:site_name" content="Recipe Manager" />
 {% endblock %}
 
 {% block title %} {{ recipe.name }} {% endblock %}

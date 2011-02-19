@@ -2,7 +2,7 @@
 {% load markup %}
 
 <div class="recipe">
-	<h3 class="recipetitle"><a href="{% url view_recipe id=r.id %}" class="recipe_title">{{ r.name }}</a>&nbsp;&nbsp;<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://honours.kritigodey.com{% url view_recipe id=r.id %}" show_faces="false" width="450" font="arial"></fb:like></h3>
+	<h3 class="recipetitle"><a href="{% url view_recipe id=r.id %}" class="recipe_title">{{ r.name }}</a>&nbsp;&nbsp;<fb:like href="http://honours.kritigodey.com{% url view_recipe id=r.id %}" show_faces="false" width="450" font="arial"></fb:like></h3>
 	<p class="byline">Added on {{ r.date_added|date:"F j Y" }} by {% ifequal r.user request.user %} <a href="{% url userpage username=r.user.username %}">you {% if not r.is_public %} <strong>(Private)</strong> {% endif %}</a>
 	{% else %} 
 		<a href="{% url userpage username=r.user.username %}">{% firstof r.user.get_full_name r.user.username %}</a>
