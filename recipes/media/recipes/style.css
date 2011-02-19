@@ -256,3 +256,8 @@ ul.errorlist {
 form.newwindow {
 	padding-top: 10px;
 }
+
+p.nextprev {
+	text-align: center;
+	padding: 20px;
+}

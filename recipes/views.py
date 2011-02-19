@@ -13,18 +13,18 @@ import random
 
 def all_recipes(request):
 	try:
-		recipes = Recipe.objects.filter(is_public=True)[:5]
+		recipes = Recipe.objects.filter(is_public=True)
 	except Recipe.DoesNotExist:
 		raise Http404
-#	paginator = Paginator(recipes, 5)
-#	try:
-#		page = int(request.GET.get('page', '1'))
-#	except ValueError:
-#		page = 1
-#	try:
-#		recipes = paginator.page(page)
-#	except (EmptyPage, InvalidPage):
-#		recipes = paginator.page(paginator.num_pages)
+	paginator = Paginator(recipes, 5)
+	try:
+		page = int(request.GET.get('page', '1'))
+	except ValueError:
+		page = 1
+	try:
+		recipes = paginator.page(page)
+	except (EmptyPage, InvalidPage):
+		recipes = paginator.page(paginator.num_pages)
 	return render_to_response('recipes/allrecipes.html', {'recipes': recipes,}, context_instance=RequestContext(request))
 
 @login_required
@@ -157,10 +157,34 @@ def logout_view(request):
 def userpage(request, username):
 	recipe_user = User.objects.get(username = username)
 	if request.user.username == username:
-		recipes = Recipe.objects.filter(user__username = username)
+		try:
+			recipes = Recipe.objects.filter(user__username = username)
+		except Recipe.DoesNotExist:
+			raise Http404
+		paginator = Paginator(recipes, 5)
+		try:
+			page = int(request.GET.get('page', '1'))
+		except ValueError:
+			page = 1
+		try:
+			recipes = paginator.page(page)
+		except (EmptyPage, InvalidPage):
+			recipes = paginator.page(paginator.num_pages)
 		return render_to_response('recipes/userpage.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
 	else:
-		recipes = Recipe.objects.filter(user__username = username, is_public=True)
+		try:
+			recipes = Recipe.objects.filter(user__username = username, is_public=True)
+		except Recipe.DoesNotExist:
+			raise Http404
+		paginator = Paginator(recipes, 5)
+		try:
+			page = int(request.GET.get('page', '1'))
+		except ValueError:
+			page = 1
+		try:
+			recipes = paginator.page(page)
+		except (EmptyPage, InvalidPage):
+			recipes = paginator.page(paginator.num_pages)
 		return render_to_response('recipes/userpage.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
 
 def homepage(request):
