@@ -1,6 +1,7 @@
 {% extends "recipes/base.html" %}
 {% load recipes %}
 {% load markup %}
+{% load comments %}
 
 {% block extraog %}
 <meta property="og:title" content="{{ recipe.name }}" />
@@ -16,6 +17,27 @@
 
 {% block content %}
 {% with recipe as r %}
-	{% include "recipes/recipe.html" %} 
+	{% include "recipes/recipe.html" %}
 {% endwith %}
+	{% get_comment_count for recipe as comment_count %}
+	<h4>Comments</h4>
+	<p class="comments">{{ comment_count }} comments on this recipe.</p>
+	{% render_comment_list for recipe %}
+	<h5 class="comments">Add a comment!</h5>
+	{% if request.user.is_authenticated %}
+	<h2>Leave a comment</h2>
+	{% get_comment_form for recipe as form %}
+	    <form action="{% comment_form_target %}" method="POST"> 
+	{{ form.comment }} 
+	{{ form.honeypot }} 
+	{{ form.content_type }} 
+	{{ form.object_pk }} 
+	{{ form.timestamp }} 
+	{{ form.security_hash }} 
+	{% csrf_token %}
+	<input type="submit" value="Add comment" id="id_submit" />
+	</form> 
+	{% else %}
+	{% render_comment_form for recipe %}
+	{% endif %}
 {% endblock %}

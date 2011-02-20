@@ -6,11 +6,10 @@ from django import forms
 from django.template.defaultfilters import slugify
 from fields import FractionField
 
-
 class RecipeForm(ModelForm):
 	class Meta:
 		model =  Recipe
-		fields = ('name', 'servings', 'prep_time', 'cook_time', 'directions', 'is_public', 'source', 'notes')
+		fields = ('name', 'servings', 'prep_time', 'cook_time', 'directions', 'is_public', 'source', 'notes', 'tags')
 
 
 class RecipeIngredientForm(ModelForm):

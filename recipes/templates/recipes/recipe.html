@@ -1,5 +1,6 @@
 {% load recipes %}
 {% load markup %}
+{% load tagging_tags %}
 
 <div class="recipe">
 	<h3 class="recipetitle"><a href="{% url view_recipe id=r.id %}" class="recipe_title">{{ r.name }}</a>&nbsp;&nbsp;<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fhonours.kritigodey.com%2F{{ r.id }}%2F&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px;" allowTransparency="true"></iframe></h3>
@@ -23,4 +24,10 @@
 	</ul>
 	<h4>Directions</h4>
 	{{ r.directions|markdown }}
+	{% tags_for_object r as tag_list %}
+		<ul class="tags">
+			{% for t in tag_list.all %}
+			<li class="tags"><a href="{% url recipe_by_tag tag=t.name %}">{{ t.name }}</a>
+			{% endfor %}
+		</ul>
 </div>

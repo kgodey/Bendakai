@@ -53,7 +53,7 @@ class Recipe(models.Model):
 	source = models.TextField(blank=True, null=True, help_text='Where or from whom did you get this recipe?')
 	average_rating = models.FloatField(default=0)	#new #TODO: insert validators to make sure it is between 1-5
 	notes = models.TextField(blank=True, null=True)
-	tags = TagField()	#new
+	tags = TagField(help_text='Enclose multi word tags in double quotes and use commas to separate tags.')	#new
 
 	class Meta:
 		ordering = ['-date_added']
