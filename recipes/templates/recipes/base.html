@@ -1,19 +1,16 @@
-{% load staticmedia %}<html>
+{% load staticmedia %}
+<html>
 	<head>
-<!--		<link class="type-a-file" rel="stylesheet" media="screen" type="text/css" href="{% mediaurl 'recipes/reset.css' %}" />
-		<link class="type-a-file" rel="stylesheet" media="screen" type="text/css" href="{% mediaurl 'recipes/taf-seafarer-m.css' %}" /> -->
-		<link rel="stylesheet" href="{% mediaurl 'recipes/style.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% mediaurl 'recipes/stylerevised.css' %}" type="text/css">
 		<link rel="stylesheet" href="{% mediaurl 'recipes/warnock_pro/stylesheet.css' %}" type="text/css">
 		<link rel="stylesheet" href="{% mediaurl 'recipes/jquery.autocomplete.css' %}" type="text/css">
 		<link rel="stylesheet" href="{% mediaurl 'recipes/jquery-ui-1.8.6.custom.css' %}" type="text/css">
 		<script type="text/javascript" src="{% mediaurl 'recipes/jquery.min.js' %}"></script>
 		<script type="text/javascript" src="{% mediaurl 'recipes/jquery-ui.min.js' %}"></script>
-		<title>{% block title %} {% endblock %}</title>
-		{% block extrahead %} 	    
-		{% endblock %}
-		{% comment %}
 		<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-		{% endcomment %}
+		<title>{% block title %} {% endblock %}</title>
+		{% block extrahead %}
+		{% endblock %}
 		<meta property="fb:app_id" content="161323800560782" />
 		<meta property="og:site_name" content="Kriti's Honours Project" />
 		<meta property="og:image" content="http://honours.kritigodey.com{% mediaurl 'recipes/kritishonourproject.jpg' %}">
@@ -26,37 +23,32 @@
 	<body>
 		<div id="wrapper">
 			<div id="header">
-				<div id="headingdiv">
-					<h1>Recipe Manager</h1>
+				<div id="header_left">
+					<img src="{% mediaurl 'recipes/okra.png' %}" class="header_image" />
+					<h1 class="site_title">bendakai</h1>
 				</div>
-				<div id="navdiv">
-					<div id="nav-left">
-						{% block header %}
-						{% endblock %}
-					</div>
-					<div id="nav-right">
-<!--						<form method="post" action="">
-							<label for id="search">Search:</label><input id="search" type="text">
-						</form> -->
-						<ul id="nav">
-							<li><a href="{% url homepage %}">Home</a></li>
-							<li><a href="{% url all_recipes %}">Recent</a></li>
-							<li><a href="{% url add_recipe %}">Add Recipe</a></li>
-							<li><a href="{% url correct_recipe %}">Correct Recipe</a></li>
-							{% if user.is_authenticated %}
-								<li><a href="{% url userpage username=user.username %}">My Recipes</a></li>
-								<li><a href="{% url logout %}">Logout</a></li>
-							{% else %}
-								<li><a href="{% url login %}">Login</a></li>
-							{% endif %}
-						</ul>
-					</div>
+				<div id="header_right">
+					<h1 class="site_subtitle">recipe recommendations</h1>
 				</div>
+			</div>
+			<div id="navbar">
+				<ul id="nav">
+					<li id="nav"><a href="{% url homepage %}">Home</a></li>
+					<li id="nav"><a href="{% url all_recipes %}">All Recipes</a></li>
+					<li id="nav"><a href="{% url add_recipe %}">Add Recipe</a></li>
+					<li id="nav"><a href="{% url correct_recipe %}">Correct Recipe</a></li>
+					{% if user.is_authenticated %}
+					<li id="nav"><a href="{% url userpage username=user.username %}">My Recipes</a></li>
+					<li id="nav"><a href="{% url logout %}">Logout</a></li>
+					{% else %}
+					<li id="nav"><a href="{% url login %}">Login</a></li>
+					{% endif %}
+				</ul>
 			</div>
 			<div id="content">
 				{% block content %}
 				{% endblock %}
 			</div>
 		</div>
-	<body>
+	</body>
 </html>

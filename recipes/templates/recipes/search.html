@@ -4,11 +4,8 @@
 
 {% block title %} Search Results {% endblock %}
 
-{% block header %}
-	<h2>Search Results: {{ search_term }}</h2>
-{% endblock %}
-
 {% block content %}
+	<h2 class="page_title">Search Results: {{ search_term }}</h2>
 	{% for r in full_term %}
 		{% include "recipes/recipe.html" %}
 		<hr class="recipe_separator"/>

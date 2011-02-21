@@ -1,9 +1,6 @@
 {% extends "recipes/base.html" %}
-{% block header %}
-<h2>Log in</h2>
-{% endblock %}
 {% block content %}
-<h3>Login</h3>
+<h2 class="page_title">Login</h2>
 <p class="spaced">You can log in using Facebook, Twitter or your OpenID URL.</p>
 <p class="spaced">	{% load facebook_tags %}
 	{% facebook_button %}

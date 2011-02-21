@@ -17,11 +17,7 @@ $(document).ready(function() {
 <script type="text/javascript" src="{% mediaurl 'recipes/forms.js' %}"></script>
 {% endblock %}
 
-{% block header %}
-	<h2> Add Recipe </h2>
-{% endblock %}
-
 {% block content %}
-	<h3>Add a New Recipe</h3>
+	<h2 class="page_title">Add a New Recipe</h2>
 	{% include "recipes/recipe_form.html" %}
 {% endblock %}

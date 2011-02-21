@@ -2,19 +2,16 @@
 {% load recipes %}
 {% load markup %}
 
-{% block title %} Recent Recipes {% endblock %}
-
-{% block header %}
-	<h2>Recent Recipes</h2>
-{% endblock %}
+{% block title %} All Recipes {% endblock %}
 
 {% block content %}
-	<p class="nextprev">{% if recipes.has_previous %}<a href="?page={{ recipes.previous_page_number }}">&lt;&lt; Previous</a> &nbsp; &nbsp; {% endif %} Page {{ recipes.number }} of {{ recipes.paginator.num_pages }} <em>({{ recipes.paginator.count }} recipes)</em> {% if recipes.has_next %} &nbsp; &nbsp; <a href="?page={{ recipes.next_page_number }}">Next &gt;&gt;</a>  {% endif %}</p>
+	<h2 class="page_title">Add a New Recipe</h2>
+	<div class="page_nav">{% if recipes.has_previous %}<a href="?page={{ recipes.previous_page_number }}">&lt;&lt; Previous</a> &nbsp; &nbsp; {% endif %} Page {{ recipes.number }} of {{ recipes.paginator.num_pages }} <em>({{ recipes.paginator.count }} recipes)</em> {% if recipes.has_next %} &nbsp; &nbsp; <a href="?page={{ recipes.next_page_number }}">Next &gt;&gt;</a>  {% endif %}</div>
 	{% for r in recipes.object_list %}
 		{% include "recipes/recipe.html" %}
 		{% if not forloop.last %}
 		<hr class="recipe_separator"/>
 		{% endif %}
 	{% endfor %}
-	<p class="nextprev">{% if recipes.has_previous %}<a href="?page={{ recipes.previous_page_number }}">&lt;&lt; Previous</a> &nbsp; &nbsp; {% endif %} Page {{ recipes.number }} of {{ recipes.paginator.num_pages }} <em>({{ recipes.paginator.count }} recipes)</em> {% if recipes.has_next %} &nbsp; &nbsp; <a href="?page={{ recipes.next_page_number }}">Next &gt;&gt;</a>  {% endif %}</p>
+	<div class="page_nav">{% if recipes.has_previous %}<a href="?page={{ recipes.previous_page_number }}">&lt;&lt; Previous</a> &nbsp; &nbsp; {% endif %} Page {{ recipes.number }} of {{ recipes.paginator.num_pages }} <em>({{ recipes.paginator.count }} recipes)</em> {% if recipes.has_next %} &nbsp; &nbsp; <a href="?page={{ recipes.next_page_number }}">Next &gt;&gt;</a>  {% endif %}</div>
 {% endblock %}

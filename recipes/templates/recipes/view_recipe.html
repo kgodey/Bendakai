@@ -11,10 +11,6 @@
 
 {% block title %} {{ recipe.name }} {% endblock %}
 
-{% block header %}
-	<h2>View Recipe</h2>
-{% endblock %}
-
 {% block content %}
 {% with recipe as r %}
 	{% include "recipes/recipe.html" %}
