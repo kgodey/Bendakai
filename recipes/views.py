@@ -65,6 +65,7 @@ def correct_recipe(request):
 				formset.save()
 				recipe.save()
 				junk.is_added = True
+				junk.derived_recipe = recipe
 				junk.save()
 				return render_to_response('recipes/view_recipe.html', {'recipe': recipe,}, context_instance=RequestContext(request))
 			else:

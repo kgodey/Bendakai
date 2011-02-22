@@ -13,7 +13,7 @@ class Ingredient(models.Model):
 	name = models.CharField(max_length=255)
 	slug = models.SlugField()
 	average_rating = models.FloatField(default=0)	#new #TODO: insert validators to make sure it is between 1-5
-	equivalent_ingredients = models.ManyToManyField('self')
+	equivalent_ingredients = models.ManyToManyField('self', blank=True, null=True)
 
 	class Meta:
 		ordering = ['name']
@@ -26,7 +26,7 @@ class MeasurementUnit(models.Model):
 	name = models.CharField(max_length=255)
 	slug = models.SlugField()
 #	weight = models.FloatField(blank=True, null=True)
-	equivalent_units = models.ManyToManyField('self')
+	equivalent_units = models.ManyToManyField('self', blank=True, null=True)
 
 	def __unicode__(self):
 		return self.name
@@ -77,6 +77,7 @@ class RecipeIngredient(models.Model):
 class JunkRecipe(models.Model):
 	text = models.TextField()
 	is_added = models.BooleanField()
+	derived_recipe = models.ForeignKey(Recipe, blank=True, null=True)
 
 class UserIngredientRating(models.Model): #new
 	user = models.ForeignKey(User)
