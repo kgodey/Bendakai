@@ -225,11 +225,18 @@ label{
 	font-size: 16px;
 }
 
+h4.ingredient_label {
+	font-weight: 800;
+	font-size: 16px;
+	padding: 8px 0px;
+	color: #000;
+}
+
 #recipe_form th {
 	width: 150px;
 }
 
-#recipe_form input[type="text"]{
+input[type="text"]{
 	height: 25px;
 	width: 550px;
 	margin: 10px 0px;
@@ -267,4 +274,94 @@ ul.errorlist {
 	color: #fa0000;
 	font-size: 12px;
 	margin-bottom: -5px;
+}
+
+input[type="button"], input[type="submit"] {
+	font-weight: 800;
+	padding: 5px;
+	border: 2px solid #000;
+}
+
+input[type="button"] {
+	font-size: 10px;
+	color: #380A17;
+	margin: 10px 20px;
+	background-color: #FFFFEA;
+}
+
+input[type="submit"] {
+	font-size: 16px;
+	background-color: #D0D707;
+	color: #000;
+	text-transform: uppercase;
+	margin: 25px 0px 10px 0px;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover {
+	background-color: #380A17;
+	color: #fff;
+}
+
+span.required{
+	color: #f00;
+	font-weight: 800;
+}
+
+p.helptext{
+	font-size: 12px;
+	margin: none;
+	padding: none;
+}
+
+p.helptext_ri{
+	font-size: 10px;
+	font-style: italic;
+	padding: none;
+	margin: 0px 3px;
+}
+
+span.recipelabel{
+	font-weight: 800;
+}
+
+/** COMMENTS */
+
+#id_honeypot{
+	display:none;
+	visibility:collapse;
+}
+
+h4.comments{
+	padding-top: 20px;
+}
+
+p.comments{
+	font-style: italic;
+}
+
+textarea#id_comment{
+	width: 750px;
+	height: 100px;
+}
+
+h5.comments{
+	font-size: 16px;
+	font-weight: 800;
+	display: block;
+	padding: 15px 0px;
+}
+
+dl{
+}
+
+dt{
+	padding: 10px;
+	font-size: 14px;
+	font-style: italic;
+	border-top: 1px solid #000;
+}
+
+dd{
+	padding: 0px 20px;
+		border-bottom: 1px dotted #000;
 }

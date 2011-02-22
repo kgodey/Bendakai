@@ -63,11 +63,11 @@ class Recipe(models.Model):
 
 class RecipeIngredient(models.Model):
 	recipe = models.ForeignKey(Recipe, related_name='ingredients')
-	ingredient = models.ForeignKey(Ingredient, related_name='recipes')
-	quantity = models.FloatField(null=True, blank=True, help_text='<span class="helptext"><br/>Takes fractions or decimals.</span>')
-	max_quantity = models.FloatField(null=True, blank=True, help_text='<span class="helptext"><br/>For ranges of quantities.</span>')
+	ingredient = models.ForeignKey(Ingredient, related_name='recipes', help_text='If entering things like "large onion", put "large" under preparation.')
+	quantity = models.FloatField(null=True, blank=True, help_text='Takes fractions or decimals. Decimals below 1 must be in the form "0.x", not ".x"')
+	max_quantity = models.FloatField(null=True, blank=True, help_text='For ranges of quantities e.g. "2-3 tsp".')
 	unit = models.ForeignKey(MeasurementUnit, null=True, blank=True)
-	preparation = models.CharField(max_length=255, blank=True, null=True, help_text='<span class="helptext"><br/>Things like <em>"to taste", "chopped", "large", "pre-cooked"</em> etc. go here.</span>')
+	preparation = models.CharField(max_length=255, blank=True, null=True, help_text='Things like "to taste", "chopped", "large", "pre-cooked" etc. go here.')
 	optional = models.BooleanField(default=False)
 
 	def __unicode__(self):
