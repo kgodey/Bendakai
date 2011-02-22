@@ -33,15 +33,15 @@
 			</div>
 			<div id="navbar">
 				<ul id="nav">
-					<li id="nav"><a href="{% url homepage %}">Home</a></li>
-					<li id="nav"><a href="{% url all_recipes %}">All Recipes</a></li>
-					<li id="nav"><a href="{% url add_recipe %}">Add Recipe</a></li>
-					<li id="nav"><a href="{% url correct_recipe %}">Correct Recipe</a></li>
+					<li class="nav"><a href="{% url homepage %}">Home</a></li>
+					<li class="nav"><a href="{% url all_recipes %}">All Recipes</a></li>
+					<li class="nav"><a href="{% url add_recipe %}">Add Recipe</a></li>
+					<li class="nav"><a href="{% url correct_recipe %}">Correct Recipe</a></li>
 					{% if user.is_authenticated %}
-					<li id="nav"><a href="{% url userpage username=user.username %}">My Recipes</a></li>
-					<li id="nav"><a href="{% url logout %}">Logout</a></li>
+					<li class="nav"><a href="{% url userpage username=user.username %}">My Recipes</a></li>
+					<li class="nav"><a href="{% url logout %}">Logout</a></li>
 					{% else %}
-					<li id="nav"><a href="{% url login %}">Login</a></li>
+					<li class="nav"><a href="{% url login %}">Login</a></li>
 					{% endif %}
 				</ul>
 			</div>

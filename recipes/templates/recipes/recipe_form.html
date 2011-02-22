@@ -1,27 +1,49 @@
 <div id="recipe_form">
 	<form method="post" action="">
 		<table>
-		{{ form.as_table }}		
+			{{ form.as_table }}		
 		</table>
 		{{ formset.management_form }}
 		<h4>Ingredients</h4>
-		<div id="recipeingredient_forms">
-		{% for f in formset.forms %}
-			<div class="recipeingredient_form">
-				{{ f.as_p }}
-			</div>
-		{% endfor %}
+		<div id="formsets">
+			<table class="formset form">
+				{% for f in formset.forms %}
+					{% if forloop.first %}
+						<thead><tr>
+						{% for field in f.visible_fields %}
+						<th>{{ field.label|capfirst }}</th>
+						{% endfor %}
+					</tr></thead>
+					{% endif %}
+					<tr class="recipeingredient_form">
+					{% for field in f.visible_fields %}
+						<td>
+						{# Include the hidden fields in the form #}
+						{% if forloop.first %}
+							{% for hidden in f.hidden_fields %}
+							{{ hidden }}
+							{% endfor %}
+						{% endif %}
+							{{ field.errors.as_ul }}
+							{{ field }}
+						</td>
+					{% endfor %}
+					</tr>
+				{% endfor %}
+			</table>
 		</div>
 		<input type="button" value="Add another ingredient" id="add_more">
 		<script>
 			$('#add_more').click(function() {
-				var newForm = cloneMore('div.recipeingredient_form:last', 'ingredients');
-				$(newForm).find(".recipeingredient_ingredient_field").autocomplete({
-					source: "/ajax/ingredient", delay: 30
-				});
-				$(newForm).find(".recipeingredient_unit_field").autocomplete({
-					source: "/ajax/unit", delay: 30
-				});
+				for (var i = 0; i < 3; i++) {
+					var newForm = cloneMore('tr.recipeingredient_form:last', 'ingredients');
+					$(newForm).find(".recipeingredient_ingredient_field").autocomplete({
+						source: "/ajax/ingredient", delay: 30
+					});
+					$(newForm).find(".recipeingredient_unit_field").autocomplete({
+						source: "/ajax/unit", delay: 30
+					});
+				}
 			});
 		</script>
 		{% csrf_token %}

@@ -5,8 +5,6 @@
 {% block title %} All Recipes {% endblock %}
 
 {% block content %}
-	<h2 class="page_title">Add a New Recipe</h2>
-	<div class="page_nav">{% if recipes.has_previous %}<a href="?page={{ recipes.previous_page_number }}">&lt;&lt; Previous</a> &nbsp; &nbsp; {% endif %} Page {{ recipes.number }} of {{ recipes.paginator.num_pages }} <em>({{ recipes.paginator.count }} recipes)</em> {% if recipes.has_next %} &nbsp; &nbsp; <a href="?page={{ recipes.next_page_number }}">Next &gt;&gt;</a>  {% endif %}</div>
 	{% for r in recipes.object_list %}
 		{% include "recipes/recipe.html" %}
 		{% if not forloop.last %}

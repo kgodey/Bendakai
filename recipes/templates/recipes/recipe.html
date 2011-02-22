@@ -3,10 +3,7 @@
 {% load tagging_tags %}
 
 <div class="recipe">
-	<h3 class="recipe_title"><a href="{% url view_recipe id=r.id %}" class="recipe_title">{{ r.name }}</a></h3>
-	<div class="facebook_like">
-		<fb:like href="honours.kritigodey.com{% url view_recipe id=r.id %}" show_faces="false" width="450" font="arial"></fb:like>
-	</div>
+	<h3 class="recipe_title"><a class="recipe_title" href="{% url view_recipe id=r.id %}">{{ r.name }}</a></h3>
 	<p class="byline">Added on {{ r.date_added|date:"F j Y" }} by {% ifequal r.user request.user %} <a href="{% url userpage username=r.user.username %}">you {% if not r.is_public %} <strong>(Private)</strong> {% endif %}</a>
 	{% else %} 
 		<a href="{% url userpage username=r.user.username %}">{% firstof r.user.get_full_name r.user.username %}</a>
@@ -29,8 +26,14 @@
 	{{ r.directions|markdown }}
 	{% tags_for_object r as tag_list %}
 		<ul class="tags">
+			{% if tag_list %}
+			<li class="tags"><strong>Tags:</strong></li>
+			{% endif %}
 			{% for t in tag_list.all %}
-			<li class="tags"><a href="{% url recipe_by_tag tag=t.name %}">{{ t.name }}</a>
+			<li class="tags"><a href="{% url recipe_by_tag tag=t.name %}">{{ t.name }}</a></li>
 			{% endfor %}
 		</ul>
+		<div class="facebook_like">
+			<fb:like href="honours.kritigodey.com{% url view_recipe id=r.id %}" show_faces="false" width="450" font="arial"></fb:like>
+		</div>
 </div>

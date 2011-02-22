@@ -40,9 +40,9 @@ class Photo(models.Model):
 class Recipe(models.Model):
 	name = models.CharField(max_length=255)
 	slug = models.SlugField()
-	servings = models.IntegerField(blank=True, null=True, help_text='How many people might this recipe serve?')
-	prep_time = models.IntegerField(blank=True, null=True, help_text='In minutes.')
-	cook_time = models.IntegerField(blank=True, null=True, help_text='In minutes.')
+	servings = models.IntegerField(blank=True, null=True, help_text='How many people might this recipe serve? Optional.')
+	prep_time = models.IntegerField(blank=True, null=True, help_text='In minutes. Optional.')
+	cook_time = models.IntegerField(blank=True, null=True, help_text='In minutes. Optional.')
 	directions = models.TextField()
 	date_added = models.DateTimeField(default=datetime.datetime.now)
 	user = models.ForeignKey(User, blank=True, null=True)
@@ -50,10 +50,10 @@ class Recipe(models.Model):
 	main_photos = models.ManyToManyField(Photo, blank=True, null=True, related_name='main_photos')
 	is_public = models.BooleanField(default=True)
 	creates_ingredient = models.ForeignKey(Ingredient, blank=True, null=True)
-	source = models.TextField(blank=True, null=True, help_text='Where or from whom did you get this recipe?')
+	source = models.TextField(blank=True, null=True, help_text='Where or from whom did you get this recipe? Optional.')
 	average_rating = models.FloatField(default=0)	#new #TODO: insert validators to make sure it is between 1-5
-	notes = models.TextField(blank=True, null=True)
-	tags = TagField(help_text='Enclose multi word tags in double quotes and use commas to separate tags.')	#new
+	notes = models.TextField(blank=True, null=True, help_text='Optional.')
+	tags = TagField(help_text='Enclose multi word tags in double quotes and use commas to separate tags. Optional.')
 
 	class Meta:
 		ordering = ['-date_added']
