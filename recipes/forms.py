@@ -6,15 +6,14 @@ from django import forms
 from django.template.defaultfilters import slugify
 from fields import FractionField
 
-
 class RecipeForm(ModelForm):
 	class Meta:
 		model =  Recipe
-		fields = ('name', 'servings', 'prep_time', 'cook_time', 'directions', 'is_public', 'source', 'notes')
+		fields = ('name', 'servings', 'prep_time', 'cook_time', 'directions', 'is_public', 'source', 'notes', 'tags')
 
 
 class RecipeIngredientForm(ModelForm):
-	ingredient_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'recipeingredient_ingredient_field'}))
+	ingredient_name = forms.CharField(help_text=RecipeIngredient._meta.get_field('ingredient').help_text, widget=forms.TextInput(attrs={'class': 'recipeingredient_ingredient_field'}))
 	quantity = FractionField(required=False, help_text=RecipeIngredient._meta.get_field('quantity').help_text,widget=forms.TextInput(attrs={'class': 'recipeingredient_quantity_field'}))
 	max_quantity = FractionField(required=False, help_text=RecipeIngredient._meta.get_field('max_quantity').help_text, widget=forms.TextInput(attrs={'class': 'recipeingredient_max_quantity_field'}))
 	unit_name = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'recipeingredient_unit_field'}))

@@ -1,9 +1,10 @@
 from models import Recipe, Ingredient, JunkRecipe, RecipeIngredient, Photo, MeasurementUnit
 from forms import RecipeForm, RecipeIngredientsFormset
+from tagging.models import Tag, TaggedItem
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response, get_object_or_404
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.template import RequestContext
 from django.utils import simplejson as json
 from django.contrib.auth.decorators import login_required
@@ -209,3 +210,20 @@ def search(request, searchterm):
 def junk_popout(request, junk_id):
 	junk = JunkRecipe.objects.get(id = junk_id)
 	return render_to_response('recipes/junk_popout.html', {'junk': junk,}, context_instance=RequestContext(request))
+
+def recipe_by_tag(request, tag):
+	try:
+		tag_object = Tag.objects.get(name=tag)
+		recipes = TaggedItem.objects.get_by_model(Recipe, tag_object)
+	except Recipe.DoesNotExist:
+		raise Http404
+	paginator = Paginator(recipes, 5)
+	try:
+		page = int(request.GET.get('page', '1'))
+	except ValueError:
+		page = 1
+	try:
+		recipes = paginator.page(page)
+	except (EmptyPage, InvalidPage):
+		recipes = paginator.page(paginator.num_pages)
+	return render_to_response('recipes/recipe_by_tag.html', {'recipes': recipes, 'tag': tag_object,}, context_instance=RequestContext(request))

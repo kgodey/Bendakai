@@ -18,13 +18,9 @@ $(document).ready(function() {
 <script type="text/javascript" src="{% mediaurl 'recipes/forms.js' %}"></script>
 {% endblock %}
 
-{% block header %}
-	<h2> Correct Recipe </h2>
-{% endblock %}
-
 {% block content %}
-	<h3>Correct Recipe</h3>
-	<p>The following recipe is available only in plaintext. Please type it into the form in the appropriate boxes. If there are no ingredients provided, please infer them from the recipe. Thank you!</p>
+	<h2 class="page_title">Correct Recipe</h2>
+	<p>The following recipe is available only as shown below. Please copy the recipe over to the form, such that the information in the recipe is sorted into the appropriate boxes. If the ingredients are missing, please try to infer them from the directions. If the recipe is unusable, refresh to get a new one. Thank you!</p>
 	<FORM class="newwindow">
 	<INPUT type="button" value="Open Recipe in New Window!" onClick="window.open('{% url junk_popout junk_id=junk.id %}','Plaintext Recipe','width=630,height=600,scrollbars=yes,resizable=no,toolbar=no')">
 	</FORM>

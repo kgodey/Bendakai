@@ -1,31 +1,19 @@
 {% extends "recipes/base.html" %}
 
-{% block title %} Recipe Manager Introduction {% endblock %}
-
-{% block header %}
-	<h2>Introduction</h2>
-{% endblock %}
+{% block title %} bendakai introduction {% endblock %}
 
 {% block content %}
-<h4>Submit a recipe!</h4>
-<p>I <em>really</em> need recipe data! <strong><a href="{% url login %}">Login here</a></strong> using Facebook, Twitter or OpenID and <a href="{% url add_recipe %}">add a recipe</a>. Please make sure to enter each part of your recipe in the correct box. If you have questions, comments, suggestions, complaints, tips, advice, or you just want to say hello, e-mail me at <a href="mailto:kgodey@kritigodey.com">kgodey@kritigodey.com</a>. Bug reports are especially helpful.
+<h2 class="page_title">Introduction</h2>
+<p><strong>bendakai</strong> is <a href="http://kritigodey.com">Kriti Godey</a>'s honours project for her computer science degree. Its goal to be able to answer questions like <em>"I've got six potatoes, an onion and milk. What healthy food can I cook with it?"</em> <em>i.e.</em> it aims to provide you with recipes you like based on what you've liked before, nutritional information, and price of ingredients. It will also be a conventional recipe website; you can search for recipes and keep track of your recipe collection.</p>
 
-<h4>About this project</h4>
-<p>I am a computer science student at <a href="http://www.oberlin.edu">Oberlin College</a> and this is the website for my honours project. I am working on recommendation systems for recipes/meal plans based on user preferences, communal ratings, nutritional data and (eventually) food costs. This website is pretty barebones right now, but eventually I hope that it will become actually useful. I need recipes (and ratings) with which to test various recommendation algorithms, and the current purpose of this website is to collect that data.</p>
+<h3>That sounds cool! What can I do?</h3>
+<p>Well, I need recipes to recommend! I already have a bunch of recipes, but they aren't separated in a way that makes it easy to compute nutritional values and other data from them. You can help me <a href="{% url correct_recipe %}">by correcting a recipe!</a>. There's a recipe and a form, copying one recipe over should take a couple of minutes. This will really help me. You can also <a href="{% url add_recipe %}">add a recipe!</a> and keep track of your recipe collection here! You'll need to log in, but you can use your Facebook, Twitter or OpenID account to do so, so it's relatively painless.</p>
 
-<h4>Planned features</h4>
-<ol>
-	<li>Editing and deleting recipes will actually work!</li>
-	<li>Search</li>
-	<li>More polished user accounts, which keep track of the ingredients you have.</li>	
-	<li>Nutritional information for all ingredients.</li>
-	<li>A system for recipe reviews and comments.</li>
-	<li>The ability to upload pictures for recipes.</li>
-	<li>A tagging and categorising system.</li>
-</ol>
+<p>Bug reports, complaints, suggestions, tips, advice, feedback, comments, questions etc. are much appreciated. E-mail them to me at <a href="mailto:kriti.godey@gmail.com">kriti.godey@gmail.com</a>.</p>
 
-<h4>Licensing</h4>
-<p>By submitting a recipe that is <strong>indicated public</strong>, you are a granting me a worldwide, non-exclusive, royalty-free, sublicenseable and transferable license to use, reproduce, display and distribute. Please don't be scared by that, I would just like to make a dataset of recipes available from the recipes I collect here, in the hope that it would be beneficial to other people.</p>
+<h3>What's with the name?</h3>
+<p>The name <strong>bendakai</strong> means "okra" or "ladyfinger" in Telugu, my native language. It's food related, fairly easy to pronounce, and most importantly, the top level domain was available.</p>
 
-
+<h3>Progress and Plans</h3>
+<p>I'm currently working with two different recommendation approaches and randomly generated data. I hope to be able to test with real data soon, which is why I need recipes. I'm trying to update this website as fast as possible.</p>
 {% endblock %}

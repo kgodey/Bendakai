@@ -1,33 +1,89 @@
 <div id="recipe_form">
 	<form method="post" action="">
 		<table>
-		{{ form.as_table }}		
+			{% if form.non_field_errors %}
+			<tr><th>{{ form.non_field_errors }}</th></tr>
+			{% endif %}
+			<tr><th><label for="id_name">Name:<span class="required"> *</span></label></th>
+				<td>{{ form.name.errors }} {{ form.name }}</td>
+			</tr>
+			<tr><th><label for="id_servings">Servings:</label></th>
+				<td>{{ form.servings.errors }} {{ form.servings }}<p class="helptext">At minimum, how many people might this serve?</p></td>
+			</tr>	
+			<tr><th><label for="id_prep_time">Preparation Time:</label></th>
+				<td>{{ form.prep_time.errors }} {{ form.prep_time }}<p class="helptext">In minutes.</p></td>
+			</tr>
+			<tr><th><label for="id_cook_time">Cooking Time:</label></th>
+				<td>{{ form.cook_time.errors }} {{ form.cook_time }}<p class="helptext">In minutes.</p></td>
+			</tr>
 		</table>
 		{{ formset.management_form }}
-		<h4>Ingredients</h4>
-		<div id="recipeingredient_forms">
-		{% for f in formset.forms %}
-			<div class="recipeingredient_form">
-				{{ f.as_p }}
-			</div>
-		{% endfor %}
+		<h4 class="ingredient_label">Ingredients:<span class="required"> *</span> <input type="button" value="Add more ingredients" id="add_more"> </h4>
+		<div id="formsets">
+			<table class="formset form">
+				{% for f in formset.forms %}
+					{% if forloop.first %}
+						<thead><tr>
+						{% for field in f.visible_fields %}
+						<th><span class="recipelabel">{{ field.label|capfirst }}</span></th>
+						{% endfor %}
+					</tr></thead>
+					<tr>
+						{% for field in f.visible_fields %}
+						<td><p class="helptext_ri">{{ field.help_text }}</p></td>
+						{% endfor %}
+					{% endif %}
+					<tr class="recipeingredient_form">
+					{% for field in f.visible_fields %}
+						<td>
+						{# Include the hidden fields in the form #}
+						{% if forloop.first %}
+							{% for hidden in f.hidden_fields %}
+							{{ hidden }}
+							{% endfor %}
+						{% endif %}
+							{{ field.errors.as_ul }}
+							{{ field }}
+						</td>
+					{% endfor %}
+					</tr>
+				{% endfor %}
+			</table>
 		</div>
-		<input type="button" value="Add another ingredient" id="add_more">
 		<script>
 			$('#add_more').click(function() {
-				var newForm = cloneMore('div.recipeingredient_form:last', 'ingredients');
-				$(newForm).find(".recipeingredient_ingredient_field").autocomplete({
-					source: "/ajax/ingredient", delay: 30
-				});
-				$(newForm).find(".recipeingredient_unit_field").autocomplete({
-					source: "/ajax/unit", delay: 30
-				});
+				for (var i = 0; i < 3; i++) {
+					var newForm = cloneMore('tr.recipeingredient_form:last', 'ingredients');
+					$(newForm).find(".recipeingredient_ingredient_field").autocomplete({
+						source: "/ajax/ingredient", delay: 30
+					});
+					$(newForm).find(".recipeingredient_unit_field").autocomplete({
+						source: "/ajax/unit", delay: 30
+					});
+				}
 			});
 		</script>
 		{% csrf_token %}
 		{% if junk %}
 			<input type="hidden" value="{{ junk.id }}" id="junkid" name="junkid"/>
 		{% endif %}
-		<input type="submit" value="Save recipe"/>
+		<table>
+			<tr><th><label for="id_directions">Directions:<span class="required"> *</span></label></th>
+				<td>{{ form.directions.errors }} {{ form.directions }}</td>
+			</tr>
+			<tr><th><label for="id_tags">Tags:</label></th>
+				<td>{{ form.tags.errors }} {{ form.tags }}<p class="helptext">Put double quotes around multi-word tags and commas between tags.</p></td>
+			</tr>
+			<tr><th><label for="id_source">Source:</label></th>
+				<td>{{ form.source.errors }} {{ form.source }}<p class="helptext">From whom or where did you get this recipe?</p></td>
+			</tr>
+			<tr><th><label for="id_notes">Notes:</label></th>
+				<td>{{ form.notes.errors }} {{ form.notes }}</td>
+			</tr>
+			<tr><th><label for="id_is_public">Is this recipe public?</label></th>
+				<td>{{ form.is_public.errors }} {{ form.is_public }}</td>
+			</tr>
+		</table>
+		<p class"submitbutton"><input type="submit" value="Save recipe"/></p>
 	</form>
 </div>
