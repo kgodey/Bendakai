@@ -17,5 +17,6 @@ urlpatterns = patterns('',
 	url(r'^logout/$', views.logout_view, name='logout'),
 	url(r'^people/(?P<username>\w+)/$', views.userpage, name='userpage'),
 	url(r'^tags/(?P<tag>[-\w ]+)/$', views.recipe_by_tag, name='recipe_by_tag'),
+	url(r'^ingredients/(?P<ingredient>[-\w\W ]+)/$', views.recipe_by_ingredient, name='recipe_by_ingredient'),
 	url(r'^(?P<id>\d+)/$', views.view_recipe, name='view_recipe'),
 )

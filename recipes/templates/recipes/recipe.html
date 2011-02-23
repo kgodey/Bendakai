@@ -19,7 +19,7 @@
 	<h4>Ingredients</h4>
 	<ul class="ingredients">
 		{% for i in r.ingredients.all %}
-			<li>{% if i.quantity %}{{ i.quantity|html_fraction|safe }} {% endif %} {% if i.max_quantity %} to {{ i.max_quantity|html_fraction|safe }} {% endif %} {% if i.unit %} {{ i.unit }} {% endif %} {{ i.ingredient.name }}{% if i.preparation %}, {{ i.preparation }} {% endif %} {% if i.optional %}<em>(optional)</em>{% endif %}</li>
+			<li>{% if i.quantity %}{{ i.quantity|html_fraction|safe }} {% endif %} {% if i.max_quantity %} to {{ i.max_quantity|html_fraction|safe }} {% endif %} {% if i.unit %} {{ i.unit }} {% endif %} <a href="{% url recipe_by_ingredient ingredient=i.ingredient.name %}">{{ i.ingredient.name }}</a>{% if i.preparation %}, {{ i.preparation }} {% endif %} {% if i.optional %}<em>(optional)</em>{% endif %}</li>
 		{% endfor %}
 	</ul>
 	<h4>Directions</h4>

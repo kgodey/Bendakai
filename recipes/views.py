@@ -228,3 +228,19 @@ def recipe_by_tag(request, tag):
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
 	return render_to_response('recipes/recipe_by_tag.html', {'recipes': recipes, 'tag': tag_object,}, context_instance=RequestContext(request))
+
+def recipe_by_ingredient(request, ingredient):
+	try:
+		recipes = Recipe.objects.filter(ingredients__ingredient__name=ingredient).distinct()
+	except Recipe.DoesNotExist:
+		raise Http404
+	paginator = Paginator(recipes, 5)
+	try:
+		page = int(request.GET.get('page', '1'))
+	except ValueError:
+		page = 1
+	try:
+		recipes = paginator.page(page)
+	except (EmptyPage, InvalidPage):
+		recipes = paginator.page(paginator.num_pages)
+	return render_to_response('recipes/recipe_by_ingredient.html', {'recipes': recipes, 'ingredient': ingredient,}, context_instance=RequestContext(request))
