@@ -55,10 +55,10 @@
 				for (var i = 0; i < 3; i++) {
 					var newForm = cloneMore('tr.recipeingredient_form:last', 'ingredients');
 					$(newForm).find(".recipeingredient_ingredient_field").autocomplete({
-						source: "/ajax/ingredient", delay: 30
+						source: "/ajax/ingredient", delay: 10
 					});
 					$(newForm).find(".recipeingredient_unit_field").autocomplete({
-						source: "/ajax/unit", delay: 30
+						source: "/ajax/unit", delay: 10
 					});
 				}
 			});
