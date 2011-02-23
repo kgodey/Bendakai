@@ -365,3 +365,12 @@ dd{
 	padding: 0px 20px;
 		border-bottom: 1px dotted #000;
 }
+
+ol {
+	list-style-type: decimal;
+	list-style-position: inside;
+}
+
+ol li {
+	padding: 3px;
+}
