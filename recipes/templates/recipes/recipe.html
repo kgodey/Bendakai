@@ -1,6 +1,7 @@
 {% load recipes %}
 {% load markup %}
 {% load tagging_tags %}
+{% load staticmedia %}
 
 <div class="recipe">
 	<h3 class="recipe_title"><a class="recipe_title" href="{% url view_recipe id=r.id %}">{{ r.name }}</a></h3>
@@ -9,6 +10,19 @@
 		<a href="{% url userpage username=r.user.username %}">{% firstof r.user.get_full_name r.user.username %}</a>
 	{% endifequal %}  {% ifequal r.user request.user %} <a href="{% url edit_recipe id=r.id %}">(edit recipe)</a>
 		{% endifequal %}</p>
+	
+	{% if r.average_rating %}
+	<span class="byline">Average rating: </span><div class="recipe_rating" id="recipe_rating_{{ r.id }}"></div>
+	<script type="text/javascript" charset="utf-8">
+		$('#recipe_rating_{{ r.id }}').raty({
+			path: "{% mediaurl 'recipes/raty_img/' %}",
+			readOnly: true,
+			half: true,
+			start: {{ r.average_rating }},
+		});
+	</script>
+	{% endif %}
+		
 	<ul class="blurb">
 		{% if r.servings %}<li><strong>Yields:</strong> {{ r.servings }} servings.</li>{% endif %}
 		{% if r.prep_time %}<li><strong>Preparation time:</strong> {{ r.prep_time }} minutes.</li>{% endif %}

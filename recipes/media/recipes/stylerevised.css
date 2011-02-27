@@ -186,7 +186,7 @@ a.recipe_title:hover{
 	color: #BA0109;
 }
 
-p.byline{
+.byline{
 	font-size: 12px;
 	padding: 0px;
 }
@@ -373,4 +373,13 @@ ol {
 
 ol li {
 	padding: 3px;
+}
+
+.recipe_rating {
+	display: inline;
+	vertical-align: top;
+}
+
+span.byline{
+	margin-right: 5px;
 }
