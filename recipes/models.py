@@ -63,7 +63,10 @@ class Recipe(models.Model):
 	@property
 	def average_rating(self):
 		ratings = self.ratings.all()
-		return sum([rating.rating for rating in ratings])/len(ratings)
+		if ratings:
+			return sum([rating.rating for rating in ratings])/len(ratings)
+		else:
+			return 0
 
 class RecipeIngredient(models.Model):
 	recipe = models.ForeignKey(Recipe, related_name='ingredients')
