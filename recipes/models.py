@@ -51,7 +51,6 @@ class Recipe(models.Model):
 	is_public = models.BooleanField(default=True)
 	creates_ingredient = models.ForeignKey(Ingredient, blank=True, null=True)
 	source = models.TextField(blank=True, null=True, help_text='Where or from whom did you get this recipe? Optional.')
-	average_rating = models.FloatField(default=0)	#new #TODO: insert validators to make sure it is between 1-5
 	notes = models.TextField(blank=True, null=True, help_text='Optional.')
 	tags = TagField(help_text='Enclose multi word tags in double quotes and use commas to separate tags. Optional.')
 
@@ -60,6 +59,11 @@ class Recipe(models.Model):
 
 	def __unicode__(self):
 		return self.name
+	
+	@property
+	def average_rating(self):
+		ratings = self.ratings.all()
+		return sum([rating.rating for rating in ratings])/len(ratings)
 
 class RecipeIngredient(models.Model):
 	recipe = models.ForeignKey(Recipe, related_name='ingredients')
@@ -86,7 +90,7 @@ class UserIngredientRating(models.Model): #new
 
 class UserRecipeRating(models.Model): #new
 	user = models.ForeignKey(User)
-	recipe = models.ForeignKey(Recipe)
+	recipe = models.ForeignKey(Recipe, related_name='ratings')
 	rating = models.IntegerField(default=0)	#TODO: insert validators to make sure it is an integer or integer and a half between 1 and 5
 
 class PantryItem(models.Model):	#new
