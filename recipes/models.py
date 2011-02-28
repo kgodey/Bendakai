@@ -88,7 +88,7 @@ class JunkRecipe(models.Model):
 
 class UserIngredientRating(models.Model): #new
 	user = models.ForeignKey(User)
-	ingredient = models.ForeignKey(Ingredient)
+	ingredient = models.ForeignKey(Ingredient, related_name='ratings')
 	rating = models.IntegerField(default=0)	#TODO: insert validators to make sure it is an integer or integer and a half between 1 and 5
 
 class UserRecipeRating(models.Model): #new

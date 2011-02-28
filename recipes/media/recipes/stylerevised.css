@@ -108,15 +108,15 @@ h1.site_subtitle{
 
 li.nav {
 	display: inline;
-	padding: 0px 20px;
+	padding: 0px 12px;
 }
 
 #navbar a{
 	text-decoration: none;
 	color: #fff;
 	font-weight: 600;
-	font-variant: small-caps;
-	font-size: 18px;
+	font-family: Optima, Trebuchet, sans-serif;
+	font-size: 16px;
 }
 
 #navbar a:hover{

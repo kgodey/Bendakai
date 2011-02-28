@@ -1,0 +1,37 @@
+{% extends "recipes/base.html" %}
+{% load staticmedia %}
+
+{% block title %} Rate Ingredients {% endblock %}
+
+{% block content %}
+	<h2 class="page_title">Rate Ingredients</h2>
+	<ul class="ingredient_list">
+	{% for i in ingredients.object_list %}
+	<li class="ingredient_list" id="user_ingredient_rating_{{ i.id }}_label">{{ i.name }}:<div class="ingredient_rating" id="user_ingredient_rating_{{ i.id }}"></div></li>
+	<script type="text/javascript" charset="utf-8">
+		$.ajax({
+			url: "{% url get_user_ingredient_rating ingredient_id=i.id %}",
+			success: function(data){
+				$('#user_ingredient_rating_{{ i.id }}').raty({
+					path: "{% mediaurl 'recipes/raty_img/' %}",
+					half: true,
+					start: data,
+					showCancel: true,
+					click: function(score){
+						$.ajax({
+							url: "{% url save_user_ingredient_rating ingredient_id=i.id %}",
+							data: {'score': score,},
+							type: "POST",
+						});
+					},
+				});
+			},
+			error: function(){
+				$("#user_ingredient_rating_{{ i.id }}").remove();
+			},
+		});
+	</script>
+	{% endfor %}
+	</ul>
+	<div class="page_nav">{% if ingredients.has_previous %}<a href="?page={{ recipes.previous_page_number }}">&lt;&lt; Previous</a> &nbsp; &nbsp; {% endif %} Page {{ ingredients.number }} of {{ ingredients.paginator.num_pages }} <em>({{ ingredients.paginator.count }} ingredients)</em> {% if ingredients.has_next %} &nbsp; &nbsp; <a href="?page={{ ingredients.next_page_number }}">Next &gt;&gt;</a>  {% endif %}</div>
+{% endblock %}

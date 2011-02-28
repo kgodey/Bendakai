@@ -38,6 +38,7 @@
 					<li class="nav"><a href="{% url all_recipes %}">All Recipes</a></li>
 					<li class="nav"><a href="{% url add_recipe %}">Add Recipe</a></li>
 					<li class="nav"><a href="{% url correct_recipe %}">Correct Recipe</a></li>
+					<li class="nav"><a href="{% url ingredient_list %}">Rate Ingredients</a></li>
 					{% if user.is_authenticated %}
 					<li class="nav"><a href="{% url userpage username=user.username %}">My Recipes</a></li>
 					<li class="nav"><a href="{% url logout %}">Logout</a></li>
