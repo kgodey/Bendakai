@@ -19,4 +19,6 @@ urlpatterns = patterns('',
 	url(r'^tags/(?P<tag>[-\w ]+)/$', views.recipe_by_tag, name='recipe_by_tag'),
 	url(r'^ingredients/(?P<ingredient>[-\w\W ]+)/$', views.recipe_by_ingredient, name='recipe_by_ingredient'),
 	url(r'^(?P<id>\d+)/$', views.view_recipe, name='view_recipe'),
+	url(r'^ajax/get_user_recipe_rating/(?P<recipe_id>\d+)/$', views.get_user_recipe_rating, name='get_user_recipe_rating'),
+	url(r'^ajax/save_user_recipe_rating/(?P<recipe_id>\d+)/$', views.save_user_recipe_rating, name='save_user_recipe_rating'),
 )

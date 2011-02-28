@@ -22,6 +22,39 @@
 		});
 	</script>
 	{% endif %}
+	{% if user.is_authenticated %}
+	<span class="byline" id="user_recipe_rating_{{ r.id }}_label">Your rating: </span><div class="recipe_rating" id="user_recipe_rating_{{ r.id }}"></div>
+	<script type="text/javascript" charset="utf-8">
+		$.ajax({
+			url: "{% url get_user_recipe_rating recipe_id=r.id %}",
+			success: function(data){
+				$('#user_recipe_rating_{{ r.id }}').raty({
+					path: "{% mediaurl 'recipes/raty_img/' %}",
+					half: true,
+					start: data,
+					showCancel: true,
+					click: function(score){
+						$.ajax({
+							url: "{% url save_user_recipe_rating recipe_id=r.id %}",
+							data: {'score': score,},
+							type: "POST",
+							error: function(){
+								alert("Error! Couldn't save rating.");
+							},
+						});
+					},
+				});
+			},
+			error: function(){
+				$("#user_recipe_rating_{{ r.id }}_label").remove();
+				$("#user_recipe_rating_{{ r.id }}").remove();
+			},
+		});
+		
+		
+		
+	</script>
+	{% endif %}
 		
 	<ul class="blurb">
 		{% if r.servings %}<li><strong>Yields:</strong> {{ r.servings }} servings.</li>{% endif %}

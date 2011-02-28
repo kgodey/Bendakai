@@ -1,4 +1,4 @@
-from models import Recipe, Ingredient, JunkRecipe, RecipeIngredient, Photo, MeasurementUnit
+from models import Recipe, Ingredient, JunkRecipe, RecipeIngredient, Photo, MeasurementUnit, UserRecipeRating, UserIngredientRating
 from forms import RecipeForm, RecipeIngredientsFormset
 from tagging.models import Tag, TaggedItem
 from django.http import HttpResponse, Http404, HttpResponseRedirect
@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.db.models import Q
 import random
+from django.views.decorators.csrf import csrf_exempt
 
 def all_recipes(request):
 	try:
@@ -195,7 +196,7 @@ def homepage(request):
 	return render_to_response('recipes/index.html', context_instance=RequestContext(request))
 
 def search(request, searchterm):
-	Q_full_term = Q(ingredients__ingredient__name__icontains = searchterm) | Q(directions__icontains = searchterm) | Q(name__icontains = searchterm)
+	Q_full_term = Q(ingredients__ingredient__name__icontains=searchterm) | Q(directions__icontains = searchterm) | Q(name__icontains = searchterm)
 	full_term = Recipe.objects.filter(
 		Q_full_term
 	).distinct()
@@ -230,10 +231,7 @@ def recipe_by_tag(request, tag):
 	return render_to_response('recipes/recipe_by_tag.html', {'recipes': recipes, 'tag': tag_object,}, context_instance=RequestContext(request))
 
 def recipe_by_ingredient(request, ingredient):
-	try:
-		recipes = Recipe.objects.filter(ingredients__ingredient__name=ingredient).distinct()
-	except Recipe.DoesNotExist:
-		raise Http404
+	recipes = Recipe.objects.filter(ingredients__ingredient__name=ingredient).distinct()
 	paginator = Paginator(recipes, 5)
 	try:
 		page = int(request.GET.get('page', '1'))
@@ -244,3 +242,23 @@ def recipe_by_ingredient(request, ingredient):
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
 	return render_to_response('recipes/recipe_by_ingredient.html', {'recipes': recipes, 'ingredient': ingredient,}, context_instance=RequestContext(request))
+
+@login_required
+def get_user_recipe_rating(request, recipe_id):
+	recipe = Recipe.objects.get(id=recipe_id)
+	try:
+		return HttpResponse(str(recipe.ratings.get(user=request.user).rating), mimetype='text/plain')
+	except UserRecipeRating.DoesNotExist:
+		return HttpResponse('0', mimetype='text/plain')
+	
+
+@login_required
+@csrf_exempt
+def save_user_recipe_rating(request, recipe_id):
+	rating = float(request.POST['score'])
+	recipe = Recipe.objects.get(id=recipe_id)
+	user_recipe_rating, created = recipe.ratings.get_or_create(user=request.user, defaults={'rating': rating,})
+	if not created:
+		user_recipe_rating.rating = rating
+		user_recipe_rating.save()
+	return HttpResponse()
