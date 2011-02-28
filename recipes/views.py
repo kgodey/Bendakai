@@ -247,7 +247,7 @@ def recipe_by_ingredient(request, ingredient):
 def get_user_recipe_rating(request, recipe_id):
 	recipe = Recipe.objects.get(id=recipe_id)
 	try:
-		return HttpResponse(str(float(recipe.ratings.get(user=request.user).rating/2)), mimetype='text/plain')
+		return HttpResponse(str(recipe.ratings.get(user=request.user).rating/2.0), mimetype='text/plain')
 	except UserRecipeRating.DoesNotExist:
 		return HttpResponse('0', mimetype='text/plain')
 	
@@ -273,7 +273,7 @@ def save_user_recipe_rating(request, recipe_id):
 def get_user_ingredient_rating(request, ingredient_id):
 	ingredient = Ingredient.objects.get(id=ingredient_id)
 	try:
-		return HttpResponse(str(float(ingredient.ratings.get(user=request.user).rating/2)), mimetype='text/plain')
+		return HttpResponse(str(ingredient.ratings.get(user=request.user).rating/2.0), mimetype='text/plain')
 	except UserIngredientRating.DoesNotExist:
 		return HttpResponse('0', mimetype='text/plain')
 
