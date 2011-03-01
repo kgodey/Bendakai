@@ -1,18 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
-from tagging.fields import TagField 	#new
-
-#delete this model and use django-tagging
-#class Tag(models.Model):
-#	name = models.CharField(max_length=255)
-#	slug = models.SlugField()
+from tagging.fields import TagField
+import reversion
 
 
 class Ingredient(models.Model):
 	name = models.CharField(max_length=255)
 	slug = models.SlugField()
-	average_rating = models.FloatField(default=0)	#new #TODO: insert validators to make sure it is between 1-5
+	average_rating = models.FloatField(default=0)
 	equivalent_ingredients = models.ManyToManyField('self', blank=True, null=True)
 
 	class Meta:
@@ -25,7 +21,6 @@ class Ingredient(models.Model):
 class MeasurementUnit(models.Model):
 	name = models.CharField(max_length=255)
 	slug = models.SlugField()
-#	weight = models.FloatField(blank=True, null=True)
 	equivalent_units = models.ManyToManyField('self', blank=True, null=True)
 
 	def __unicode__(self):
@@ -68,6 +63,7 @@ class Recipe(models.Model):
 		else:
 			return 0
 
+
 class RecipeIngredient(models.Model):
 	recipe = models.ForeignKey(Recipe, related_name='ingredients')
 	ingredient = models.ForeignKey(Ingredient, related_name='recipes', help_text='If entering things like "large onion", put "large" under preparation.')
@@ -86,47 +82,57 @@ class JunkRecipe(models.Model):
 	is_added = models.BooleanField()
 	derived_recipe = models.ForeignKey(Recipe, blank=True, null=True)
 
-class UserIngredientRating(models.Model): #new
+
+class UserIngredientRating(models.Model):
 	user = models.ForeignKey(User)
 	ingredient = models.ForeignKey(Ingredient, related_name='ratings')
-	rating = models.IntegerField(default=0)	#TODO: insert validators to make sure it is an integer or integer and a half between 1 and 5
+	rating = models.IntegerField(default=0)
 
-class UserRecipeRating(models.Model): #new
+
+class UserRecipeRating(models.Model):
 	user = models.ForeignKey(User)
 	recipe = models.ForeignKey(Recipe, related_name='ratings')
-	rating = models.IntegerField(default=0)	#TODO: insert validators to make sure it is an integer or integer and a half between 1 and 5
+	rating = models.IntegerField(default=0)
 
-class PantryItem(models.Model):	#new
+
+class PantryItem(models.Model):
 	user = models.ForeignKey(User)
 	ingredient = models.ForeignKey(Ingredient)	
 	quantity = models.FloatField(null=True, blank=True)
 	unit = models.ForeignKey(MeasurementUnit, null=True, blank=True)
 
-class KitchenTool(models.Model): #new
+
+class KitchenTool(models.Model):
 	name = models.CharField(max_length=255)
 	slug = models.SlugField()
 	user = models.ManyToManyField(User, blank=True, null=True)
 
-class RecipeKitchenTool(models.Model): #new
+
+class RecipeKitchenTool(models.Model):
 	recipe = models.ForeignKey(Recipe, related_name = 'tools')
 	tool = models.ForeignKey(KitchenTool)
 	quantity = models.FloatField(null=True, blank=True, default=1)
 
-class IngredientWeight():	#new
+
+class IngredientWeight(models.Model):
 	ingredient = models.ForeignKey(Ingredient)
 	unit = models.ForeignKey(MeasurementUnit)
 	weight = models.FloatField()
 
-class MeasurementConversion():	#new
+
+class MeasurementConversion():
 	pass
 
-##35 reviews
-##38 comments
-#40 nutritional data association
-##43 tags
-##51 ranges
-##56 associate similar ingredient names, units
-##57 notes field on recipe
-##59 correct recipe feature
-##60 user pantry
-##61 kitchen tools
+
+reversion.register(Ingredient)
+reversion.register(MeasurementUnit)
+reversion.register(Photo)
+reversion.register(Recipe)
+reversion.register(RecipeIngredient)
+reversion.register(JunkRecipe)
+reversion.register(PantryItem)
+reversion.register(KitchenTool)
+reversion.register(UserRecipeRating)
+reversion.register(UserIngredientRating)
+reversion.register(RecipeKitchenTool)
+reversion.register(IngredientWeight)
