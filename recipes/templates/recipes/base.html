@@ -29,7 +29,10 @@
 					<h1 class="site_title">bendakai</h1>
 				</div>
 				<div id="header_right">
-					<h1 class="site_subtitle">recipe recommendations</h1>
+					<form method="get" action="{% url simple_search %}">
+						<input type="text" id="searchterm" name="searchterm" class="searchterm" {% if term %} value="{{ term }}" {% endif %}/>
+						<input type="submit" class="go" value="Go"/>
+					</form>
 				</div>
 			</div>
 			<div id="navbar">

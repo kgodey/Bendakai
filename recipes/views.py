@@ -195,23 +195,12 @@ def userpage(request, username):
 def homepage(request):
 	return render_to_response('recipes/index.html', context_instance=RequestContext(request))
 
-def search(request, searchterm):
-	Q_full_term = Q(ingredients__ingredient__name__icontains=searchterm) | Q(directions__icontains = searchterm) | Q(name__icontains = searchterm)
-	full_term = Recipe.objects.filter(
-		Q_full_term
-	).distinct()
-	Q_by_words = None
-	for word in searchterm.split():
-		if Q_by_words is None:
-			Q_by_words = Q(ingredients__ingredient__name__icontains = word) | Q(directions__icontains = word) | Q(name__icontains = word)
-		else:
-			Q_by_words |= Q(ingredients__ingredient__name__icontains = word) | Q(directions__icontains = word) | Q(name__icontains = word)
-	by_words = Recipe.objects.filter(Q_by_words).exclude(pk__in = full_term).distinct()
-	return render_to_response('recipes/search.html', {'full_term': full_term, 'by_words': by_words, 'search_term': searchterm}, context_instance=RequestContext(request))
+
 
 def junk_popout(request, junk_id):
 	junk = JunkRecipe.objects.get(id = junk_id)
 	return render_to_response('recipes/junk_popout.html', {'junk': junk,}, context_instance=RequestContext(request))
+
 
 def recipe_by_tag(request, tag):
 	try:
@@ -309,3 +298,25 @@ def ingredient_list(request):
 	except (EmptyPage, InvalidPage):
 		ingredients = paginator.page(paginator.num_pages)
 	return render_to_response('recipes/ingredient_list.html', {'ingredients': ingredients,}, context_instance=RequestContext(request))
+
+@csrf_exempt
+def simple_search(request):
+	try:
+		searchterm = request.GET['searchterm']
+	except:
+		raise Http404
+	recipes = Recipe.objects.filter(ingredients__ingredient__name=searchterm)
+	tag_list = list(Tag.objects.filter(name__icontains=searchterm))
+	t = TaggedItem.objects.get_union_by_model(Recipe, tag_list)
+	recipes = recipes | t | Recipe.objects.filter(ingredients__ingredient__name__icontains=searchterm) | Recipe.objects.filter(directions__icontains=searchterm)
+	recipes = recipes.distinct()
+	paginator = Paginator(recipes, 5)
+	try:
+		page = int(request.GET.get('page', '1'))
+	except ValueError:
+		page = 1
+	try:
+		recipes = paginator.page(page)
+	except (EmptyPage, InvalidPage):
+		recipes = paginator.page(paginator.num_pages)
+	return render_to_response('recipes/simple_search.html', {'recipes': recipes, 'term': searchterm,}, context_instance=RequestContext(request))
