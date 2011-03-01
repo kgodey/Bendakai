@@ -1,4 +1,4 @@
-from models import Recipe, Ingredient, JunkRecipe, RecipeIngredient, Photo, MeasurementUnit
+from models import Recipe, Ingredient, JunkRecipe, RecipeIngredient, Photo, MeasurementUnit, UserRecipeRating, UserIngredientRating
 from forms import RecipeForm, RecipeIngredientsFormset
 from tagging.models import Tag, TaggedItem
 from django.http import HttpResponse, Http404, HttpResponseRedirect
@@ -9,8 +9,9 @@ from django.template import RequestContext
 from django.utils import simplejson as json
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from django.db.models import Q
+from django.db.models import Q, Count
 import random
+from django.views.decorators.csrf import csrf_exempt
 
 def all_recipes(request):
 	try:
@@ -65,6 +66,7 @@ def correct_recipe(request):
 				formset.save()
 				recipe.save()
 				junk.is_added = True
+				junk.derived_recipe = recipe
 				junk.save()
 				return render_to_response('recipes/view_recipe.html', {'recipe': recipe,}, context_instance=RequestContext(request))
 			else:
@@ -194,7 +196,7 @@ def homepage(request):
 	return render_to_response('recipes/index.html', context_instance=RequestContext(request))
 
 def search(request, searchterm):
-	Q_full_term = Q(ingredients__ingredient__name__icontains = searchterm) | Q(directions__icontains = searchterm) | Q(name__icontains = searchterm)
+	Q_full_term = Q(ingredients__ingredient__name__icontains=searchterm) | Q(directions__icontains = searchterm) | Q(name__icontains = searchterm)
 	full_term = Recipe.objects.filter(
 		Q_full_term
 	).distinct()
@@ -227,3 +229,83 @@ def recipe_by_tag(request, tag):
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
 	return render_to_response('recipes/recipe_by_tag.html', {'recipes': recipes, 'tag': tag_object,}, context_instance=RequestContext(request))
+
+def recipe_by_ingredient(request, ingredient):
+	recipes = Recipe.objects.filter(ingredients__ingredient__name=ingredient).distinct()
+	paginator = Paginator(recipes, 5)
+	try:
+		page = int(request.GET.get('page', '1'))
+	except ValueError:
+		page = 1
+	try:
+		recipes = paginator.page(page)
+	except (EmptyPage, InvalidPage):
+		recipes = paginator.page(paginator.num_pages)
+	return render_to_response('recipes/recipe_by_ingredient.html', {'recipes': recipes, 'ingredient': ingredient,}, context_instance=RequestContext(request))
+
+@login_required
+def get_user_recipe_rating(request, recipe_id):
+	recipe = Recipe.objects.get(id=recipe_id)
+	try:
+		return HttpResponse(str(recipe.ratings.get(user=request.user).rating/2.0), mimetype='text/plain')
+	except UserRecipeRating.DoesNotExist:
+		return HttpResponse('0', mimetype='text/plain')
+	
+
+@login_required
+@csrf_exempt
+def save_user_recipe_rating(request, recipe_id):
+	rating = float(request.POST['score'])
+	recipe = Recipe.objects.get(id=recipe_id)
+	if rating == 0:
+		try:
+			recipe.ratings.get(user=request.user).delete()
+		except:
+			pass
+		return HttpResponse()
+	user_recipe_rating, created = recipe.ratings.get_or_create(user=request.user, defaults={'rating': rating*2,})
+	if not created:
+		user_recipe_rating.rating = rating*2
+		user_recipe_rating.save()
+	return HttpResponse()
+
+@login_required
+def get_user_ingredient_rating(request, ingredient_id):
+	ingredient = Ingredient.objects.get(id=ingredient_id)
+	try:
+		return HttpResponse(str(ingredient.ratings.get(user=request.user).rating/2.0), mimetype='text/plain')
+	except UserIngredientRating.DoesNotExist:
+		return HttpResponse('0', mimetype='text/plain')
+
+
+@login_required
+@csrf_exempt
+def save_user_ingredient_rating(request, ingredient_id):
+	rating = float(request.POST['score'])
+	ingredient = Ingredient.objects.get(id=ingredient_id)
+	if rating == 0:
+		try:
+			ingredient.ratings.get(user=request.user).delete()
+		except:
+			pass
+		return HttpResponse()
+	user_ingredient_rating, created = ingredient.ratings.get_or_create(user=request.user, defaults={'rating': rating*2,})
+	if not created:
+		user_ingredient_rating.rating = rating*2
+		user_ingredient_rating.save()
+	return HttpResponse()
+
+
+@login_required
+def ingredient_list(request):
+	ingredients = Ingredient.objects.annotate(num_recipes=Count('recipes')).order_by('-num_recipes')
+	paginator = Paginator(ingredients, 20)
+	try:
+		page = int(request.GET.get('page', '1'))
+	except ValueError:
+		page = 1
+	try:
+		ingredients = paginator.page(page)
+	except (EmptyPage, InvalidPage):
+		ingredients = paginator.page(paginator.num_pages)
+	return render_to_response('recipes/ingredient_list.html', {'ingredients': ingredients,}, context_instance=RequestContext(request))

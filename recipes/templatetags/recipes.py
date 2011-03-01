@@ -101,3 +101,9 @@ def text_fraction (number, maxdenom=10):
 	else:
 		return string
 register.filter(text_fraction)
+
+def mult(value, arg):
+    "Multiplies the arg and the value"
+    return int(float(value) * float(arg))
+mult.is_safe = False
+register.filter(mult)

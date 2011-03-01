@@ -33,10 +33,9 @@ abbr,acronym { border:0;
 
 /** Actual Styling **/
 
-/*body {
-	background-color: #101500;
+body {
+	background-color: #380A17;
 	font-family: Warnock Pro;
-	font-size: 16px;
 	height: 100%;
 }
 
@@ -44,4 +43,343 @@ abbr,acronym { border:0;
 	width: 860px;
 	margin: auto;
 	min-height: 100%;
-}*/
+}
+
+p {
+	font-size: 16px;
+	padding: 5px 0px;
+}
+
+strong {
+	font-weight: 800;
+}
+
+em {
+	font-style: italic;
+}
+
+a{
+	color: #0887C2;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+a:hover{
+	color: #BA0109;
+}
+
+/** HEADER */
+
+#header{
+	background-color: #fff;
+	clear: both;
+	overflow: auto;
+	padding: 10px 20px;
+}
+
+#header_left{
+	float: left;
+}
+
+h1.site_title{
+	display: inline;
+	text-align: right;
+	font-size: 36px;
+}
+
+h1.site_subtitle{
+	text-align: right;
+	font-size: 24px;
+	margin-top: 18px;
+}
+
+#header_right{
+	float: right;
+}
+
+/** NAVIGATION */
+
+#navbar {
+	background-color: #000;
+	padding: 10px 20px;
+	border-bottom: 1px solid #D0D707;
+	border-top: 1px solid #D0D707;
+}
+
+li.nav {
+	display: inline;
+	padding: 0px 12px;
+}
+
+#navbar a{
+	text-decoration: none;
+	color: #fff;
+	font-weight: 600;
+	font-family: Optima, Trebuchet, sans-serif;
+	font-size: 16px;
+}
+
+#navbar a:hover{
+	color: #D0D707;
+}
+
+.page_nav{
+	padding: 10px 0px;
+}
+
+/** CONTENT */
+
+#content {
+	padding: 10px 40px 20px 40px;
+	background-color: #fff;
+}
+
+h2.page_title{
+	padding: 10px 0px;
+	font-size: 24px;
+	font-weight: 800;
+	color: #380A17;
+}
+
+h3 {
+	padding: 10px 0px;
+	font-size: 18px;
+	font-weight: 800;
+}
+
+
+
+/** RECIPE */
+
+div.facebook_like{
+	margin-top: 20px;
+}
+
+hr.recipe_separator {
+
+	display: block;
+	position: relative;
+	padding: 0;
+	margin: 20px 0px auto;
+	width: 100%;
+	clear: both;
+	border: none;
+	border-top: 1px solid #AAA;
+	border-bottom: 1px solid #FFF;
+	font-size: 1px;
+	line-height: 0;
+	overflow: visible;
+
+}
+
+h3.recipe_title{
+	font-size: 24px;
+	margin-top: 10px;
+	padding-bottom: 0px;
+}
+
+a.recipe_title{ 
+	color: #380A17;
+}
+
+a.recipe_title:hover{
+	color: #BA0109;
+}
+
+.byline{
+	font-size: 12px;
+	padding: 0px;
+}
+
+ul.blurb {
+	padding: 20px 0px;
+	margin-left: 10px;
+}
+
+h4 {
+	font-size: 18px;
+	font-weight: 800;
+	padding: 5px 0px;
+	color: #3E6E02;
+}
+
+ul.ingredients {
+	padding: 10px 0px;
+	margin-left: 10px;
+}
+
+ul.tags{
+	padding:10px 0px;
+}
+
+li.tags{
+	display: inline;
+	padding-right: 20px;
+}
+
+/** FORMS */
+
+label{
+	font-weight: 800;
+	text-align: right;
+	font-size: 16px;
+}
+
+h4.ingredient_label {
+	font-weight: 800;
+	font-size: 16px;
+	padding: 8px 0px;
+	color: #000;
+}
+
+#recipe_form th {
+	width: 150px;
+}
+
+input[type="text"]{
+	height: 25px;
+	width: 550px;
+	margin: 10px 0px;
+}
+
+textarea#id_directions{
+	width: 550px;
+	height: 200px;
+	margin: 10px 0px;
+}
+
+textarea#id_source{
+	width: 550px;
+	height: 50px;
+	margin: 10px 0px;
+}
+
+textarea#id_notes{
+	width: 550px;
+	height: 50px;
+	margin: 10px 0px;
+}
+
+#recipe_form th, tr{
+	font-size: 12px;
+	margin: 15px;
+}
+
+#formsets input[type="text"]{
+	height: 25px;
+	width: 100px;
+}
+
+ul.errorlist {
+	color: #fa0000;
+	font-size: 12px;
+	margin-bottom: -5px;
+}
+
+input[type="button"], input[type="submit"] {
+	font-weight: 800;
+	padding: 5px;
+	border: 2px solid #000;
+}
+
+input[type="button"] {
+	font-size: 10px;
+	color: #380A17;
+	margin: 10px 20px;
+	background-color: #FFFFEA;
+}
+
+input[type="submit"] {
+	font-size: 16px;
+	background-color: #D0D707;
+	color: #000;
+	text-transform: uppercase;
+	margin: 25px 0px 10px 0px;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover {
+	background-color: #380A17;
+	color: #fff;
+}
+
+span.required{
+	color: #f00;
+	font-weight: 800;
+}
+
+p.helptext{
+	font-size: 12px;
+	margin: none;
+	padding: none;
+}
+
+p.helptext_ri{
+	font-size: 10px;
+	font-style: italic;
+	padding: none;
+	margin: 0px 3px;
+}
+
+span.recipelabel{
+	font-weight: 800;
+}
+
+/** COMMENTS */
+
+#id_honeypot{
+	display:none;
+	visibility:collapse;
+}
+
+h4.comments{
+	padding-top: 20px;
+}
+
+p.comments{
+	font-style: italic;
+}
+
+textarea#id_comment{
+	width: 750px;
+	height: 100px;
+}
+
+h5.comments{
+	font-size: 16px;
+	font-weight: 800;
+	display: block;
+	padding: 15px 0px;
+}
+
+dl{
+}
+
+dt{
+	padding: 10px;
+	font-size: 14px;
+	font-style: italic;
+	border-top: 1px solid #000;
+}
+
+dd{
+	padding: 0px 20px;
+		border-bottom: 1px dotted #000;
+}
+
+ol {
+	list-style-type: decimal;
+	list-style-position: inside;
+}
+
+ol li {
+	padding: 3px;
+}
+
+.recipe_rating {
+	display: inline;
+	vertical-align: top;
+}
+
+span.byline{
+	margin-right: 5px;
+}

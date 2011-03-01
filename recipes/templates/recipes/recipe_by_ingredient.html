@@ -2,9 +2,10 @@
 {% load recipes %}
 {% load markup %}
 
-{% block title %} All Recipes {% endblock %}
+{% block title %} "{{ ingredient }}" Recipes {% endblock %}
 
 {% block content %}
+	<h2 class="page_title">Recipes with <em>{{ ingredient }}</em></h2>
 	{% for r in recipes.object_list %}
 		{% include "recipes/recipe.html" %}
 		{% if not forloop.last %}

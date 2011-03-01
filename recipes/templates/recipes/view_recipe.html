@@ -6,7 +6,7 @@
 {% block extraog %}
 <meta property="og:title" content="{{ recipe.name }}" />
 <meta property="og:type" content="food" />
-<meta property="og:url" content="http://honours.kritigodey.com{% url view_recipe id=recipe.id %}" />
+<meta property="og:url" content="http://bendakai.com{% url view_recipe id=recipe.id %}" />
 {% endblock %}
 
 {% block title %} {{ recipe.name }} {% endblock %}
@@ -16,12 +16,11 @@
 	{% include "recipes/recipe.html" %}
 {% endwith %}
 	{% get_comment_count for recipe as comment_count %}
-	<h4>Comments</h4>
+	<h4 class="comments">Comments</h4>
 	<p class="comments">{{ comment_count }} comments on this recipe.</p>
 	{% render_comment_list for recipe %}
-	<h5 class="comments">Add a comment!</h5>
 	{% if request.user.is_authenticated %}
-	<h2>Leave a comment</h2>
+	<h5 class="comments">Add a comment!</h5>
 	{% get_comment_form for recipe as form %}
 	    <form action="{% comment_form_target %}" method="POST"> 
 	{{ form.comment }} 
@@ -31,7 +30,9 @@
 	{{ form.timestamp }} 
 	{{ form.security_hash }} 
 	{% csrf_token %}
-	<input type="submit" value="Add comment" id="id_submit" />
+	<input type="hidden" name="next" value="{% url view_recipe id=recipe.id %}" />
+	
+	<br/><input type="submit" value="Add comment" id="id_submit" />
 	</form> 
 	{% else %}
 	{% render_comment_form for recipe %}

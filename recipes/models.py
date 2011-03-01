@@ -13,7 +13,7 @@ class Ingredient(models.Model):
 	name = models.CharField(max_length=255)
 	slug = models.SlugField()
 	average_rating = models.FloatField(default=0)	#new #TODO: insert validators to make sure it is between 1-5
-	equivalent_ingredients = models.ManyToManyField('self')
+	equivalent_ingredients = models.ManyToManyField('self', blank=True, null=True)
 
 	class Meta:
 		ordering = ['name']
@@ -26,7 +26,7 @@ class MeasurementUnit(models.Model):
 	name = models.CharField(max_length=255)
 	slug = models.SlugField()
 #	weight = models.FloatField(blank=True, null=True)
-	equivalent_units = models.ManyToManyField('self')
+	equivalent_units = models.ManyToManyField('self', blank=True, null=True)
 
 	def __unicode__(self):
 		return self.name
@@ -40,9 +40,9 @@ class Photo(models.Model):
 class Recipe(models.Model):
 	name = models.CharField(max_length=255)
 	slug = models.SlugField()
-	servings = models.IntegerField(blank=True, null=True, help_text='How many people might this recipe serve?')
-	prep_time = models.IntegerField(blank=True, null=True, help_text='In minutes.')
-	cook_time = models.IntegerField(blank=True, null=True, help_text='In minutes.')
+	servings = models.IntegerField(blank=True, null=True, help_text='How many people might this recipe serve? Optional.')
+	prep_time = models.IntegerField(blank=True, null=True, help_text='In minutes. Optional.')
+	cook_time = models.IntegerField(blank=True, null=True, help_text='In minutes. Optional.')
 	directions = models.TextField()
 	date_added = models.DateTimeField(default=datetime.datetime.now)
 	user = models.ForeignKey(User, blank=True, null=True)
@@ -50,24 +50,31 @@ class Recipe(models.Model):
 	main_photos = models.ManyToManyField(Photo, blank=True, null=True, related_name='main_photos')
 	is_public = models.BooleanField(default=True)
 	creates_ingredient = models.ForeignKey(Ingredient, blank=True, null=True)
-	source = models.TextField(blank=True, null=True, help_text='Where or from whom did you get this recipe?')
-	average_rating = models.FloatField(default=0)	#new #TODO: insert validators to make sure it is between 1-5
-	notes = models.TextField(blank=True, null=True)
-	tags = TagField(help_text='Enclose multi word tags in double quotes and use commas to separate tags.')	#new
+	source = models.TextField(blank=True, null=True, help_text='Where or from whom did you get this recipe? Optional.')
+	notes = models.TextField(blank=True, null=True, help_text='Optional.')
+	tags = TagField(help_text='Enclose multi word tags in double quotes and use commas to separate tags. Optional.')
 
 	class Meta:
 		ordering = ['-date_added']
 
 	def __unicode__(self):
 		return self.name
+	
+	@property
+	def average_rating(self):
+		ratings = self.ratings.all()
+		if ratings:
+			return sum([rating.rating for rating in ratings])/len(ratings)
+		else:
+			return 0
 
 class RecipeIngredient(models.Model):
 	recipe = models.ForeignKey(Recipe, related_name='ingredients')
-	ingredient = models.ForeignKey(Ingredient, related_name='recipes')
-	quantity = models.FloatField(null=True, blank=True, help_text='<span class="helptext"><br/>Takes fractions or decimals.</span>')
-	max_quantity = models.FloatField(null=True, blank=True, help_text='<span class="helptext"><br/>For ranges of quantities.</span>')
+	ingredient = models.ForeignKey(Ingredient, related_name='recipes', help_text='If entering things like "large onion", put "large" under preparation.')
+	quantity = models.FloatField(null=True, blank=True, help_text='Takes fractions or decimals. Decimals below 1 must be in the form "0.x", not ".x"')
+	max_quantity = models.FloatField(null=True, blank=True, help_text='For ranges of quantities e.g. "2-3 tsp".')
 	unit = models.ForeignKey(MeasurementUnit, null=True, blank=True)
-	preparation = models.CharField(max_length=255, blank=True, null=True, help_text='<span class="helptext"><br/>Things like <em>"to taste", "chopped", "large", "pre-cooked"</em> etc. go here.</span>')
+	preparation = models.CharField(max_length=255, blank=True, null=True, help_text='Things like "to taste", "chopped", "large", "pre-cooked" etc. go here.')
 	optional = models.BooleanField(default=False)
 
 	def __unicode__(self):
@@ -77,15 +84,16 @@ class RecipeIngredient(models.Model):
 class JunkRecipe(models.Model):
 	text = models.TextField()
 	is_added = models.BooleanField()
+	derived_recipe = models.ForeignKey(Recipe, blank=True, null=True)
 
 class UserIngredientRating(models.Model): #new
 	user = models.ForeignKey(User)
-	ingredient = models.ForeignKey(Ingredient)
+	ingredient = models.ForeignKey(Ingredient, related_name='ratings')
 	rating = models.IntegerField(default=0)	#TODO: insert validators to make sure it is an integer or integer and a half between 1 and 5
 
 class UserRecipeRating(models.Model): #new
 	user = models.ForeignKey(User)
-	recipe = models.ForeignKey(Recipe)
+	recipe = models.ForeignKey(Recipe, related_name='ratings')
 	rating = models.IntegerField(default=0)	#TODO: insert validators to make sure it is an integer or integer and a half between 1 and 5
 
 class PantryItem(models.Model):	#new
