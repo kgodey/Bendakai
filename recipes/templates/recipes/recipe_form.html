@@ -1,4 +1,20 @@
 <div id="recipe_form">
+	<script type="text/javascript">
+	$(document).ready(function () {
+	  $("#id_tags").tokenInput("/ajax/tag/", {
+		hintText: "Type a tag!",
+		noResultsText: "No tags!",
+		searchingText: "Searching...",
+		{% if tag_prepop %}
+		prePopulate: [
+			{% for t in tag_prepop %}
+				{id: '{{t.name}}', name: '{{t.name}}' },
+			{% endfor %}
+			]
+		{% endif %}
+	});
+	});
+	</script>
 	<form method="post" action="">
 		<table>
 			{% if form.non_field_errors %}

@@ -89,6 +89,7 @@ def view_recipe(request, id):
 @login_required
 def edit_recipe(request, id):
 	recipe = get_object_or_404(Recipe, id=id)
+	tag_prepop = Tag.objects.get_for_object(recipe)
 	if not recipe.user == request.user:
 		return render_to_response('recipes/forbidden.html', context_instance=RequestContext(request))
 	if request.method == 'POST':
@@ -103,7 +104,7 @@ def edit_recipe(request, id):
 	else:
 		form = RecipeForm(instance=recipe)
 		formset = RecipeIngredientsFormset(instance=recipe)
-	return render_to_response('recipes/edit_recipe.html', {'recipe': recipe, 'form': form, 'formset': formset}, context_instance=RequestContext(request))
+	return render_to_response('recipes/edit_recipe.html', {'recipe': recipe, 'form': form, 'formset': formset, 'tag_prepop': tag_prepop,}, context_instance=RequestContext(request))
 
 
 def all_junk_recipes(request):
@@ -320,3 +321,17 @@ def simple_search(request):
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
 	return render_to_response('recipes/simple_search.html', {'recipes': recipes, 'term': searchterm,}, context_instance=RequestContext(request))
+
+
+def tag_ajax(request):
+	if request.method == 'GET':
+		if 'q' in request.GET:
+			query = request.GET['q']
+			tags = Tag.objects.filter(name__icontains=query).order_by('name')
+			responselist = []
+			for t in tags:
+				responselist.append({'id': str(t.name), 'name': t.name})
+			response = json.dumps(responselist)
+			return HttpResponse(response)
+		else:
+			return HttpResponse('{}')
