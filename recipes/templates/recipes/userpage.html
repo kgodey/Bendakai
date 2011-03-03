@@ -2,7 +2,7 @@
 {% load recipes %}
 {% load markup %}
 
-{% block title %} {% ifnotequal request.user recipe_user %} {% firstof recipe_user.get_full_name recipe_user.username %}'s {% else %} My {% endifnotequal %} Recipes {% endblock %}
+{% block title %} {% ifnotequal request.user recipe_user %} {% firstof recipe_user.get_full_name recipe_user.username %}'s {% else %} My {% endifnotequal %} Recipes on Bendakai {% endblock %}
 
 {% block content %}
 <h2 class="page_title">{% ifnotequal request.user recipe_user %} {% firstof recipe_user.get_full_name recipe_user.username %}'s {% else %} My {% endifnotequal %} Recipes</h2>
