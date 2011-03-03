@@ -14,10 +14,7 @@ import random
 from django.views.decorators.csrf import csrf_exempt
 
 def all_recipes(request):
-	try:
-		recipes = Recipe.objects.filter(is_public=True)
-	except Recipe.DoesNotExist:
-		raise Http404
+	recipes = Recipe.objects.filter(is_public=True)
 	paginator = Paginator(recipes, 5)
 	try:
 		page = int(request.GET.get('page', '1'))
@@ -107,23 +104,6 @@ def edit_recipe(request, id):
 	return render_to_response('recipes/edit_recipe.html', {'recipe': recipe, 'form': form, 'formset': formset, 'tag_prepop': tag_prepop,}, context_instance=RequestContext(request))
 
 
-def all_junk_recipes(request):
-	try:
-		junk_recipes = JunkRecipe.objects.all()
-	except JunkRecipe.DoesNotExist:
-		raise Http404
-#	paginator = Paginator(junk_recipes, 10)
-#	try:
-#		page = int(request.GET.get('page', '1'))
-#	except ValueError:
-#		page = 1
-#	try:
-#		junk_recipes = paginator.page(page)
-#	except (EmptyPage, InvalidPage):
-#		junk_recipes = paginator.page(paginator.num_pages)
-	return render_to_response('recipes/allrecipes.html', {'junk_recipes': junk_recipes,}, context_instance=RequestContext(request))
-
-
 def ingredient_ajax(request):
 	if request.method == 'GET':
 		if 'term' in request.GET:
@@ -162,11 +142,8 @@ def logout_view(request):
 
 def userpage(request, username):
 	recipe_user = User.objects.get(username = username)
-	if request.user.username == username:
-		try:
-			recipes = Recipe.objects.filter(user__username = username)
-		except Recipe.DoesNotExist:
-			raise Http404
+	if request.user == recipe.user:
+		recipes = Recipe.objects.filter(user__username = username)
 		paginator = Paginator(recipes, 5)
 		try:
 			page = int(request.GET.get('page', '1'))
@@ -178,10 +155,7 @@ def userpage(request, username):
 			recipes = paginator.page(paginator.num_pages)
 		return render_to_response('recipes/userpage.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
 	else:
-		try:
-			recipes = Recipe.objects.filter(user__username = username, is_public=True)
-		except Recipe.DoesNotExist:
-			raise Http404
+		recipes = Recipe.objects.filter(user__username = username, is_public=True)
 		paginator = Paginator(recipes, 5)
 		try:
 			page = int(request.GET.get('page', '1'))
@@ -358,3 +332,31 @@ def delete_recipe(request, id):
 			return render_to_response('recipes/forbidden.html', context_instance=RequestContext(request))
 	except Recipe.DoesNotExist:
 		raise Http404
+
+
+def saved_recipes(request, username):
+	user = User.objects.filter(username=username)
+	if request.user == user:
+		recipes = Recipe.objects.filter(saved_users=user)
+		paginator = Paginator(recipes, 5)
+		try:
+			page = int(request.GET.get('page', '1'))
+		except ValueError:
+			page = 1
+		try:
+			recipes = paginator.page(page)
+		except (EmptyPage, InvalidPage):
+			recipes = paginator.page(paginator.num_pages)
+		return render_to_response('recipes/saved_recipes.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
+	else:
+		recipes = Recipe.objects.filter(saved_users=user, is_public=True)
+		paginator = Paginator(recipes, 5)
+		try:
+			page = int(request.GET.get('page', '1'))
+		except ValueError:
+			page = 1
+		try:
+			recipes = paginator.page(page)
+		except (EmptyPage, InvalidPage):
+			recipes = paginator.page(paginator.num_pages)
+		return render_to_response('recipes/saved_recipes.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
