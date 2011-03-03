@@ -120,9 +120,14 @@ class IngredientWeight(models.Model):
 	weight = models.FloatField()
 
 
+class UserSavedRecipe(models.Model):
+	user = models.ForeignKey(User, related_name='saved_recipes')
+	recipe = models.ForeignKey(Recipe, related_name='saved_users')
+	date_added = models.DateTimeField(default=datetime.datetime.now)
+
+
 class MeasurementConversion():
 	pass
-
 
 reversion.register(Ingredient)
 reversion.register(MeasurementUnit)

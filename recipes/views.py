@@ -335,3 +335,26 @@ def tag_ajax(request):
 			return HttpResponse(response)
 		else:
 			return HttpResponse('{}')
+
+@login_required
+def delete_recipe(request, id):
+	try:
+		recipe = Recipe.objects.get(id=id)
+		if request.user == recipe.user:
+			recipe_user = recipe.user
+			recipe.delete()
+			recipes = Recipe.objects.filter(user = recipe_user)
+			paginator = Paginator(recipes, 5)
+			try:
+				page = int(request.GET.get('page', '1'))
+			except ValueError:
+				page = 1
+			try:
+				recipes = paginator.page(page)
+			except (EmptyPage, InvalidPage):
+				recipes = paginator.page(paginator.num_pages)
+			return render_to_response('recipes/userpage.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
+		else:
+			return render_to_response('recipes/forbidden.html', context_instance=RequestContext(request))
+	except Recipe.DoesNotExist:
+		raise Http404
