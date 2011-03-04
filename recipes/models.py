@@ -35,6 +35,9 @@ class Photo(models.Model):
 class KitchenTool(models.Model):
 	name = models.CharField(max_length=255)
 	slug = models.SlugField()
+	
+	def __unicode__(self):
+		return self.name
 
 
 class Recipe(models.Model):
@@ -93,12 +96,18 @@ class UserIngredientRating(models.Model):
 	user = models.ForeignKey(User)
 	ingredient = models.ForeignKey(Ingredient, related_name='ratings')
 	rating = models.IntegerField(default=0)
+	
+	def __unicode__(self):
+		return '%s - %s'%(self.user.username, self.ingredient.name)
 
 
 class UserRecipeRating(models.Model):
 	user = models.ForeignKey(User)
 	recipe = models.ForeignKey(Recipe, related_name='ratings')
 	rating = models.IntegerField(default=0)
+	
+	def __unicode__(self):
+		return '%s - %s'%(self.user.username, self.recipe.name)
 
 
 class PantryItem(models.Model):
@@ -106,24 +115,36 @@ class PantryItem(models.Model):
 	ingredient = models.ForeignKey(Ingredient)	
 	quantity = models.FloatField(null=True, blank=True)
 	unit = models.ForeignKey(MeasurementUnit, null=True, blank=True)
+	
+	def __unicode__(self):
+		return '%s - %s'%(self.user.username, self.ingredient.name)
 
 
 class IngredientWeight(models.Model):
 	ingredient = models.ForeignKey(Ingredient)
 	unit = models.ForeignKey(MeasurementUnit)
 	weight = models.FloatField()
+	
+	def __unicode__(self):
+		return '%f - %s'%(self.weight, self.ingredient.name)
 
 
 class UserSavedRecipe(models.Model):
 	user = models.ForeignKey(User, related_name='saved_recipes')
 	recipe = models.ForeignKey(Recipe, related_name='saved_users')
 	date_added = models.DateTimeField(default=datetime.datetime.now)
+	
+	def __unicode__(self):
+		return '%s - %s'%(self.user.username, self.recipe.name)
 
 
 class UserKitchenTool(models.Model):
 	user = models.ForeignKey(User, related_name='tools')
 	tool = models.ForeignKey(KitchenTool, related_name='users')
 	quantity = models.IntegerField(blank=True, null=True, default=1)
+	
+	def __unicode__(self):
+		return '%s - %s'%(self.user.username, self.tool.name)
 
 
 class MeasurementConversion():

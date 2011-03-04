@@ -1,4 +1,4 @@
-from models import Recipe, Ingredient, JunkRecipe, RecipeIngredient, Photo, MeasurementUnit, UserRecipeRating, UserIngredientRating
+from models import Recipe, Ingredient, JunkRecipe, RecipeIngredient, Photo, MeasurementUnit, UserRecipeRating, UserIngredientRating, KitchenTool
 from forms import RecipeForm, RecipeIngredientsFormset
 from tagging.models import Tag, TaggedItem
 from django.http import HttpResponse, Http404, HttpResponseRedirect
@@ -87,6 +87,7 @@ def view_recipe(request, id):
 def edit_recipe(request, id):
 	recipe = get_object_or_404(Recipe, id=id)
 	tag_prepop = Tag.objects.get_for_object(recipe)
+	tool_prepop = recipe.tools.all()
 	if not recipe.user == request.user:
 		return render_to_response('recipes/forbidden.html', context_instance=RequestContext(request))
 	if request.method == 'POST':
@@ -101,7 +102,7 @@ def edit_recipe(request, id):
 	else:
 		form = RecipeForm(instance=recipe)
 		formset = RecipeIngredientsFormset(instance=recipe)
-	return render_to_response('recipes/edit_recipe.html', {'recipe': recipe, 'form': form, 'formset': formset, 'tag_prepop': tag_prepop,}, context_instance=RequestContext(request))
+	return render_to_response('recipes/edit_recipe.html', {'recipe': recipe, 'form': form, 'formset': formset, 'tag_prepop': tag_prepop, 'tool_prepop': tool_prepop}, context_instance=RequestContext(request))
 
 
 def ingredient_ajax(request):
@@ -142,7 +143,7 @@ def logout_view(request):
 
 def userpage(request, username):
 	recipe_user = User.objects.get(username = username)
-	if request.user == recipe.user:
+	if request.user == recipe_user:
 		recipes = Recipe.objects.filter(user__username = username)
 		paginator = Paginator(recipes, 5)
 		try:
@@ -167,6 +168,7 @@ def userpage(request, username):
 			recipes = paginator.page(paginator.num_pages)
 		return render_to_response('recipes/userpage.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
 
+
 def homepage(request):
 	return render_to_response('recipes/index.html', context_instance=RequestContext(request))
 
@@ -180,9 +182,9 @@ def junk_popout(request, junk_id):
 def recipe_by_tag(request, tag):
 	try:
 		tag_object = Tag.objects.get(name=tag)
-		recipes = TaggedItem.objects.get_by_model(Recipe, tag_object)
-	except Recipe.DoesNotExist:
+	except Tag.DoesNotExist:
 		raise Http404
+	recipes = TaggedItem.objects.get_by_model(Recipe, tag_object)
 	paginator = Paginator(recipes, 5)
 	try:
 		page = int(request.GET.get('page', '1'))
@@ -193,6 +195,25 @@ def recipe_by_tag(request, tag):
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
 	return render_to_response('recipes/recipe_by_tag.html', {'recipes': recipes, 'tag': tag_object,}, context_instance=RequestContext(request))
+
+
+def recipe_by_tool(request, tool):
+	try:
+		tool_object = KitchenTool.objects.get(name=tool)
+	except KitchenTool.DoesNotExist:
+		raise Http404
+	recipes = Recipe.objects.filter(tools=tool_object)
+	paginator = Paginator(recipes, 5)
+	try:
+		page = int(request.GET.get('page', '1'))
+	except ValueError:
+		page = 1
+	try:
+		recipes = paginator.page(page)
+	except (EmptyPage, InvalidPage):
+		recipes = paginator.page(paginator.num_pages)
+	return render_to_response('recipes/recipe_by_tool.html', {'recipes': recipes, 'tool': tool_object,}, context_instance=RequestContext(request))
+
 
 def recipe_by_ingredient(request, ingredient):
 	recipes = Recipe.objects.filter(ingredients__ingredient__name=ingredient).distinct()
@@ -304,11 +325,29 @@ def tag_ajax(request):
 			tags = Tag.objects.filter(name__icontains=query).order_by('name')
 			responselist = []
 			for t in tags:
-				responselist.append({'id': str(t.name), 'name': t.name})
+				responselist.append({'id': t.name, 'name': t.name})
+			responselist.append({'id': query, 'name': query})
 			response = json.dumps(responselist)
 			return HttpResponse(response)
 		else:
 			return HttpResponse('{}')
+
+
+def tool_ajax(request):
+	if request.method == 'GET':
+		if 'q' in request.GET:
+			query = request.GET['q']
+			tools = KitchenTool.objects.filter(name__icontains=query).order_by('name')
+			responselist = []
+			for t in tools:
+				responselist.append({'id': t.name, 'name': t.name})
+			responselist.append({'id': query, 'name': query})
+			response = json.dumps(responselist)
+			return HttpResponse(response)
+		else:
+			return HttpResponse('{}')
+
+
 
 @login_required
 def delete_recipe(request, id):

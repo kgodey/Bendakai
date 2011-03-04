@@ -1,15 +1,29 @@
 from django.forms import ModelForm
 from django.forms.models import inlineformset_factory
-from models import Recipe, Ingredient, RecipeIngredient, MeasurementUnit
+from models import Recipe, Ingredient, RecipeIngredient, MeasurementUnit, KitchenTool, UserKitchenTool
 from django.contrib.auth.models import User
 from django import forms
 from django.template.defaultfilters import slugify
 from fields import FractionField
 
 class RecipeForm(ModelForm):
+	tools = forms.CharField(required=False, help_text=Recipe._meta.get_field('tools').help_text, widget=forms.TextInput(attrs={'class': 'recipe_tools'}))
+	
 	class Meta:
 		model =  Recipe
 		fields = ('name', 'servings', 'prep_time', 'cook_time', 'directions', 'is_public', 'source', 'notes', 'tags')
+	
+	def save(self, force_insert=False, force_update=False, commit=True):
+		m = super(RecipeForm, self).save(commit=False)
+		tools = str(self.cleaned_data['tools']).split(',')
+		for tool_name in tools:
+			if tool_name != '':
+				tool, created = KitchenTool.objects.get_or_create(name=tool_name, defaults={'slug': slugify(tool_name)})
+				tool.save()
+				m.tools.add(tool)
+			if commit:
+				m.save()
+			return m
 
 
 class RecipeIngredientForm(ModelForm):

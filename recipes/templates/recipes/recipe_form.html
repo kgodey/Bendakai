@@ -1,13 +1,29 @@
 <div id="recipe_form">
 	<script type="text/javascript">
 	$(document).ready(function () {
-	  $("#id_tags").tokenInput("/ajax/tag/", {
+	  $("#id_tags").tokenInput("{% url tag_ajax %}", {
 		hintText: "Type a tag!",
 		noResultsText: "No tags!",
 		searchingText: "Searching...",
 		{% if tag_prepop %}
 		prePopulate: [
 			{% for t in tag_prepop %}
+				{id: '{{t.name}}', name: '{{t.name}}' },
+			{% endfor %}
+			]
+		{% endif %}
+	});
+	});
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function () {
+	  $("#id_tools").tokenInput("{% url tool_ajax %}", {
+		hintText: "Type a kitchen tool!",
+		noResultsText: "No tools found!",
+		searchingText: "Searching...",
+		{% if tool_prepop %}
+		prePopulate: [
+			{% for t in tool_prepop %}
 				{id: '{{t.name}}', name: '{{t.name}}' },
 			{% endfor %}
 			]
@@ -88,7 +104,10 @@
 				<td>{{ form.directions.errors }} {{ form.directions }}</td>
 			</tr>
 			<tr><th><label for="id_tags">Tags:</label></th>
-				<td>{{ form.tags.errors }} {{ form.tags }}<p class="helptext">Put double quotes around multi-word tags and commas between tags.</p></td>
+				<td>{{ form.tags.errors }} {{ form.tags }}</td>
+			</tr>
+			<tr><th><label for="id_source">Tools Required:</label></th>
+				<td>{{ form.tools.errors }} {{ form.tools }}<p class="helptext">Does this recipe require the use of certain tools <em>e.g.</em> pressure cooker, Bundt pan, etc.</p></td>
 			</tr>
 			<tr><th><label for="id_source">Source:</label></th>
 				<td>{{ form.source.errors }} {{ form.source }}<p class="helptext">From whom or where did you get this recipe?</p></td>
