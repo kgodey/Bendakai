@@ -32,6 +32,11 @@ class Photo(models.Model):
 	user = models.ForeignKey(User)
 
 
+class KitchenTool(models.Model):
+	name = models.CharField(max_length=255)
+	slug = models.SlugField()
+
+
 class Recipe(models.Model):
 	name = models.CharField(max_length=255)
 	slug = models.SlugField()
@@ -48,6 +53,7 @@ class Recipe(models.Model):
 	source = models.TextField(blank=True, null=True, help_text='Where or from whom did you get this recipe? Optional.')
 	notes = models.TextField(blank=True, null=True, help_text='Optional.')
 	tags = TagField(help_text='Enclose multi word tags in double quotes and use commas to separate tags. Optional.')
+	tools = models.ManyToManyField(KitchenTool, blank=True, null=True)
 
 	class Meta:
 		ordering = ['-date_added']
@@ -102,18 +108,6 @@ class PantryItem(models.Model):
 	unit = models.ForeignKey(MeasurementUnit, null=True, blank=True)
 
 
-class KitchenTool(models.Model):
-	name = models.CharField(max_length=255)
-	slug = models.SlugField()
-	user = models.ManyToManyField(User, blank=True, null=True)
-
-
-class RecipeKitchenTool(models.Model):
-	recipe = models.ForeignKey(Recipe, related_name = 'tools')
-	tool = models.ForeignKey(KitchenTool)
-	quantity = models.FloatField(null=True, blank=True, default=1)
-
-
 class IngredientWeight(models.Model):
 	ingredient = models.ForeignKey(Ingredient)
 	unit = models.ForeignKey(MeasurementUnit)
@@ -139,6 +133,5 @@ reversion.register(PantryItem)
 reversion.register(KitchenTool)
 reversion.register(UserRecipeRating)
 reversion.register(UserIngredientRating)
-reversion.register(RecipeKitchenTool)
 reversion.register(IngredientWeight)
 reversion.register(UserSavedRecipe)
