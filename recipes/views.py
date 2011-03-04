@@ -24,7 +24,7 @@ def all_recipes(request):
 		recipes = paginator.page(page)
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
-	return render_to_response('recipes/allrecipes.html', {'recipes': recipes,}, context_instance=RequestContext(request))
+	return render_to_response('recipes/all_recipes.html', {'recipes': recipes,}, context_instance=RequestContext(request))
 
 @login_required
 def add_recipe(request):

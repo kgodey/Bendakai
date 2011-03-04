@@ -1,16 +1,5 @@
-{% extends "recipes/base.html" %}
-{% load recipes %}
-{% load markup %}
+{% extends "recipes/recipe_list.html" %}
 
 {% block title %} {% ifnotequal request.user recipe_user %} {% firstof recipe_user.get_full_name recipe_user.username %}'s {% else %} My {% endifnotequal %} Saved Recipes on Bendakai {% endblock %}
 
-{% block content %}
-<h2 class="page_title">{% ifnotequal request.user recipe_user %} {% firstof recipe_user.get_full_name recipe_user.username %}'s {% else %} My {% endifnotequal %} Saved Recipes</h2>
-{% for r in recipes.object_list %}
-	{% include "recipes/recipe.html" %}
-	{% if not forloop.last %}
-	<hr class="recipe_separator"/>
-	{% endif %}
-{% endfor %}
-<p class="nextprev">{% if recipes.has_previous %}<a href="?page={{ recipes.previous_page_number }}">&lt;&lt; Previous</a> &nbsp; &nbsp; {% endif %} Page {{ recipes.number }} of {{ recipes.paginator.num_pages }} <em>({{ recipes.paginator.count }} recipes)</em> {% if recipes.has_next %} &nbsp; &nbsp; <a href="?page={{ recipes.next_page_number }}">Next &gt;&gt;</a>  {% endif %}</p>
-{% endblock %}
+{% block pagetitle %}<h2 class="page_title">{% ifnotequal request.user recipe_user %} {% firstof recipe_user.get_full_name recipe_user.username %}'s {% else %} My {% endifnotequal %} Saved Recipes</h2>{% endblock %}
