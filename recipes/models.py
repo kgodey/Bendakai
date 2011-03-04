@@ -120,6 +120,12 @@ class UserSavedRecipe(models.Model):
 	date_added = models.DateTimeField(default=datetime.datetime.now)
 
 
+class UserKitchenTool(models.Model):
+	user = models.ForeignKey(User, related_name='tools')
+	tool = models.ForeignKey(KitchenTool, related_name='users')
+	quantity = models.IntegerField(blank=True, null=True, default=1)
+
+
 class MeasurementConversion():
 	pass
 
@@ -131,6 +137,7 @@ reversion.register(RecipeIngredient)
 reversion.register(JunkRecipe)
 reversion.register(PantryItem)
 reversion.register(KitchenTool)
+reversion.register(UserKitchenTool)
 reversion.register(UserRecipeRating)
 reversion.register(UserIngredientRating)
 reversion.register(IngredientWeight)
