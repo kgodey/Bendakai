@@ -145,28 +145,18 @@ def userpage(request, username):
 	recipe_user = User.objects.get(username = username)
 	if request.user == recipe_user:
 		recipes = Recipe.objects.filter(user__username = username)
-		paginator = Paginator(recipes, 5)
-		try:
-			page = int(request.GET.get('page', '1'))
-		except ValueError:
-			page = 1
-		try:
-			recipes = paginator.page(page)
-		except (EmptyPage, InvalidPage):
-			recipes = paginator.page(paginator.num_pages)
-		return render_to_response('recipes/userpage.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
 	else:
 		recipes = Recipe.objects.filter(user__username = username, is_public=True)
-		paginator = Paginator(recipes, 5)
-		try:
-			page = int(request.GET.get('page', '1'))
-		except ValueError:
-			page = 1
-		try:
-			recipes = paginator.page(page)
-		except (EmptyPage, InvalidPage):
-			recipes = paginator.page(paginator.num_pages)
-		return render_to_response('recipes/userpage.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
+	paginator = Paginator(recipes, 5)
+	try:
+		page = int(request.GET.get('page', '1'))
+	except ValueError:
+		page = 1
+	try:
+		recipes = paginator.page(page)
+	except (EmptyPage, InvalidPage):
+		recipes = paginator.page(paginator.num_pages)
+	return render_to_response('recipes/userpage.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
 
 
 def homepage(request):
@@ -377,25 +367,15 @@ def saved_recipes(request, username):
 	user = User.objects.filter(username=username)
 	if request.user == user:
 		recipes = Recipe.objects.filter(saved_users=user)
-		paginator = Paginator(recipes, 5)
-		try:
-			page = int(request.GET.get('page', '1'))
-		except ValueError:
-			page = 1
-		try:
-			recipes = paginator.page(page)
-		except (EmptyPage, InvalidPage):
-			recipes = paginator.page(paginator.num_pages)
-		return render_to_response('recipes/saved_recipes.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
 	else:
 		recipes = Recipe.objects.filter(saved_users=user, is_public=True)
-		paginator = Paginator(recipes, 5)
-		try:
-			page = int(request.GET.get('page', '1'))
-		except ValueError:
-			page = 1
-		try:
-			recipes = paginator.page(page)
-		except (EmptyPage, InvalidPage):
-			recipes = paginator.page(paginator.num_pages)
-		return render_to_response('recipes/saved_recipes.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
+	paginator = Paginator(recipes, 5)
+	try:
+		page = int(request.GET.get('page', '1'))
+	except ValueError:
+		page = 1
+	try:
+		recipes = paginator.page(page)
+	except (EmptyPage, InvalidPage):
+		recipes = paginator.page(paginator.num_pages)
+	return render_to_response('recipes/saved_recipes.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
