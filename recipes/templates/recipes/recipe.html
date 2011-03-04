@@ -77,7 +77,7 @@
 			<li class="tags"><a href="{% url recipe_by_tag tag=t.name %}">{{ t.name }}</a></li>
 			{% endfor %}
 		</ul>
-		{% if r.tools %}
+		{% if r.tools.all %}
 		<ul class="tags">
 			<li class="tags"><strong>Tools needed:</strong></li>
 			{% for t in r.tools.all %}
