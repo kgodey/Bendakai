@@ -9,7 +9,8 @@
 	{% else %} 
 		<a href="{% url userpage username=r.user.username %}">{% firstof r.user.get_full_name r.user.username %}</a>
 	{% endifequal %}  {% ifequal r.user request.user %} <a href="{% url edit_recipe id=r.id %}">(edit recipe)</a>
-		{% endifequal %}</p>
+		{% endifequal %} {% if request.user.is_superuser %} <a href="{% url edit_recipe id=r.id %}">(edit recipe)</a>
+			{% endif %}</p>
 	
 	{% if r.average_rating %}
 	<span class="byline">Average rating: </span><div class="recipe_rating" id="recipe_rating_{{ r.id }}"></div>

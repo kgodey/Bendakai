@@ -65,12 +65,3 @@ class RecipeIngredientForm(ModelForm):
 
 
 RecipeIngredientsFormset = inlineformset_factory(Recipe, RecipeIngredient, form=RecipeIngredientForm)
-
-
-class AddIngredientForm(ModelForm):
-	class Meta:
-		model = Ingredient
-		exclude = ('slug',)
-
-class SearchForm(forms.Form):
-	searchterm = forms.CharField()

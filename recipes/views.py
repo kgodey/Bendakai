@@ -88,7 +88,7 @@ def edit_recipe(request, id):
 	recipe = get_object_or_404(Recipe, id=id)
 	tag_prepop = Tag.objects.get_for_object(recipe)
 	tool_prepop = recipe.tools.all()
-	if not recipe.user == request.user:
+	if recipe.user != request.user and request.user.is_superuser == False:
 		return render_to_response('recipes/forbidden.html', context_instance=RequestContext(request))
 	if request.method == 'POST':
 		form = RecipeForm(request.POST, request.FILES, instance=recipe)
