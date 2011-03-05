@@ -12,6 +12,8 @@ from django.contrib.auth import logout
 from django.db.models import Q, Count
 import random
 from django.views.decorators.csrf import csrf_exempt
+from tagging.utils import parse_tag_input
+from django.template.defaultfilters import slugify
 
 def all_recipes(request):
 	recipes = Recipe.objects.filter(is_public=True)
@@ -379,3 +381,17 @@ def saved_recipes(request, username):
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
 	return render_to_response('recipes/saved_recipes.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
+
+@csrf_exempt
+def add_tags_to_recipe(request, id):
+	try:
+		recipe = Recipe.objects.get(id=id)
+	except Recipe.DoesNotExist:
+		raise Http404
+	if request.method == 'POST':
+		tags = parse_tag_input(request.POST['input_tags'])
+		for tag_name in tags:
+			tag = Tag.objects.add_tag(recipe, tag_name)
+		return render_to_response('recipes/view_recipe.html', {'recipe': recipe,}, context_instance=RequestContext(request))
+	else:
+		raise Http404

@@ -396,3 +396,8 @@ ol li {
 span.byline{
 	margin-right: 5px;
 }
+
+span.add_tag_form{
+	display: none;
+	visibility: collapse;
+}

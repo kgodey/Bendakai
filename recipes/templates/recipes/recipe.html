@@ -77,6 +77,27 @@
 			{% for t in tag_list.all %}
 			<li class="tags"><a href="{% url recipe_by_tag tag=t.name %}">{{ t.name }}</a></li>
 			{% endfor %}
+			{% if user.is_authenticated %}
+			<li class="tags"><img src="{% mediaurl 'recipes/add.png' %}" alt="Add more tags." id="add_tag_button_{{ r.id }}"></li>
+			<span id="add_tag_form_{{ r.id }}" class="add_tag_form">
+				<form method="POST" action="{% url add_tags_to_recipe id=r.id %}">
+					<input type="text" id="input_tags" name="input_tags" />
+					<input type="submit" value="Save">
+				</form>
+			</span>
+			<script type="text/javascript" charset="utf-8">
+				$('#add_tag_button_{{ r.id }}').click(function() {
+					if ($('#add_tag_form_{{ r.id }}').css('visibility') == 'collapse') {
+						$('#add_tag_form_{{ r.id }}').show();
+						$('#add_tag_form_{{ r.id }}').css('visibility','visible');
+					}
+					else {
+						$('#add_tag_form_{{ r.id }}').hide();
+						$('#add_tag_form_{{ r.id }}').css('visibility','collapse');
+					}
+				});
+			</script>
+			{% endif %}
 		</ul>
 		{% if r.tools.all %}
 		<ul class="tags">

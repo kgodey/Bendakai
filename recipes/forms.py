@@ -1,12 +1,11 @@
-from django.forms import ModelForm
-from django.forms.models import inlineformset_factory
+from django import forms
 from models import Recipe, Ingredient, RecipeIngredient, MeasurementUnit, KitchenTool, UserKitchenTool
 from django.contrib.auth.models import User
-from django import forms
 from django.template.defaultfilters import slugify
 from fields import FractionField
+from tagging.fields import TagField
 
-class RecipeForm(ModelForm):
+class RecipeForm(forms.ModelForm):
 	tools = forms.CharField(required=False, help_text=Recipe._meta.get_field('tools').help_text, widget=forms.TextInput(attrs={'class': 'recipe_tools'}))
 	
 	class Meta:
@@ -26,7 +25,7 @@ class RecipeForm(ModelForm):
 			return m
 
 
-class RecipeIngredientForm(ModelForm):
+class RecipeIngredientForm(forms.ModelForm):
 	ingredient_name = forms.CharField(help_text=RecipeIngredient._meta.get_field('ingredient').help_text, widget=forms.TextInput(attrs={'class': 'recipeingredient_ingredient_field'}))
 	quantity = FractionField(required=False, help_text=RecipeIngredient._meta.get_field('quantity').help_text,widget=forms.TextInput(attrs={'class': 'recipeingredient_quantity_field'}))
 	max_quantity = FractionField(required=False, help_text=RecipeIngredient._meta.get_field('max_quantity').help_text, widget=forms.TextInput(attrs={'class': 'recipeingredient_max_quantity_field'}))
@@ -63,5 +62,4 @@ class RecipeIngredientForm(ModelForm):
 				kwargs['initial'] = initial
 		super(RecipeIngredientForm, self).__init__(*args, **kwargs)
 
-
-RecipeIngredientsFormset = inlineformset_factory(Recipe, RecipeIngredient, form=RecipeIngredientForm)
+RecipeIngredientsFormset = forms.models.inlineformset_factory(Recipe, RecipeIngredient, form=RecipeIngredientForm)
