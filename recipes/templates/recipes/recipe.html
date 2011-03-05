@@ -78,6 +78,7 @@
 			<li class="tags"><a href="{% url recipe_by_tag tag=t.name %}">{{ t.name }}</a></li>
 			{% endfor %}
 			{% if user.is_authenticated %}
+			<!-- Add icon by Deleket (http://www.iconarchive.com/show/sleek-xp-basic-icons-by-deleket/Add-icon.html) -->
 			<li class="tags"><img src="{% mediaurl 'recipes/add.png' %}" alt="Add more tags." id="add_tag_button_{{ r.id }}"></li>
 			<span id="add_tag_form_{{ r.id }}" class="add_tag_form">
 				<form method="POST" action="{% url add_tags_to_recipe id=r.id %}">
