@@ -296,7 +296,7 @@ def simple_search(request):
 	recipes = Recipe.objects.filter(ingredients__ingredient__name=searchterm)
 	tag_list = list(Tag.objects.filter(name__icontains=searchterm))
 	t = TaggedItem.objects.get_union_by_model(Recipe, tag_list)
-	recipes = recipes | t | Recipe.objects.filter(ingredients__ingredient__name__icontains=searchterm) | Recipe.objects.filter(directions__icontains=searchterm)
+	recipes = recipes | t | Recipe.objects.filter(ingredients__ingredient__name__icontains=searchterm) | Recipe.objects.filter(directions__icontains=searchterm) | Recipe.objects.filter(name__icontains=searchterm)
 	recipes = recipes.distinct()
 	paginator = Paginator(recipes, 5)
 	try:

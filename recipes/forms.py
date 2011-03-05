@@ -63,3 +63,15 @@ class RecipeIngredientForm(forms.ModelForm):
 		super(RecipeIngredientForm, self).__init__(*args, **kwargs)
 
 RecipeIngredientsFormset = forms.models.inlineformset_factory(Recipe, RecipeIngredient, form=RecipeIngredientForm)
+
+
+# class AdvancedSearchForm(forms.Form):
+# 	name = forms.CharField()
+# 	prep_time = forms.IntegerField()
+# 	cook_time = forms.IntegerField()
+# 	directions = forms.CharField()
+# 	ingredients = forms.CharField()
+# 	tools = forms.CharField()
+# 	tags = TagField()
+# 	source = forms.CharField()
+# 	notes = forms.CharField()
