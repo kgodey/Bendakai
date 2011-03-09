@@ -13,7 +13,7 @@ class RecipeForm(forms.ModelForm):
 		fields = ('name', 'servings', 'prep_time', 'cook_time', 'directions', 'is_public', 'source', 'notes', 'tags')
 	
 	def save(self, force_insert=False, force_update=False, commit=True):
-		m = super(RecipeForm, self).save(commit=False)
+		m = super(RecipeForm, self).save()
 		tools = str(self.cleaned_data['tools']).split(',')
 		for tool_name in tools:
 			if tool_name != '':
