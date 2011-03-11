@@ -14,6 +14,7 @@ import random
 from django.views.decorators.csrf import csrf_exempt
 from tagging.utils import parse_tag_input
 from django.template.defaultfilters import slugify
+from nutrition.models import Food
 
 def all_recipes(request):
 	recipes = Recipe.objects.filter(is_public=True)
@@ -293,10 +294,10 @@ def simple_search(request):
 		searchterm = request.GET['searchterm']
 	except:
 		raise Http404
-	recipes = Recipe.objects.filter(ingredients__ingredient__name=searchterm)
+	recipes = Recipe.objects.filter(ingredients__ingredient__name=searchterm) | Recipe.objects.filter(name__icontains=searchterm)
 	tag_list = list(Tag.objects.filter(name__icontains=searchterm))
 	t = TaggedItem.objects.get_union_by_model(Recipe, tag_list)
-	recipes = recipes | t | Recipe.objects.filter(ingredients__ingredient__name__icontains=searchterm) | Recipe.objects.filter(directions__icontains=searchterm) | Recipe.objects.filter(name__icontains=searchterm)
+	recipes = recipes | t | Recipe.objects.filter(ingredients__ingredient__name__icontains=searchterm) | Recipe.objects.filter(directions__icontains=searchterm)
 	recipes = recipes.distinct()
 	paginator = Paginator(recipes, 5)
 	try:
@@ -382,6 +383,7 @@ def saved_recipes(request, username):
 		recipes = paginator.page(paginator.num_pages)
 	return render_to_response('recipes/saved_recipes.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
 
+
 @csrf_exempt
 def add_tags_to_recipe(request, id):
 	try:
@@ -395,3 +397,34 @@ def add_tags_to_recipe(request, id):
 		return render_to_response('recipes/view_recipe.html', {'recipe': recipe,}, context_instance=RequestContext(request))
 	else:
 		raise Http404
+
+
+def match_ingredients(request):
+	if request.method == 'POST':
+		food_id = request.POST['food']
+		ingredient_id = request.POST['ingredient']
+		ingredient_to_save = Ingredient.objects.get(id=ingredient_id)
+		food = Food.objects.get(id=food_id)
+		ingredient_to_save.food = food
+		ingredient_to_save.save()
+	ingredient_list = Ingredient.objects.filter(food__isnull = True)
+	if len(ingredient_list) > 0:
+		ingredient = random.choice(ingredient_list)
+		food_list = Food.objects.filter(description__icontains=ingredient.name) | Food.objects.filter(short_description__icontains=ingredient.name) | Food.objects.filter(other_names__icontains=ingredient.name)
+		if len(food_list) > 20:
+			food_list = food_list & (Food.objects.filter(description__istartswith=ingredient.name) | Food.objects.filter(short_description__istartswith=ingredient.name) | Food.objects.filter(other_names__istartswith=ingredient.name))
+			food_list = food_list | Food.objects.filter(description__iendswith=ingredient.name) | Food.objects.filter(short_description__iendswith=ingredient.name) | Food.objects.filter(other_names__iendswith=ingredient.name)
+			if len(food_list) > 20:
+				food_list = food_list & (Food.objects.filter(description__icontains= ' ' + ingredient.name) | Food.objects.filter(short_description__icontains=' ' + ingredient.name) | Food.objects.filter(other_names__icontains=' ' + ingredient.name))
+				food_list = food_list | Food.objects.filter(description__icontains=ingredient.name+' ') | Food.objects.filter(short_description__icontains=ingredient.name + ' ') | Food.objects.filter(other_names__icontains=ingredient.name + ' ')
+		if len(food_list) < 1:
+			names = ingredient.name.split(' ')
+			food_list = food_list | Food.objects.filter(description__icontains=' ' + names[0]) | Food.objects.filter(short_description__icontains=' ' + names[0]) | Food.objects.filter(other_names__icontains=' ' + names[0])
+			food_list = food_list | Food.objects.filter(description__icontains=' ' + names[len(names) - 1]) | Food.objects.filter(short_description__icontains=' ' + names[len(names) - 1]) | Food.objects.filter(other_names__icontains=' ' + names[len(names) - 1])
+			food_list = food_list | Food.objects.filter(description__icontains=names[0] + ' ') | Food.objects.filter(short_description__icontains=names[0] + ' ') | Food.objects.filter(other_names__icontains=names[0] + ' ')
+			food_list = food_list | Food.objects.filter(description__icontains=names[len(names) - 1] + ' ') | Food.objects.filter(short_description__icontains=names[len(names) - 1] + ' ') | Food.objects.filter(other_names__icontains=names[len(names) - 1] + ' ')
+		food_list = food_list.distinct()
+	else:
+		ingredient = False
+		food_list = False
+	return render_to_response('recipes/match_ingredients.html', {'ingredient': ingredient, 'food_list': food_list,}, context_instance=RequestContext(request))
