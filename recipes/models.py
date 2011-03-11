@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from nutrition.models import Food
 import datetime
 from tagging.fields import TagField
 import reversion
@@ -10,6 +11,7 @@ class Ingredient(models.Model):
 	slug = models.SlugField()
 	average_rating = models.FloatField(default=0)
 	equivalent_ingredients = models.ManyToManyField('self', blank=True, null=True)
+	food = models.ForeignKey(Food, blank=True, null=True)
 
 	class Meta:
 		ordering = ['name']
