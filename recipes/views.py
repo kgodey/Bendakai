@@ -411,18 +411,16 @@ def match_ingredients(request):
 	if len(ingredient_list) > 0:
 		ingredient = random.choice(ingredient_list)
 		food_list = Food.objects.filter(description__icontains=ingredient.name) | Food.objects.filter(short_description__icontains=ingredient.name) | Food.objects.filter(other_names__icontains=ingredient.name)
-		if len(food_list) > 20:
-			food_list = food_list & (Food.objects.filter(description__istartswith=ingredient.name) | Food.objects.filter(short_description__istartswith=ingredient.name) | Food.objects.filter(other_names__istartswith=ingredient.name))
-			food_list = food_list | Food.objects.filter(description__iendswith=ingredient.name) | Food.objects.filter(short_description__iendswith=ingredient.name) | Food.objects.filter(other_names__iendswith=ingredient.name)
-			if len(food_list) > 20:
-				food_list = food_list & (Food.objects.filter(description__icontains= ' ' + ingredient.name) | Food.objects.filter(short_description__icontains=' ' + ingredient.name) | Food.objects.filter(other_names__icontains=' ' + ingredient.name))
-				food_list = food_list | Food.objects.filter(description__icontains=ingredient.name+' ') | Food.objects.filter(short_description__icontains=ingredient.name + ' ') | Food.objects.filter(other_names__icontains=ingredient.name + ' ')
+		if len(food_list) > 15:
+			x = ' ' + ingredient.name
+			y = ingredient.name + ' '
+			food_list = Food.objects.filter(description__icontains=x) | Food.objects.filter(short_description__icontains=x) | Food.objects.filter(other_names__icontains=x) | Food.objects.filter(description__icontains=y) | Food.objects.filter(short_description__icontains=y) | Food.objects.filter(other_names__icontains=y)
 		if len(food_list) < 1:
-			names = ingredient.name.split(' ')
-			food_list = food_list | Food.objects.filter(description__icontains=' ' + names[0]) | Food.objects.filter(short_description__icontains=' ' + names[0]) | Food.objects.filter(other_names__icontains=' ' + names[0])
-			food_list = food_list | Food.objects.filter(description__icontains=' ' + names[len(names) - 1]) | Food.objects.filter(short_description__icontains=' ' + names[len(names) - 1]) | Food.objects.filter(other_names__icontains=' ' + names[len(names) - 1])
-			food_list = food_list | Food.objects.filter(description__icontains=names[0] + ' ') | Food.objects.filter(short_description__icontains=names[0] + ' ') | Food.objects.filter(other_names__icontains=names[0] + ' ')
-			food_list = food_list | Food.objects.filter(description__icontains=names[len(names) - 1] + ' ') | Food.objects.filter(short_description__icontains=names[len(names) - 1] + ' ') | Food.objects.filter(other_names__icontains=names[len(names) - 1] + ' ')
+			name_components = ingredient.name.split(' ')
+			if len(name_components) > 1:
+				food_list = food_list | Food.objects.filter(description__icontains=name_components[0]).filter(description__icontains=name_components[-1]) | Food.objects.filter(short_description__icontains=name_components[0]).filter(short_description__icontains=name_components[-1]) | Food.objects.filter(other_names__icontains=name_components[0]).filter(other_names__icontains=name_components[-1]) | Food.objects.filter(description__icontains=name_components[0], other_names__icontains=name_components[-1]) | Food.objects.filter(description__icontains=name_components[-1], other_names__icontains=name_components[0])
+				if len(food_list) < 1:
+					food_list = food_list | Food.objects.filter(description__icontains=name_components[0]) | Food.objects.filter(short_description__icontains=name_components[0]) | Food.objects.filter(other_names__icontains=name_components[0]) | Food.objects.filter(description__icontains=name_components[-1]) | Food.objects.filter(short_description__icontains=name_components[-1]) | Food.objects.filter(other_names__icontains=name_components[-1])
 		food_list = food_list.distinct()
 	else:
 		ingredient = False
