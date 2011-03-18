@@ -1,6 +1,5 @@
 from django import forms
 from fractions import Fraction
-from validators import validate_regex
 import re
 
 class FractionField(forms.RegexField):
