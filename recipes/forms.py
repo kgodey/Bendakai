@@ -13,16 +13,16 @@ class RecipeForm(forms.ModelForm):
 		fields = ('name', 'servings', 'prep_time', 'cook_time', 'directions', 'is_public', 'source', 'notes', 'tags')
 	
 	def save(self, force_insert=False, force_update=False, commit=True):
-		m = super(RecipeForm, self).save()
+		m = super(RecipeForm, self).save(commit=False)
 		tools = str(self.cleaned_data['tools']).split(',')
 		for tool_name in tools:
 			if tool_name != '':
 				tool, created = KitchenTool.objects.get_or_create(name=tool_name, defaults={'slug': slugify(tool_name)})
 				tool.save()
 				m.tools.add(tool)
-			if commit:
-				m.save()
-			return m
+		if commit:
+			m.save()
+		return m
 
 
 class RecipeIngredientForm(forms.ModelForm):
