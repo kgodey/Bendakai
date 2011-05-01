@@ -163,7 +163,8 @@ def userpage(request, username):
 
 
 def homepage(request):
-	return render_to_response('recipes/index.html', context_instance=RequestContext(request))
+	recent = Recipe.objects.all().order_by('-date_added')
+	return render_to_response('recipes/home.html', {'recent_recipes': recent}, context_instance=RequestContext(request))
 
 
 
