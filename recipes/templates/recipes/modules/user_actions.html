@@ -1,0 +1,11 @@
+<nav id="userActions">
+	<ul>
+	{% if user.is_authenticated %}
+		<li><a href="{% url userpage username=user.username %}">My Recipes</a></li>
+		<li><a href="{% url logout %}">Logout</a></li>
+	{% else %}
+		<li><a href="{% url login %}">Sign Up</a></li>
+		<li><a href="{% url login %}">Login</a></li>
+	{% endif %}
+	</ul>
+</nav>

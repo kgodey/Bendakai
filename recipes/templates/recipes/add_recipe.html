@@ -1,7 +1,6 @@
-{% extends "recipes/base.html" %}
-{% load staticmedia %}
+{% extends "recipes/__base.html" %}
 
-{% block title %} Add Recipe to Bendakai {% endblock %}
+{% block page_title %}Add Recipe{% endblock %}
 
 {% block extrahead %}
 <script type="text/javascript">
@@ -14,10 +13,12 @@ $(document).ready(function() {
 	});
 });
 </script>
-<script type="text/javascript" src="{% mediaurl 'recipes/forms.js' %}"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}bendakai/forms.js"></script>
 {% endblock %}
 
 {% block content %}
-	<h2 class="page_title">Add a New Recipe</h2>
+	<header id="pageTitle">
+		<h1>Add a New Recipe</h1>
+	</header>
 	{% include "recipes/recipe_form.html" %}
 {% endblock %}

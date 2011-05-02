@@ -1,0 +1,393 @@
+@import "http://fonts.googleapis.com/css?family=Josefin+Sans:100,regular,bold";
+/* line 17, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* line 20, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+body {
+  line-height: 1;
+}
+
+/* line 22, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 24, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 26, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 28, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 101, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 30, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 115, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 2, ../scss/pages/_front.scss */
+.front .recipeList {
+  padding: 10px 10px 15px 10px;
+  background: #ffefef;
+  margin: 0 0 20px 0;
+  color: #bc0000;
+}
+/* line 7, ../scss/pages/_front.scss */
+.front .recipeList > h1 {
+  color: #bc0000;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+/* line 16, ../scss/pages/_front.scss */
+.front .recipeList time {
+  color: #888;
+  font-style: italic;
+}
+/* line 20, ../scss/pages/_front.scss */
+.front .recipeList a:hover {
+  text-decoration: none;
+}
+/* line 33, ../scss/pages/_front.scss */
+.front #mainCol #about {
+  background: #EEE;
+  border-bottom: 1px solid #DDD;
+  padding: 10px 10px 9px 10px;
+  margin-bottom: 20px;
+}
+
+/* line 2, ../scss/pages/_recipe_list.scss */
+.recipelistpage .recipeShort {
+  background: #f4ead8;
+  margin-bottom: 20px;
+}
+/* line 5, ../scss/pages/_recipe_list.scss */
+.recipelistpage .recipeShort header {
+  background: #890000;
+  color: #FFF;
+  font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+/* line 18, ../scss/pages/_recipe_list.scss */
+.recipelistpage .recipeShort header h1, .recipelistpage .recipeShort header h2 {
+  display: inline;
+}
+/* line 21, ../scss/pages/_recipe_list.scss */
+.recipelistpage .recipeShort header h2 {
+  color: #ee6767;
+  font-family: Georgia, serif;
+  text-transform: none;
+  font-weight: normal;
+  font-style: italic;
+  line-height: 0;
+}
+/* line 29, ../scss/pages/_recipe_list.scss */
+.recipelistpage .recipeShort header a {
+  color: #FFF;
+}
+/* line 31, ../scss/pages/_recipe_list.scss */
+.recipelistpage .recipeShort header a:hover {
+  text-decoration: none;
+}
+/* line 36, ../scss/pages/_recipe_list.scss */
+.recipelistpage .recipeShort .content {
+  padding: 10px;
+}
+/* line 39, ../scss/pages/_recipe_list.scss */
+.recipelistpage .recipeShort footer {
+  padding: 5px 10px;
+  background: #e9d5b0;
+  font-size: 80%;
+}
+
+/* line 30, ../scss/style.scss */
+q {
+  font-style: italic;
+}
+/* line 32, ../scss/style.scss */
+q::before {
+  content: "“";
+}
+/* line 35, ../scss/style.scss */
+q::after {
+  content: "”";
+}
+
+/* line 39, ../scss/style.scss */
+.clear {
+  display: block;
+  clear: both;
+}
+
+/* line 40, ../scss/style.scss */
+.empty {
+  height: 0;
+  overflow: hidden;
+}
+
+/* line 41, ../scss/style.scss */
+a {
+  text-decoration: none;
+  color: #263366;
+}
+/* line 44, ../scss/style.scss */
+a:visited {
+@extends a;
+}
+/* line 47, ../scss/style.scss */
+a:hover {
+  text-decoration: underline;
+  color: #182041;
+}
+
+/* line 53, ../scss/style.scss */
+html {
+  background: #cebb98 -webkit-gradient(linear, left top, left bottom, from(#f4ead8), to(#cebb98)) left top no-repeat fixed;
+  height: 100%;
+}
+
+/* line 58, ../scss/style.scss */
+body {
+  padding-top: 1px;
+  margin-top: -1px;
+  padding-bottom: 1px;
+  margin-bottom: -1px;
+  background: transparent url('../graphics/bg.png?1304284906') top right repeat fixed;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  line-height: 20px;
+  min-height: 100%;
+}
+
+/* line 70, ../scss/style.scss */
+.left-50 {
+  width: 49%;
+  float: left;
+}
+
+/* line 74, ../scss/style.scss */
+.right-50 {
+  width: 49%;
+  float: right;
+}
+
+/* line 80, ../scss/style.scss */
+.left-67, .front #mainCol {
+  width: 66%;
+  float: left;
+}
+
+/* line 84, ../scss/style.scss */
+.right-33, .front #highlights {
+  width: 32%;
+  float: right;
+}
+
+/* line 90, ../scss/style.scss */
+#container {
+  margin: 40px 0 40px 180px;
+}
+/* line 93, ../scss/style.scss */
+#container > header > h1 {
+  -moz-border-radius: 20px 0 0 0;
+  -webkit-border-radius: 20px 0 0 0;
+  -o-border-radius: 20px 0 0 0;
+  -ms-border-radius: 20px 0 0 0;
+  -khtml-border-radius: 20px 0 0 0;
+  border-radius: 20px 0 0 0;
+  -moz-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px;
+  -o-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px;
+  background: #890000;
+  color: #FFF;
+  font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  font-size: 30px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 60px;
+  padding: 100px 30px 10px 30px;
+}
+/* line 109, ../scss/style.scss */
+#container > nav#sideNav {
+  position: absolute;
+  top: 205px;
+  left: 0;
+  width: 180px;
+  padding: 20px 0;
+}
+/* line 115, ../scss/style.scss */
+#container > nav#sideNav a {
+  display: block;
+  padding: 5px 20px;
+  color: #695531;
+  text-align: right;
+}
+/* line 120, ../scss/style.scss */
+#container > nav#sideNav a:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #231d11;
+  text-decoration: none;
+}
+/* line 125, ../scss/style.scss */
+#container > nav#sideNav a:active {
+  background: rgba(0, 0, 0, 0.2);
+}
+/* line 131, ../scss/style.scss */
+#container > nav#userActions {
+  position: absolute;
+  top: 148px;
+  right: 30px;
+}
+/* line 135, ../scss/style.scss */
+#container > nav#userActions li {
+  float: left;
+  margin: 5px 0;
+}
+/* line 138, ../scss/style.scss */
+#container > nav#userActions li a {
+  display: block;
+  color: #ffbcbc;
+  text-shadow: -1px -1px 0 #700000;
+  padding: 5px;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+/* line 148, ../scss/style.scss */
+#container > nav#userActions li:first-child a {
+  float: left;
+}
+/* line 151, ../scss/style.scss */
+#container > nav#userActions li:first-child::after {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  float: left;
+  padding: 5px 3px;
+  content: "or";
+  color: #e66f6f;
+}
+/* line 161, ../scss/style.scss */
+#container > nav#userActions li:nth-child(2) {
+  margin: 4px;
+  border: 1px solid #a30000;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+/* line 166, ../scss/style.scss */
+#container > nav#userActions li:nth-child(2) a {
+  border: 1px solid #700000;
+  padding: 4px 10px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  background: #7a0000 -webkit-gradient(linear, left top, left bottom, from(#bc0000), to(#7a0000), color-stop(0.25, #9d0000));
+}
+/* line 171, ../scss/style.scss */
+#container > nav#userActions li:nth-child(2) a:hover {
+  text-decoration: none;
+  background: #700000 -webkit-gradient(linear, left top, left bottom, from(#bc0000), to(#700000));
+}
+/* line 175, ../scss/style.scss */
+#container > nav#userActions li:nth-child(2) a:active {
+  background: #7f0000 -webkit-gradient(linear, left top, left bottom, from(#700000), to(#7f0000), color-stop(0.25, #7f0000));
+}
+/* line 183, ../scss/style.scss */
+#container > #main {
+  background: white;
+  padding: 20px 30px;
+  -moz-border-radius: 0 0 0 20px;
+  -webkit-border-radius: 0 0 0 20px;
+  -o-border-radius: 0 0 0 20px;
+  -ms-border-radius: 0 0 0 20px;
+  -khtml-border-radius: 0 0 0 20px;
+  border-radius: 0 0 0 20px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px;
+  -o-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px;
+}
+/* line 190, ../scss/style.scss */
+#container > footer {
+  text-align: right;
+  padding: 20px;
+  color: #8d8d8d;
+  font-size: 12px;
+}
+
+/* line 199, ../scss/style.scss */
+#pageTitle {
+  margin-top: -20px;
+  margin-left: -30px;
+  margin-right: -30px;
+  margin-bottom: 30px;
+  padding: 15px 30px;
+  text-shadow: 0 1px 0 #FFF;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d0d9e5), color-stop(100%, #c0ccdc));
+  background: -webkit-linear-gradient(top, #d0d9e5, #c0ccdc);
+  background: -moz-linear-gradient(top, #d0d9e5, #c0ccdc);
+  background: -o-linear-gradient(top, #d0d9e5, #c0ccdc);
+  background: linear-gradient(top, #d0d9e5, #c0ccdc);
+  border-bottom: 1px solid #afbed3;
+  border-top: 1px solid #FFF;
+  font-size: 20px;
+  color: #1c2634;
+}

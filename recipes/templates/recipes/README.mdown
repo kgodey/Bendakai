@@ -1,0 +1,12 @@
+The following templates have been written from the ground up by Harris:
+
+* __base.html
+* _recipe_list_inner.html
+* _recipe_short.html
+* add_recipe.html
+* home.html
+* modules/side_nav.html
+* module/user_actions.html
+* recipe_list.html
+
+The remaining templates should be obviated by templates with the new design and then removed.

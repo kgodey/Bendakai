@@ -1,0 +1,36 @@
+<article class="recipeShort">
+	<header>
+		<h1><a href="{% url view_recipe id=recipe.id %}">{{ recipe.name }}</a></h1>
+		{% if recipe.prep_time %}<h2>{{ recipe.prep_time }}m</h2>{% endif %}
+		{% if r.average_rating %}
+		<div class="recipe_rating" id="recipe_rating_{{ r.id }}"></div>
+		<script type="text/javascript" charset="utf-8">
+			$('#recipe_rating_{{ r.id }}').raty({
+				path: "{{ STATIC_URL }}recipes/raty_img/",
+				readOnly: true,
+				half: true,
+				start: {{ r.average_rating }},
+			});
+		</script>
+		{% endif %}
+	</header>
+	<div class="content">
+		{% if recipe.ingredients.count > 0 %}
+			<b>Ingredients:</b>
+			{% for recipe_ingredient in recipe.ingredients.all %}
+				{% if recipe_ingredient.quantity %}{{ recipe_ingredient.quantity }} {% if recipe_ingredient.unit %}{{ recipe_ingredient.unit }}{% endif %}{% endif %}
+				{{ recipe_ingredient.ingredient.name }}
+				{% if recipe_ingredient.preparation %}({{ recipe_ingredient.preparation }}){% endif %}{% if not forloop.last %}, {% endif %}
+			{% endfor %}
+		{% endif %}
+		{% if recipe.tools.count > 0 %}
+			<b>Tools:</b>
+			{% for recipe_tool in recipe.tools.all %}
+				{{ tool }}{% if not forloop.last %}, {% endif %}
+			{% endfor %}
+		{% endif %}
+	</div>
+	<footer>
+		<p>Added by <a href="{% url userpage username=recipe.user.username %}">{% if recipe.user.first_name %}{{ recipe.user.get_full_name }}{% else %}{{ recipe.user.username }}{% endif %}</a> at {{ recipe.date_added|date }}</p>
+	</footer>
+</article>
