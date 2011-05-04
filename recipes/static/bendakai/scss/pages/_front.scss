@@ -8,17 +8,11 @@
 	}
 	
 	.recipeList{
-		padding:10px 10px 15px 10px;
-		background:lighten($primaryaccent, 70%);
+		padding:10px 10px 15px 20px;
 		margin:0 0 20px 0;
-		color: lighten($primaryaccent, 10%);
+		border-left:1px solid $primaryaccent;
 		& > h1{
-			color: lighten($primaryaccent, 10%);
-			font-family: $smallheadfont;
-			font-weight:bold;
-			text-transform:uppercase;
-			letter-spacing:1px;
-			font-size:12px;
+			@include small-header;
 			margin-bottom:10px;
 		}
 		time{
@@ -44,5 +38,46 @@
 			padding:10px 10px 9px 10px;
 			margin-bottom: 20px;
 		}
+	}
+	
+	#plan{
+		header{
+			@include small-header;
+			font-size:20px;
+			line-height:30px;
+			margin-bottom:10px;
+		}
+		border-bottom:3px solid $primaryaccent;
+		padding-bottom:17px;
+		margin-bottom:20px;
+		input{
+			font-size:20px;
+			line-height:40px;
+			@include border-radius(5px);
+		}
+		input[type='text']{
+			width:70%;
+			float:left;
+			border:2px solid #CCC;
+			&:focus{
+				outline:none;
+				border-color:$secondaryaccent;
+			}
+		}
+		input[type='submit']{
+			width:25%;
+			float:right;
+			border:none;
+			padding:3px;
+			background:$primaryaccent;
+			color:#FFF;
+			&:hover{
+				background:darken($primaryaccent, 5%);
+			}
+			&:active{
+				background:darken($primaryaccent, 10%);
+			}
+		}
+		@include clearfix;
 	}
 }

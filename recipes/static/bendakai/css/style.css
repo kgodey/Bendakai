@@ -203,36 +203,94 @@ footer, header, hgroup, menu, nav, section {
 }
 /* line 10, ../scss/pages/_front.scss */
 .front .recipeList {
-  padding: 10px 10px 15px 10px;
-  background: #ffefef;
+  padding: 10px 10px 15px 20px;
   margin: 0 0 20px 0;
-  color: #bc0000;
+  border-left: 1px solid #890000;
 }
-/* line 15, ../scss/pages/_front.scss */
+/* line 14, ../scss/pages/_front.scss */
 .front .recipeList > h1 {
-  color: #bc0000;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
   font-size: 12px;
+  font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #890000;
+  font-weight: bold;
   margin-bottom: 10px;
 }
-/* line 24, ../scss/pages/_front.scss */
+/* line 18, ../scss/pages/_front.scss */
 .front .recipeList time {
   color: #888;
   font-style: italic;
 }
-/* line 28, ../scss/pages/_front.scss */
+/* line 22, ../scss/pages/_front.scss */
 .front .recipeList a:hover {
   text-decoration: none;
 }
-/* line 41, ../scss/pages/_front.scss */
+/* line 35, ../scss/pages/_front.scss */
 .front #mainCol #about {
   background: #EEE;
   border-bottom: 1px solid #DDD;
   padding: 10px 10px 9px 10px;
   margin-bottom: 20px;
+}
+/* line 43, ../scss/pages/_front.scss */
+.front #plan {
+  border-bottom: 3px solid #890000;
+  padding-bottom: 17px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 44, ../scss/pages/_front.scss */
+.front #plan header {
+  font-size: 12px;
+  font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #890000;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+/* line 53, ../scss/pages/_front.scss */
+.front #plan input {
+  font-size: 20px;
+  line-height: 40px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 58, ../scss/pages/_front.scss */
+.front #plan input[type='text'] {
+  width: 70%;
+  float: left;
+  border: 2px solid #CCC;
+}
+/* line 62, ../scss/pages/_front.scss */
+.front #plan input[type='text']:focus {
+  outline: none;
+  border-color: #263366;
+}
+/* line 67, ../scss/pages/_front.scss */
+.front #plan input[type='submit'] {
+  width: 25%;
+  float: right;
+  border: none;
+  padding: 3px;
+  background: #890000;
+  color: #FFF;
+}
+/* line 74, ../scss/pages/_front.scss */
+.front #plan input[type='submit']:hover {
+  background: #700000;
+}
+/* line 77, ../scss/pages/_front.scss */
+.front #plan input[type='submit']:active {
+  background: #560000;
 }
 
 /* line 2, ../scss/pages/_recipe_list.scss */
@@ -325,20 +383,19 @@ footer, header, hgroup, menu, nav, section {
   left: 0;
   width: 250px;
   text-align: right;
+  border-right: 1px solid #890000;
+  padding: 10px 20px 10px 0;
 }
-/* line 36, ../scss/pages/_recipe_individual.scss */
+/* line 37, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar .ingredients, .recipeindividualpage .recipe .sidebar .tools {
   margin-bottom: 20px;
   font-size: 13px;
-  padding: 10px 20px 10px 0;
-  border-right: 1px solid #890000;
-  margin-right: -21px;
 }
-/* line 42, ../scss/pages/_recipe_individual.scss */
+/* line 40, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar .ingredients li, .recipeindividualpage .recipe .sidebar .tools li {
   margin-bottom: 5px;
 }
-/* line 45, ../scss/pages/_recipe_individual.scss */
+/* line 43, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar .ingredients header, .recipeindividualpage .recipe .sidebar .tools header {
   font-size: 12px;
   font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
@@ -348,7 +405,7 @@ footer, header, hgroup, menu, nav, section {
   font-weight: bold;
   margin-bottom: 10px;
 }
-/* line 51, ../scss/pages/_recipe_individual.scss */
+/* line 49, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags {
   font-family: Helvetica, sans-serif;
   background: #EEE;
@@ -361,32 +418,33 @@ footer, header, hgroup, menu, nav, section {
   -o-box-shadow: rgba(0, 0, 0, 0.15) 0 1px 2px inset;
   box-shadow: rgba(0, 0, 0, 0.15) 0 1px 2px inset;
 }
-/* line 59, ../scss/pages/_recipe_individual.scss */
+/* line 57, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags ul, .recipeindividualpage .recipe .sidebar section.tags li, .recipeindividualpage .recipe .sidebar section.tags header, .recipeindividualpage .recipe .sidebar section.tags h1 {
   display: inline;
 }
-/* line 62, ../scss/pages/_recipe_individual.scss */
+/* line 60, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags header {
   font-weight: bold;
 }
-/* line 65, ../scss/pages/_recipe_individual.scss */
+/* line 63, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags h1::after {
   content: ": ";
 }
-/* line 68, ../scss/pages/_recipe_individual.scss */
+/* line 66, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags li::after {
   content: ", ";
 }
-/* line 71, ../scss/pages/_recipe_individual.scss */
+/* line 69, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags li:last-child::after {
   content: "";
 }
-/* line 75, ../scss/pages/_recipe_individual.scss */
+/* line 73, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar .byline {
   font-size: 12px;
   color: #555555;
+  margin-top: 20px;
 }
-/* line 80, ../scss/pages/_recipe_individual.scss */
+/* line 79, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .recipeActions {
   background: #EEE;
   -moz-border-radius: 20px;
@@ -403,7 +461,7 @@ footer, header, hgroup, menu, nav, section {
   padding: 10px 20px;
   margin-top: -10px;
 }
-/* line 88, ../scss/pages/_recipe_individual.scss */
+/* line 87, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details {
   float: right;
   background: #EEE;
@@ -422,43 +480,43 @@ footer, header, hgroup, menu, nav, section {
   border-radius: 3px;
   white-space: nowrap;
 }
-/* line 100, ../scss/pages/_recipe_individual.scss */
+/* line 99, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details ul {
   padding: 10px;
 }
-/* line 103, ../scss/pages/_recipe_individual.scss */
+/* line 102, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-/* line 107, ../scss/pages/_recipe_individual.scss */
+/* line 106, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-button:start:decrement, .recipeindividualpage .recipe .details::-webkit-scrollbar-button:end:increment {
   display: block;
   height: 0;
   width: 0;
 }
-/* line 113, ../scss/pages/_recipe_individual.scss */
+/* line 112, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-track-piece {
   background-color: transparent;
   -webkit-border-radius: 3px;
 }
-/* line 118, ../scss/pages/_recipe_individual.scss */
+/* line 117, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-thumb:vertical {
   height: 0;
   background-color: rgba(0, 0, 0, 0.35);
   -webkit-border-radius: 3px;
 }
-/* line 124, ../scss/pages/_recipe_individual.scss */
+/* line 123, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-thumb:horizontal {
   width: 0;
   background-color: rgba(0, 0, 0, 0.35);
   -webkit-border-radius: 3px;
 }
-/* line 132, ../scss/pages/_recipe_individual.scss */
+/* line 131, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details strong {
   color: #222222;
 }
-/* line 137, ../scss/pages/_recipe_individual.scss */
+/* line 136, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .main header {
   font-size: 12px;
   font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
@@ -469,11 +527,11 @@ footer, header, hgroup, menu, nav, section {
   font-size: 18px;
   margin-bottom: 10px;
 }
-/* line 142, ../scss/pages/_recipe_individual.scss */
+/* line 141, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .main p {
   margin-bottom: 20px;
 }
-/* line 147, ../scss/pages/_recipe_individual.scss */
+/* line 146, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage #id_honeypot {
   height: 0;
   width: 0;
@@ -520,54 +578,54 @@ footer, header, hgroup, menu, nav, section {
   font-weight: bold;
 }
 
-/* line 37, ../scss/style.scss */
+/* line 38, ../scss/style.scss */
 q {
   font-style: italic;
 }
-/* line 39, ../scss/style.scss */
+/* line 40, ../scss/style.scss */
 q::before {
   content: "“";
 }
-/* line 42, ../scss/style.scss */
+/* line 43, ../scss/style.scss */
 q::after {
   content: "”";
 }
 
-/* line 46, ../scss/style.scss */
+/* line 47, ../scss/style.scss */
 .clear {
   display: block;
   clear: both;
 }
 
-/* line 47, ../scss/style.scss */
+/* line 48, ../scss/style.scss */
 .empty {
   height: 0;
   overflow: hidden;
 }
 
-/* line 48, ../scss/style.scss */
+/* line 49, ../scss/style.scss */
 a {
   text-decoration: none;
   color: #263366;
 }
-/* line 51, ../scss/style.scss */
+/* line 52, ../scss/style.scss */
 a:visited {
 @extends a;
 }
-/* line 54, ../scss/style.scss */
+/* line 55, ../scss/style.scss */
 a:hover {
   text-decoration: underline;
   color: #182041;
 }
 
-/* line 60, ../scss/style.scss */
+/* line 61, ../scss/style.scss */
 html {
   background: #cebb98 -webkit-gradient(linear, left top, left bottom, from(#f4ead8), to(#cebb98)) left top no-repeat fixed;
   background: #cebb98 -moz-linear-gradient(#f4ead8, #cebb98) left top no-repeat fixed;
   height: 100%;
 }
 
-/* line 65, ../scss/style.scss */
+/* line 66, ../scss/style.scss */
 body {
   padding-top: 1px;
   margin-top: -1px;
@@ -581,42 +639,42 @@ body {
   color: #222222;
 }
 
-/* line 78, ../scss/style.scss */
+/* line 79, ../scss/style.scss */
 .left-50 {
   width: 49%;
   float: left;
 }
 
-/* line 82, ../scss/style.scss */
+/* line 83, ../scss/style.scss */
 .right-50 {
   width: 49%;
   float: right;
 }
 
-/* line 88, ../scss/style.scss */
+/* line 89, ../scss/style.scss */
 .left-67, .front #mainCol {
   width: 66%;
   float: left;
 }
 
-/* line 92, ../scss/style.scss */
+/* line 93, ../scss/style.scss */
 .right-33, .front #highlights {
   width: 32%;
   float: right;
 }
 
-/* line 98, ../scss/style.scss */
+/* line 99, ../scss/style.scss */
 #userActions img {
   position: relative;
   top: 3px;
   left: 3px;
 }
 
-/* line 104, ../scss/style.scss */
+/* line 105, ../scss/style.scss */
 #container {
   margin: 40px 0 40px 180px;
 }
-/* line 107, ../scss/style.scss */
+/* line 108, ../scss/style.scss */
 #container > header > h1 {
   -moz-border-radius: 20px 0 0 0;
   -webkit-border-radius: 20px 0 0 0;
@@ -638,7 +696,7 @@ body {
   letter-spacing: 3px;
   line-height: 60px;
 }
-/* line 123, ../scss/style.scss */
+/* line 124, ../scss/style.scss */
 #container > nav#sideNav {
   position: absolute;
   top: 205px;
@@ -646,35 +704,35 @@ body {
   width: 180px;
   padding: 20px 0;
 }
-/* line 129, ../scss/style.scss */
+/* line 130, ../scss/style.scss */
 #container > nav#sideNav a {
   display: block;
   padding: 5px 20px;
   color: #695531;
   text-align: right;
 }
-/* line 134, ../scss/style.scss */
+/* line 135, ../scss/style.scss */
 #container > nav#sideNav a:hover {
   background: rgba(0, 0, 0, 0.1);
   color: #231d11;
   text-decoration: none;
 }
-/* line 139, ../scss/style.scss */
+/* line 140, ../scss/style.scss */
 #container > nav#sideNav a:active {
   background: rgba(0, 0, 0, 0.2);
 }
-/* line 145, ../scss/style.scss */
+/* line 146, ../scss/style.scss */
 #container > nav#userActions {
   position: absolute;
   top: 52px;
   right: 30px;
 }
-/* line 149, ../scss/style.scss */
+/* line 150, ../scss/style.scss */
 #container > nav#userActions li {
   float: left;
   margin: 5px 0;
 }
-/* line 152, ../scss/style.scss */
+/* line 153, ../scss/style.scss */
 #container > nav#userActions li a {
   display: block;
   color: #ffbcbc;
@@ -683,11 +741,11 @@ body {
   font-size: 13px;
   letter-spacing: 1px;
 }
-/* line 162, ../scss/style.scss */
+/* line 163, ../scss/style.scss */
 #container > nav#userActions li:first-child a {
   float: left;
 }
-/* line 165, ../scss/style.scss */
+/* line 166, ../scss/style.scss */
 #container > nav#userActions li:first-child::after {
   font-size: 11px;
   text-transform: uppercase;
@@ -697,7 +755,7 @@ body {
   content: "or";
   color: #e66f6f;
 }
-/* line 175, ../scss/style.scss */
+/* line 176, ../scss/style.scss */
 #container > nav#userActions li:nth-child(2) {
   margin: 4px;
   border: 1px solid #a30000;
@@ -709,7 +767,7 @@ body {
   border-radius: 5px;
   text-align: center;
 }
-/* line 180, ../scss/style.scss */
+/* line 181, ../scss/style.scss */
 #container > nav#userActions li:nth-child(2) a {
   border: 1px solid #700000;
   padding: 4px 10px;
@@ -725,7 +783,7 @@ body {
   background: -o-linear-gradient(top, #bc0000 0%, #9d0000 25%, #7a0000 100%);
   background: linear-gradient(top, #bc0000 0%, #9d0000 25%, #7a0000 100%);
 }
-/* line 185, ../scss/style.scss */
+/* line 186, ../scss/style.scss */
 #container > nav#userActions li:nth-child(2) a:hover {
   text-decoration: none;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #bc0000), color-stop(100%, #700000));
@@ -734,7 +792,7 @@ body {
   background: -o-linear-gradient(top, #bc0000, #700000);
   background: linear-gradient(top, #bc0000, #700000);
 }
-/* line 189, ../scss/style.scss */
+/* line 190, ../scss/style.scss */
 #container > nav#userActions li:nth-child(2) a:active {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #700000), color-stop(25%, #7f0000), color-stop(100%, #7f0000));
   background: -webkit-linear-gradient(top, #700000 0%, #7f0000 25%, #7f0000 100%);
@@ -742,7 +800,7 @@ body {
   background: -o-linear-gradient(top, #700000 0%, #7f0000 25%, #7f0000 100%);
   background: linear-gradient(top, #700000 0%, #7f0000 25%, #7f0000 100%);
 }
-/* line 197, ../scss/style.scss */
+/* line 198, ../scss/style.scss */
 #container > #main {
   background: white;
   padding: 20px 30px;
@@ -757,7 +815,7 @@ body {
   -o-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px;
   box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px;
 }
-/* line 204, ../scss/style.scss */
+/* line 205, ../scss/style.scss */
 #container > footer {
   text-align: right;
   padding: 20px;
@@ -765,7 +823,7 @@ body {
   font-size: 12px;
 }
 
-/* line 213, ../scss/style.scss */
+/* line 214, ../scss/style.scss */
 .page_title {
   text-transform: uppercase;
   font-size: 20px;
