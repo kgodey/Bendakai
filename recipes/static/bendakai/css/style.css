@@ -188,9 +188,21 @@ footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-/* line 14, ../scss/_base.scss */
+/* line 115, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 16, ../scss/_base.scss */
 #container {
   overflow: hidden;
+}
+
+/* line 20, ../scss/_base.scss */
+.spaced {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* line 3, ../scss/pages/_front.scss */
@@ -226,14 +238,18 @@ footer, header, hgroup, menu, nav, section {
 .front .recipeList a:hover {
   text-decoration: none;
 }
-/* line 35, ../scss/pages/_front.scss */
+/* line 25, ../scss/pages/_front.scss */
+.front .recipeList li {
+  margin-top: 5px;
+}
+/* line 38, ../scss/pages/_front.scss */
 .front #mainCol #about {
   background: #EEE;
   border-bottom: 1px solid #DDD;
   padding: 10px 10px 9px 10px;
   margin-bottom: 20px;
 }
-/* line 43, ../scss/pages/_front.scss */
+/* line 46, ../scss/pages/_front.scss */
 .front #plan {
   border-bottom: 3px solid #890000;
   padding-bottom: 17px;
@@ -241,7 +257,7 @@ footer, header, hgroup, menu, nav, section {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 44, ../scss/pages/_front.scss */
+/* line 47, ../scss/pages/_front.scss */
 .front #plan header {
   font-size: 12px;
   font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
@@ -253,7 +269,7 @@ footer, header, hgroup, menu, nav, section {
   line-height: 30px;
   margin-bottom: 10px;
 }
-/* line 53, ../scss/pages/_front.scss */
+/* line 56, ../scss/pages/_front.scss */
 .front #plan input {
   font-size: 20px;
   line-height: 40px;
@@ -264,18 +280,18 @@ footer, header, hgroup, menu, nav, section {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 58, ../scss/pages/_front.scss */
+/* line 61, ../scss/pages/_front.scss */
 .front #plan input[type='text'] {
   width: 70%;
   float: left;
   border: 2px solid #CCC;
 }
-/* line 62, ../scss/pages/_front.scss */
+/* line 65, ../scss/pages/_front.scss */
 .front #plan input[type='text']:focus {
   outline: none;
   border-color: #263366;
 }
-/* line 67, ../scss/pages/_front.scss */
+/* line 70, ../scss/pages/_front.scss */
 .front #plan input[type='submit'] {
   width: 25%;
   float: right;
@@ -284,11 +300,11 @@ footer, header, hgroup, menu, nav, section {
   background: #890000;
   color: #FFF;
 }
-/* line 74, ../scss/pages/_front.scss */
+/* line 77, ../scss/pages/_front.scss */
 .front #plan input[type='submit']:hover {
   background: #700000;
 }
-/* line 77, ../scss/pages/_front.scss */
+/* line 80, ../scss/pages/_front.scss */
 .front #plan input[type='submit']:active {
   background: #560000;
 }
@@ -461,7 +477,18 @@ footer, header, hgroup, menu, nav, section {
   padding: 10px 20px;
   margin-top: -10px;
 }
-/* line 87, ../scss/pages/_recipe_individual.scss */
+/* line 86, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage .recipe .recipeActions .recipe_rating {
+  display: inline-block;
+  position: relative;
+  top: 3px;
+}
+/* line 91, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage .recipe .recipeActions > a {
+  border-left: 1px solid #CCC;
+  padding-left: 9px;
+}
+/* line 96, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details {
   float: right;
   background: #EEE;
@@ -480,43 +507,43 @@ footer, header, hgroup, menu, nav, section {
   border-radius: 3px;
   white-space: nowrap;
 }
-/* line 99, ../scss/pages/_recipe_individual.scss */
+/* line 108, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details ul {
   padding: 10px;
 }
-/* line 102, ../scss/pages/_recipe_individual.scss */
+/* line 111, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-/* line 106, ../scss/pages/_recipe_individual.scss */
+/* line 115, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-button:start:decrement, .recipeindividualpage .recipe .details::-webkit-scrollbar-button:end:increment {
   display: block;
   height: 0;
   width: 0;
 }
-/* line 112, ../scss/pages/_recipe_individual.scss */
+/* line 121, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-track-piece {
   background-color: transparent;
   -webkit-border-radius: 3px;
 }
-/* line 117, ../scss/pages/_recipe_individual.scss */
+/* line 126, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-thumb:vertical {
   height: 0;
   background-color: rgba(0, 0, 0, 0.35);
   -webkit-border-radius: 3px;
 }
-/* line 123, ../scss/pages/_recipe_individual.scss */
+/* line 132, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-thumb:horizontal {
   width: 0;
   background-color: rgba(0, 0, 0, 0.35);
   -webkit-border-radius: 3px;
 }
-/* line 131, ../scss/pages/_recipe_individual.scss */
+/* line 140, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details strong {
   color: #222222;
 }
-/* line 136, ../scss/pages/_recipe_individual.scss */
+/* line 145, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .main header {
   font-size: 12px;
   font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
@@ -527,11 +554,11 @@ footer, header, hgroup, menu, nav, section {
   font-size: 18px;
   margin-bottom: 10px;
 }
-/* line 141, ../scss/pages/_recipe_individual.scss */
+/* line 150, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .main p {
   margin-bottom: 20px;
 }
-/* line 146, ../scss/pages/_recipe_individual.scss */
+/* line 155, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage #id_honeypot {
   height: 0;
   width: 0;
@@ -539,6 +566,36 @@ footer, header, hgroup, menu, nav, section {
   padding: 0;
   margin: 0;
   overflow: hidden;
+}
+/* line 164, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage #commentswrapper form {
+  margin-top: 10px;
+  width: 470px;
+}
+/* line 167, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage #commentswrapper form p {
+  overflow: hidden;
+  *zoom: 1;
+  border-top: 1px solid #EEE;
+  padding-bottom: 4px;
+  padding-top: 5px;
+}
+/* line 173, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage #commentswrapper form label {
+  width: 130px;
+  text-align: right;
+  padding-right: 20px;
+  float: left;
+}
+/* line 179, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage #commentswrapper form input, .recipeindividualpage #commentswrapper form textarea {
+  float: left;
+  width: 300px;
+}
+/* line 183, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage #commentswrapper form input[type="submit"] {
+  width: 220px;
+  margin-right: 10px;
 }
 
 /* .recipeindividualpage */
@@ -666,8 +723,8 @@ body {
 /* line 99, ../scss/style.scss */
 #userActions img {
   position: relative;
-  top: 3px;
-  left: 3px;
+  margin: -3px;
+  opacity: .8;
 }
 
 /* line 105, ../scss/style.scss */
@@ -841,4 +898,22 @@ body {
   font-weight: normal;
   letter-spacing: 2px;
   background: #560000;
+}
+
+/* line 238, ../scss/style.scss */
+.textContent ul, .textContent ol {
+  margin-left: 1.5em;
+  margin-bottom: 20px;
+}
+/* line 241, ../scss/style.scss */
+.textContent ul li, .textContent ol li {
+  margin-bottom: 5px;
+}
+/* line 245, ../scss/style.scss */
+.textContent ul li {
+  list-style-type: disc;
+}
+/* line 248, ../scss/style.scss */
+.textContent ol li {
+  list-style-type: decimal;
 }
