@@ -22,8 +22,13 @@ class Command(BaseCommand):
 		 	raise CommandError('User not found.')
 		
 		# Implementing the recommendation systems in the Freyne & Berkovsky paper.
-
+		
+		USER_SIMILARITY = {}
+		self.SIMILAR_USERS = []
+			
+			
 		def mean_user(user, use_recipes=True, use_ingredients=True):
+			print 'Finding mean for user ' + user.username
 			"""
 			Returns the mean user rating of the user provided.
 	
@@ -60,55 +65,67 @@ class Command(BaseCommand):
 			use_ingredients -- A boolean signifying whether ingredient ratings should be used in the similarity metric.
 	
 			"""
-			numerator = 0
-			denominator_1 = 0
-			denominator_2 = 0
-			mean_user1 = mean_user(user1)
-			mean_user2 = mean_user(user2)
-			if use_recipes:
-				recipes_with_ratings = Recipe.objects.filter(ratings__user = user1).filter(ratings__user = user2)
-				for recipe in recipes_with_ratings:
-					user1_rating = UserRecipeRating.objects.get(recipe = recipe, user = user1).rating
-					user2_rating = UserRecipeRating.objects.get(recipe = recipe, user = user2).rating
-					numerator = numerator + (user1_rating - mean_user1)*(user2_rating - mean_user2)
-					denominator_1 = denominator_1 + (user1_rating - mean_user1)**2
-					denominator_2 = denominator_2 + (user2_rating - mean_user2)**2
-			if use_ingredients:
-				ingredients_with_ratings = Ingredient.objects.filter(ratings__user = user1).filter(ratings__user = user2)
-				for ingredient in ingredients_with_ratings:
-					user1_rating = UserIngredientRating.objects.get(ingredient = ingredient, user = user1).rating
-					user2_rating = UserIngredientRating.objects.get(ingredient = ingredient, user = user2).rating
-					numerator = numerator + (user1_rating - mean_user1)*(user2_rating - mean_user2)
-					denominator_1 = denominator_1 + (user1_rating - mean_user1)**2
-					denominator_2 = denominator_2 + (user2_rating - mean_user2)**2
-			if denominator_1 == 0 or denominator_2 == 0:
-				return 0
-			else:
-				return numerator/(denominator_1*denominator_2)
+			try:
+				return USER_SIMILARITY[(user1, user2, use_recipes, use_ingredients)]
+			except:
+				print 'Finding similarity between users ' + user1.username + ' ' + user2.username
+				numerator = 0
+				denominator_1 = 0
+				denominator_2 = 0
+				mean_user1 = mean_user(user1)
+				mean_user2 = mean_user(user2)
+				if use_recipes:
+					recipes_with_ratings = Recipe.objects.filter(ratings__user = user1).filter(ratings__user = user2)
+					for recipe in recipes_with_ratings:
+						user1_rating = UserRecipeRating.objects.get(recipe = recipe, user = user1).rating
+						user2_rating = UserRecipeRating.objects.get(recipe = recipe, user = user2).rating
+						numerator = numerator + (user1_rating - mean_user1)*(user2_rating - mean_user2)
+						denominator_1 = denominator_1 + (user1_rating - mean_user1)**2
+						denominator_2 = denominator_2 + (user2_rating - mean_user2)**2
+				if use_ingredients:
+					ingredients_with_ratings = Ingredient.objects.filter(ratings__user = user1).filter(ratings__user = user2)
+					for ingredient in ingredients_with_ratings:
+						user1_rating = UserIngredientRating.objects.get(ingredient = ingredient, user = user1).rating
+						user2_rating = UserIngredientRating.objects.get(ingredient = ingredient, user = user2).rating
+						numerator = numerator + (user1_rating - mean_user1)*(user2_rating - mean_user2)
+						denominator_1 = denominator_1 + (user1_rating - mean_user1)**2
+						denominator_2 = denominator_2 + (user2_rating - mean_user2)**2
+				if denominator_1 == 0 or denominator_2 == 0:
+					USER_SIMILARITY[(user1, user2, use_recipes, use_ingredients)] = 0
+					return 0
+				else:
+					USER_SIMILARITY[(user1, user2, use_recipes, use_ingredients)] = numerator/(denominator_1*denominator_2)
+					return numerator/(denominator_1*denominator_2)
 
 
 		def find_similar_users(user1, num_users=10, use_recipes=True, use_ingredients=True):
 			"""
 			Returns a list of similar users to the user provided.
-	
+			
 			Keyword arguments:
 			user1 -- The user for whom similar users are being calculated.
 			num_users -- The number of similar users to return.
 			use_recipes -- A boolean signifying whether recipe ratings should be used in the similarity metric.
 			use_ingredients -- A boolean signifying whether ingredient ratings should be used in the similarity metric.
-	
+			
 			"""
-			users = []
-			user_scores = {}
-			for user2 in User.objects.all():
-				user_scores[user2] = int(user_similarity(user1, user2, use_recipes, use_ingredients))
-			sorted_x = sorted(user_scores.iteritems(), key=operator.itemgetter(1), reverse=True)
-			for x in sorted_x[:num_users]:
-				users.append(x[1])
-			return users
+			if len(self.SIMILAR_USERS) > 0:
+				return self.SIMILAR_USERS
+			else:
+				print 'Finding similar users to ' + user1.username
+				users = []
+				user_scores = {}
+				for user2 in User.objects.all():
+					user_scores[user2] = int(user_similarity(user1, user2, use_recipes, use_ingredients))
+				sorted_x = sorted(user_scores.iteritems(), key=operator.itemgetter(1), reverse=True)
+				for x in sorted_x[:num_users]:
+					users.append(x[0])
+				self.SIMILAR_USERS = users
+				return users
 
 
 		def rating_method1(user1, ingredient, use_recipes=True, use_ingredients=True):
+			print 'Finding rating for ' + user1.username + ' and ' + ingredient.name.encode('ascii','ignore')
 			"""
 			Returns a predicted rating for a given ingredient by the given user.
 	
@@ -123,9 +140,9 @@ class Command(BaseCommand):
 			denominator = 0
 			users = find_similar_users(user1, 10, use_recipes, use_ingredients)
 			for user in users:
-				if UserIngredientRating.objects.filter(user = user, ingredient = ingredient):
-					rating = UserIngredientRating.objects.filter(user = user, ingredient = ingredient).rating
-				else:
+				try:
+					rating = UserIngredientRating.objects.get(user = user, ingredient = ingredient).rating
+				except:
 					rating = 0
 				numerator = numerator + user_similarity(user, user1, use_recipes, use_ingredients)*rating
 				denominator = denominator + user_similarity(user, user1, use_recipes, use_ingredients)
@@ -136,6 +153,7 @@ class Command(BaseCommand):
 			
 
 		def rating_method2(user1, ingredient):
+			print 'Finding rating for ' + user1.username + ' and ' + ingredient.name.encode('ascii','ignore')
 			"""
 			Returns a predicted rating for a given ingredient by the given user.
 	
@@ -148,19 +166,20 @@ class Command(BaseCommand):
 			recipes = Recipe.objects.filter(ratings__user = user1).filter(ingredients__ingredient = ingredient)
 			l = len(recipes)
 			for recipe in recipes:
-				numerator = numerator + UserRecipeRating.objects.filter(recipe = recipe, user = user1)
+				numerator = numerator + UserRecipeRating.objects.get(recipe = recipe, user = user1).rating
 			if l == 0:
 				return l
 			else:
 				return numerator/l
 		
 		
-		def prediction(user, recipe, method='ri'):
+		def prediction(user1, recipe, method='ri'):
+			print 'Finding prediction for ' + user1.username + ' and ' + recipe.name.encode('ascii','ignore')
 			"""
 			Returns a predicted rating for a given recipe by the given user.
 
 			Keyword arguments:
-			user -- The user for whom the rating is being predicted.
+			user1 -- The user for whom the rating is being predicted.
 			recipe -- The recipe for which the rating is being predicted.
 			method -- A string containing which rating method to use for predictions. Acceptable values are 'ri', 'r', 'i', 2'.
 
@@ -190,6 +209,7 @@ class Command(BaseCommand):
 		
 		
 		def predict_recipes(user, method='ri'):
+			print 'Finding recipes for ' + user.username + ' using ' + method
 			"""
 			Returns predicted recipe ratings for all recipes.
 
@@ -208,6 +228,7 @@ class Command(BaseCommand):
 		
 		
 		def test_algorithms(user, num_recipes=20):
+			print 'Testing algorithm.'
 			predictions = []
 			final_recipes = []
 			for method in ['ri', 'i', 'r', '2']:
