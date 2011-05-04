@@ -159,7 +159,7 @@ def userpage(request, username):
 		recipes = paginator.page(page)
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
-	return render_to_response('recipes/userpage.html', {'recipes': recipes, 'recipe_user': recipe_user}, context_instance=RequestContext(request))
+	return render_to_response('recipes/recipe_list.html', {'recipes': recipes, 'title': u"%s\u0027s Recipes" % (recipe_user.get_full_name() if recipe_user.first_name else recipe_user.username,)}, context_instance=RequestContext(request))
 
 
 def homepage(request):
