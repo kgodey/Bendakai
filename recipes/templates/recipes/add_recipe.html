@@ -6,7 +6,7 @@
 
 {% block extra_javascript %}
 <script type="text/javascript">
-$(window).load(function() {
+$(document).ready(function() {
 	$(".recipeingredient_ingredient_field").autocomplete({
 		source: "/ajax/ingredient", delay: 30
 	});

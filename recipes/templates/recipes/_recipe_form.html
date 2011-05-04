@@ -1,6 +1,6 @@
 <div id="recipe_form">
 	<script type="text/javascript">
-	$(window).load(function () {
+	$(document).ready(function () {
 	  $("#id_tags").tokenInput("{% url tag_ajax %}", {
 		hintText: "Type a tag!",
 		noResultsText: "No tags!",
@@ -16,7 +16,7 @@
 	});
 	</script>
 	<script type="text/javascript">
-	$(window).load(function () {
+	$(document).ready(function () {
 	  $("#id_tools").tokenInput("{% url tool_ajax %}", {
 		hintText: "Type a kitchen tool!",
 		noResultsText: "No tools found!",

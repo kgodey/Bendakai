@@ -350,17 +350,12 @@ footer, header, hgroup, menu, nav, section {
 }
 /* line 51, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags {
-  background: #ffefef;
+  font-family: Helvetica, sans-serif;
+  background: #EEE;
   margin: 20px -10px;
   padding: 10px;
   font-size: 12px;
   text-align: left;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
   -moz-box-shadow: rgba(0, 0, 0, 0.15) 0 1px 2px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0 1px 2px inset;
   -o-box-shadow: rgba(0, 0, 0, 0.15) 0 1px 2px inset;
