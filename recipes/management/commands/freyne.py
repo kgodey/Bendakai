@@ -3,6 +3,12 @@ from recipes.models import Recipe, Ingredient, UserIngredientRating, UserRecipeR
 from django.contrib.auth.models import User
 import operator
 
+###########################################
+###	This code is currently experimental ###
+### and very inefficient. Please don't  ###
+### use it for practical purposes.		###
+###########################################
+
 class Command(BaseCommand):
 	args = 'username'
 	help = 'Finds recipes to recommend based on the Freyne/Berkovsky paper.'
