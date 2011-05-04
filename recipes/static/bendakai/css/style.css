@@ -406,19 +406,59 @@ footer, header, hgroup, menu, nav, section {
 /* line 88, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details {
   float: right;
-  padding: 10px;
   background: #EEE;
   margin-left: 20px;
   margin-bottom: 10px;
   color: #6f6f6f;
   font-size: 13px;
   font-style: italic;
+  max-width: 50%;
+  overflow: auto;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  white-space: nowrap;
 }
-/* line 97, ../scss/pages/_recipe_individual.scss */
+/* line 100, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage .recipe .details ul {
+  padding: 10px;
+}
+/* line 103, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage .recipe .details::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+/* line 107, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage .recipe .details::-webkit-scrollbar-button:start:decrement, .recipeindividualpage .recipe .details::-webkit-scrollbar-button:end:increment {
+  display: block;
+  height: 0;
+  width: 0;
+}
+/* line 113, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage .recipe .details::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+  -webkit-border-radius: 3px;
+}
+/* line 118, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage .recipe .details::-webkit-scrollbar-thumb:vertical {
+  height: 0;
+  background-color: rgba(0, 0, 0, 0.35);
+  -webkit-border-radius: 3px;
+}
+/* line 124, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage .recipe .details::-webkit-scrollbar-thumb:horizontal {
+  width: 0;
+  background-color: rgba(0, 0, 0, 0.35);
+  -webkit-border-radius: 3px;
+}
+/* line 132, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details strong {
   color: #222222;
 }
-/* line 102, ../scss/pages/_recipe_individual.scss */
+/* line 137, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .main header {
   font-size: 12px;
   font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
@@ -429,11 +469,11 @@ footer, header, hgroup, menu, nav, section {
   font-size: 18px;
   margin-bottom: 10px;
 }
-/* line 107, ../scss/pages/_recipe_individual.scss */
+/* line 142, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .main p {
   margin-bottom: 20px;
 }
-/* line 112, ../scss/pages/_recipe_individual.scss */
+/* line 147, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage #id_honeypot {
   height: 0;
   width: 0;

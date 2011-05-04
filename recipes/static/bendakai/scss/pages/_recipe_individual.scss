@@ -87,13 +87,48 @@
 		}
 		.details{
 			float:right;
-			padding:$recipepadding;
 			background:#EEE;
 			margin-left:2*$recipepadding;
 			margin-bottom:$recipepadding;
 			color:lighten($textcolor, 30%);
 			font-size:13px;
 			font-style:italic;
+			max-width:50%;
+			overflow:auto;
+			@include border-radius(3px);
+			white-space:nowrap;
+			ul{
+				padding:$recipepadding;
+			}
+			&::-webkit-scrollbar {
+			    width: 6px;
+			    height: 6px;
+				&-button:start:decrement,
+				&-button:end:increment {
+				    display: block;
+				    height: 0;
+					width:0;
+				}
+
+				&-track-piece {
+				    background-color: transparent;
+				    -webkit-border-radius: 3px;
+				}
+
+				&-thumb:vertical {
+					height:0;
+				    background-color: rgba(0,0,0,.35);
+				    -webkit-border-radius: 3px;
+				}
+
+				&-thumb:horizontal {
+					width:0;
+				    background-color: rgba(0,0,0,.35);
+				    -webkit-border-radius: 3px;
+				}
+			}
+		
+			
 			strong{
 				color:$textcolor;
 			}
