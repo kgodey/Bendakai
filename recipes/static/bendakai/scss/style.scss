@@ -233,3 +233,19 @@ body{
 	letter-spacing:2px;
 	background:darken($primaryaccent, 10%);
 }
+
+.textContent{
+	ul, ol{
+		margin-left:1.5em;
+		margin-bottom:20px;
+		li{
+			margin-bottom:5px;
+		}
+	}
+	ul li{
+		list-style-type: disc;
+	}
+	ol li{
+		list-style-type:decimal;
+	}
+}

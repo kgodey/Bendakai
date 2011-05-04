@@ -899,3 +899,21 @@ body {
   letter-spacing: 2px;
   background: #560000;
 }
+
+/* line 238, ../scss/style.scss */
+.textContent ul, .textContent ol {
+  margin-left: 1.5em;
+  margin-bottom: 20px;
+}
+/* line 241, ../scss/style.scss */
+.textContent ul li, .textContent ol li {
+  margin-bottom: 5px;
+}
+/* line 245, ../scss/style.scss */
+.textContent ul li {
+  list-style-type: disc;
+}
+/* line 248, ../scss/style.scss */
+.textContent ol li {
+  list-style-type: decimal;
+}
