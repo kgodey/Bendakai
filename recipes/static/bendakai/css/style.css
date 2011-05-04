@@ -193,6 +193,12 @@ footer, header, hgroup, menu, nav, section {
   overflow: hidden;
 }
 
+/* line 18, ../scss/_base.scss */
+.spaced {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 /* line 3, ../scss/pages/_front.scss */
 .front #container > header > h1 {
   padding: 100px 30px 10px 30px;
