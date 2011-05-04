@@ -217,11 +217,5 @@ class Command(BaseCommand):
 				final_recipes.append(sorted_predictions[:num_recipes])
 			return final_recipes
 
-		
-		# Testing functions code.	
-		user1 = User.objects.get(id=1)
-		user2 = User.objects.get(id=2)
-		print user_similarity(user1, user1, True, True)
-		print mean_user(user1, True, False), mean_user(user2, True, False)
-
+		# Calculates 20 most recommended recipes for user. Can be refined according to calories etc.
 		print test_algorithms(recommendation_user)
