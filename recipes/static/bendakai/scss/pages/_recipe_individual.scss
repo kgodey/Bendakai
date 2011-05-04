@@ -83,6 +83,15 @@
 			margin-bottom:20px;
 			padding:$recipepadding 2*$recipepadding;
 			margin-top:-$recipepadding;
+			.recipe_rating{
+				display:inline-block;
+				position:relative;
+				top:3px;
+			}
+			& > a {
+				border-left:1px solid #CCC;
+				padding-left:9px;
+			}
 		}
 		.details{
 			float:right;

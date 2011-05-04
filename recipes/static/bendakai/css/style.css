@@ -471,7 +471,18 @@ footer, header, hgroup, menu, nav, section {
   padding: 10px 20px;
   margin-top: -10px;
 }
-/* line 87, ../scss/pages/_recipe_individual.scss */
+/* line 86, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage .recipe .recipeActions .recipe_rating {
+  display: inline-block;
+  position: relative;
+  top: 3px;
+}
+/* line 91, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage .recipe .recipeActions > a {
+  border-left: 1px solid #CCC;
+  padding-left: 9px;
+}
+/* line 96, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details {
   float: right;
   background: #EEE;
@@ -490,43 +501,43 @@ footer, header, hgroup, menu, nav, section {
   border-radius: 3px;
   white-space: nowrap;
 }
-/* line 99, ../scss/pages/_recipe_individual.scss */
+/* line 108, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details ul {
   padding: 10px;
 }
-/* line 102, ../scss/pages/_recipe_individual.scss */
+/* line 111, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-/* line 106, ../scss/pages/_recipe_individual.scss */
+/* line 115, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-button:start:decrement, .recipeindividualpage .recipe .details::-webkit-scrollbar-button:end:increment {
   display: block;
   height: 0;
   width: 0;
 }
-/* line 112, ../scss/pages/_recipe_individual.scss */
+/* line 121, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-track-piece {
   background-color: transparent;
   -webkit-border-radius: 3px;
 }
-/* line 117, ../scss/pages/_recipe_individual.scss */
+/* line 126, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-thumb:vertical {
   height: 0;
   background-color: rgba(0, 0, 0, 0.35);
   -webkit-border-radius: 3px;
 }
-/* line 123, ../scss/pages/_recipe_individual.scss */
+/* line 132, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-thumb:horizontal {
   width: 0;
   background-color: rgba(0, 0, 0, 0.35);
   -webkit-border-radius: 3px;
 }
-/* line 131, ../scss/pages/_recipe_individual.scss */
+/* line 140, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details strong {
   color: #222222;
 }
-/* line 136, ../scss/pages/_recipe_individual.scss */
+/* line 145, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .main header {
   font-size: 12px;
   font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
@@ -537,11 +548,11 @@ footer, header, hgroup, menu, nav, section {
   font-size: 18px;
   margin-bottom: 10px;
 }
-/* line 141, ../scss/pages/_recipe_individual.scss */
+/* line 150, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .main p {
   margin-bottom: 20px;
 }
-/* line 146, ../scss/pages/_recipe_individual.scss */
+/* line 155, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage #id_honeypot {
   height: 0;
   width: 0;
