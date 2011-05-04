@@ -309,7 +309,7 @@ def simple_search(request):
 		recipes = paginator.page(page)
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
-	return render_to_response('recipes/simple_search.html', {'recipes': recipes, 'term': searchterm,}, context_instance=RequestContext(request))
+	return render_to_response('recipes/recipe_list.html', {'recipes': recipes, 'title': u"Search for \u201c%s\u201d" % (searchterm,),}, context_instance=RequestContext(request))
 
 
 def tag_ajax(request):

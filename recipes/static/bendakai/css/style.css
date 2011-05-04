@@ -445,89 +445,89 @@ footer, header, hgroup, menu, nav, section {
 
 /* .recipeindividualpage */
 /* line 2, ../scss/pages/_add_recipe.scss */
-.addrecipepage .helptext_ri, .addrecipepage .helptext {
+.addrecipepage .helptext_ri, .correctrecipepage .helptext_ri, .addrecipepage .helptext, .correctrecipepage .helptext {
   font-family: Helvetica;
   font-size: 12px;
   color: #888888;
 }
 /* line 7, ../scss/pages/_add_recipe.scss */
-.addrecipepage table, .addrecipepage td, .addrecipepage th {
+.addrecipepage table, .correctrecipepage table, .addrecipepage td, .correctrecipepage td, .addrecipepage th, .correctrecipepage th {
   vertical-align: top;
 }
 /* line 10, ../scss/pages/_add_recipe.scss */
-.addrecipepage table {
+.addrecipepage table, .correctrecipepage table {
   width: 100%;
   margin: -5px;
 }
 /* line 12, ../scss/pages/_add_recipe.scss */
-.addrecipepage table input {
+.addrecipepage table input, .correctrecipepage table input {
   width: 100%;
 }
 /* line 17, ../scss/pages/_add_recipe.scss */
-.addrecipepage td, .addrecipepage th {
+.addrecipepage td, .correctrecipepage td, .addrecipepage th, .correctrecipepage th {
   padding: 5px;
 }
 /* line 20, ../scss/pages/_add_recipe.scss */
-.addrecipepage h4 {
+.addrecipepage h4, .correctrecipepage h4 {
   margin-bottom: 20px;
   padding-top: 17px;
   margin-top: 20px;
   border-top: 3px solid #890000;
 }
 /* line 26, ../scss/pages/_add_recipe.scss */
-.addrecipepage .errorlist {
+.addrecipepage .errorlist, .correctrecipepage .errorlist {
   color: #900;
   font-weight: bold;
 }
 
-/* line 36, ../scss/style.scss */
+/* line 37, ../scss/style.scss */
 q {
   font-style: italic;
 }
-/* line 38, ../scss/style.scss */
+/* line 39, ../scss/style.scss */
 q::before {
   content: "“";
 }
-/* line 41, ../scss/style.scss */
+/* line 42, ../scss/style.scss */
 q::after {
   content: "”";
 }
 
-/* line 45, ../scss/style.scss */
+/* line 46, ../scss/style.scss */
 .clear {
   display: block;
   clear: both;
 }
 
-/* line 46, ../scss/style.scss */
+/* line 47, ../scss/style.scss */
 .empty {
   height: 0;
   overflow: hidden;
 }
 
-/* line 47, ../scss/style.scss */
+/* line 48, ../scss/style.scss */
 a {
   text-decoration: none;
   color: #263366;
 }
-/* line 50, ../scss/style.scss */
+/* line 51, ../scss/style.scss */
 a:visited {
 @extends a;
 }
-/* line 53, ../scss/style.scss */
+/* line 54, ../scss/style.scss */
 a:hover {
   text-decoration: underline;
   color: #182041;
 }
 
-/* line 59, ../scss/style.scss */
+/* line 60, ../scss/style.scss */
 html {
   background: #cebb98 -webkit-gradient(linear, left top, left bottom, from(#f4ead8), to(#cebb98)) left top no-repeat fixed;
   background: #cebb98 -moz-linear-gradient(#f4ead8, #cebb98) left top no-repeat fixed;
   height: 100%;
 }
 
-/* line 64, ../scss/style.scss */
+/* line 65, ../scss/style.scss */
 body {
   padding-top: 1px;
   margin-top: -1px;
@@ -541,42 +541,42 @@ body {
   color: #222222;
 }
 
-/* line 77, ../scss/style.scss */
+/* line 78, ../scss/style.scss */
 .left-50 {
   width: 49%;
   float: left;
 }
 
-/* line 81, ../scss/style.scss */
+/* line 82, ../scss/style.scss */
 .right-50 {
   width: 49%;
   float: right;
 }
 
-/* line 87, ../scss/style.scss */
+/* line 88, ../scss/style.scss */
 .left-67, .front #mainCol {
   width: 66%;
   float: left;
 }
 
-/* line 91, ../scss/style.scss */
+/* line 92, ../scss/style.scss */
 .right-33, .front #highlights {
   width: 32%;
   float: right;
 }
 
-/* line 97, ../scss/style.scss */
+/* line 98, ../scss/style.scss */
 #userActions img {
   position: relative;
   top: 3px;
   left: 3px;
 }
 
-/* line 103, ../scss/style.scss */
+/* line 104, ../scss/style.scss */
 #container {
   margin: 40px 0 40px 180px;
 }
-/* line 106, ../scss/style.scss */
+/* line 107, ../scss/style.scss */
 #container > header > h1 {
   -moz-border-radius: 20px 0 0 0;
   -webkit-border-radius: 20px 0 0 0;
@@ -598,7 +598,7 @@ body {
   letter-spacing: 3px;
   line-height: 60px;
 }
-/* line 122, ../scss/style.scss */
+/* line 123, ../scss/style.scss */
 #container > nav#sideNav {
   position: absolute;
   top: 205px;
@@ -606,35 +606,35 @@ body {
   width: 180px;
   padding: 20px 0;
 }
-/* line 128, ../scss/style.scss */
+/* line 129, ../scss/style.scss */
 #container > nav#sideNav a {
   display: block;
   padding: 5px 20px;
   color: #695531;
   text-align: right;
 }
-/* line 133, ../scss/style.scss */
+/* line 134, ../scss/style.scss */
 #container > nav#sideNav a:hover {
   background: rgba(0, 0, 0, 0.1);
   color: #231d11;
   text-decoration: none;
 }
-/* line 138, ../scss/style.scss */
+/* line 139, ../scss/style.scss */
 #container > nav#sideNav a:active {
   background: rgba(0, 0, 0, 0.2);
 }
-/* line 144, ../scss/style.scss */
+/* line 145, ../scss/style.scss */
 #container > nav#userActions {
   position: absolute;
   top: 52px;
   right: 30px;
 }
-/* line 148, ../scss/style.scss */
+/* line 149, ../scss/style.scss */
 #container > nav#userActions li {
   float: left;
   margin: 5px 0;
 }
-/* line 151, ../scss/style.scss */
+/* line 152, ../scss/style.scss */
 #container > nav#userActions li a {
   display: block;
   color: #ffbcbc;
@@ -643,11 +643,11 @@ body {
   font-size: 13px;
   letter-spacing: 1px;
 }
-/* line 161, ../scss/style.scss */
+/* line 162, ../scss/style.scss */
 #container > nav#userActions li:first-child a {
   float: left;
 }
-/* line 164, ../scss/style.scss */
+/* line 165, ../scss/style.scss */
 #container > nav#userActions li:first-child::after {
   font-size: 11px;
   text-transform: uppercase;
@@ -657,7 +657,7 @@ body {
   content: "or";
   color: #e66f6f;
 }
-/* line 174, ../scss/style.scss */
+/* line 175, ../scss/style.scss */
 #container > nav#userActions li:nth-child(2) {
   margin: 4px;
   border: 1px solid #a30000;
@@ -669,7 +669,7 @@ body {
   border-radius: 5px;
   text-align: center;
 }
-/* line 179, ../scss/style.scss */
+/* line 180, ../scss/style.scss */
 #container > nav#userActions li:nth-child(2) a {
   border: 1px solid #700000;
   padding: 4px 10px;
@@ -685,7 +685,7 @@ body {
   background: -o-linear-gradient(top, #bc0000 0%, #9d0000 25%, #7a0000 100%);
   background: linear-gradient(top, #bc0000 0%, #9d0000 25%, #7a0000 100%);
 }
-/* line 184, ../scss/style.scss */
+/* line 185, ../scss/style.scss */
 #container > nav#userActions li:nth-child(2) a:hover {
   text-decoration: none;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #bc0000), color-stop(100%, #700000));
@@ -694,7 +694,7 @@ body {
   background: -o-linear-gradient(top, #bc0000, #700000);
   background: linear-gradient(top, #bc0000, #700000);
 }
-/* line 188, ../scss/style.scss */
+/* line 189, ../scss/style.scss */
 #container > nav#userActions li:nth-child(2) a:active {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #700000), color-stop(25%, #7f0000), color-stop(100%, #7f0000));
   background: -webkit-linear-gradient(top, #700000 0%, #7f0000 25%, #7f0000 100%);
@@ -702,7 +702,7 @@ body {
   background: -o-linear-gradient(top, #700000 0%, #7f0000 25%, #7f0000 100%);
   background: linear-gradient(top, #700000 0%, #7f0000 25%, #7f0000 100%);
 }
-/* line 196, ../scss/style.scss */
+/* line 197, ../scss/style.scss */
 #container > #main {
   background: white;
   padding: 20px 30px;
@@ -717,7 +717,7 @@ body {
   -o-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px;
   box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px;
 }
-/* line 203, ../scss/style.scss */
+/* line 204, ../scss/style.scss */
 #container > footer {
   text-align: right;
   padding: 20px;
@@ -725,7 +725,7 @@ body {
   font-size: 12px;
 }
 
-/* line 212, ../scss/style.scss */
+/* line 213, ../scss/style.scss */
 .page_title {
   text-transform: uppercase;
   font-size: 20px;
