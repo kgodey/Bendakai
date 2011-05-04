@@ -32,13 +32,11 @@
 			left:0;
 			width:$leftcolwidth;
 			text-align:right;
-			
+			border-right:1px solid $primaryaccent;
+			padding:$recipepadding #{$leftcolgutter/2} $recipepadding 0;
 			.ingredients, .tools{
 				margin-bottom:20px;
 				font-size:13px;
-				padding:$recipepadding #{$leftcolgutter/2} $recipepadding 0;
-				border-right:1px solid $primaryaccent;
-				margin-right:-#{1px + $leftcolgutter / 2};
 				li{
 					margin-bottom:5px;
 				}
@@ -75,6 +73,7 @@
 			.byline{
 				font-size:12px;
 				color:lighten($textcolor, 20%);
+				margin-top:20px;
 			}
 		} /* .sidebar */
 		.recipeActions{
@@ -87,13 +86,48 @@
 		}
 		.details{
 			float:right;
-			padding:$recipepadding;
 			background:#EEE;
 			margin-left:2*$recipepadding;
 			margin-bottom:$recipepadding;
 			color:lighten($textcolor, 30%);
 			font-size:13px;
 			font-style:italic;
+			max-width:50%;
+			overflow:auto;
+			@include border-radius(3px);
+			white-space:nowrap;
+			ul{
+				padding:$recipepadding;
+			}
+			&::-webkit-scrollbar {
+			    width: 6px;
+			    height: 6px;
+				&-button:start:decrement,
+				&-button:end:increment {
+				    display: block;
+				    height: 0;
+					width:0;
+				}
+
+				&-track-piece {
+				    background-color: transparent;
+				    -webkit-border-radius: 3px;
+				}
+
+				&-thumb:vertical {
+					height:0;
+				    background-color: rgba(0,0,0,.35);
+				    -webkit-border-radius: 3px;
+				}
+
+				&-thumb:horizontal {
+					width:0;
+				    background-color: rgba(0,0,0,.35);
+				    -webkit-border-radius: 3px;
+				}
+			}
+		
+			
 			strong{
 				color:$textcolor;
 			}

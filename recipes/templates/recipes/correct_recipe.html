@@ -1,10 +1,9 @@
 {% extends "recipes/base.html" %}
-{% load staticmedia %}
 {% load markup %}
 
 {% block title %} Correct Recipe on Bendakai {% endblock %}
 
-{% block extrahead %}
+{% block extra_javascript %}
 <script type="text/javascript">
 $(document).ready(function() {
 	$(".recipeingredient_ingredient_field").autocomplete({
@@ -15,8 +14,10 @@ $(document).ready(function() {
 	});
 });
 </script>
-<script type="text/javascript" src="{% mediaurl 'recipes/forms.js' %}"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}/bendakai/js/forms.js"></script>
 {% endblock %}
+
+{% block bodyclasses %}correctrecipepage{% endblock %}
 
 {% block content %}
 	<h2 class="page_title">Correct Recipe</h2>

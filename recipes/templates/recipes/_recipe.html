@@ -4,6 +4,7 @@
 {% load staticmedia %}
 
 <article class="recipe">
+	{% if r.average_rating or user.is_authenticated %}
 	<section class="recipeActions">	
 		{% if r.average_rating %}
 		<span class="byline">Average rating: </span><div class="recipe_rating" id="recipe_rating_{{ r.id }}"></div>
@@ -51,6 +52,7 @@
 				<a href="{% url edit_recipe id=r.id %}">(edit recipe)</a>
 		{% endif %}
 	</section>
+	{% endif %}
 	
 	<aside class="sidebar">
 	

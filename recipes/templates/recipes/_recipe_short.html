@@ -1,3 +1,5 @@
+{% load recipes %}
+
 <article class="recipeShort">
 	<header>
 		<h1><a href="{% url view_recipe id=recipe.id %}">{{ recipe.name }}</a></h1>
@@ -18,7 +20,7 @@
 		{% if recipe.ingredients.count > 0 %}
 			<b>Ingredients:</b>
 			{% for recipe_ingredient in recipe.ingredients.all %}
-				{% if recipe_ingredient.quantity %}{{ recipe_ingredient.quantity }} {% if recipe_ingredient.unit %}{{ recipe_ingredient.unit }}{% endif %}{% endif %}
+				{% if recipe_ingredient.quantity %}{{ recipe_ingredient.quantity|html_fraction|safe }} {% if recipe_ingredient.unit %}{{ recipe_ingredient.unit }}{% endif %}{% endif %}
 				{{ recipe_ingredient.ingredient.name }}
 				{% if recipe_ingredient.preparation %}({{ recipe_ingredient.preparation }}){% endif %}{% if not forloop.last %}, {% endif %}
 			{% endfor %}
