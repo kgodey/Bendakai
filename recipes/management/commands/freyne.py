@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 import operator
 
 ###########################################
-###	This code is currently experimental ###
+### This code is currently experimental ###
 ### and very inefficient. Please don't  ###
-### use it for practical purposes.		###
+### use it for practical purposes.      ###
 ###########################################
 
 class Command(BaseCommand):
