@@ -11,16 +11,21 @@
 		<p>Bendakai is Kriti Godey's honours project for her computer science degree. Its goal to be able to answer questions like <q>I've got six potatoes, an onion and milk. What healthy food can I cook with it?</q></p>
 	</div>
 	<div id="plan">
-		<h1>Plan a Meal</h1>
-		{# TODO: put a search form of some sort here. #}
+		<header>
+			<h1>Plan a Meal</h1>
+		</header>
+		<form method="get" action="{% url simple_search %}">
+			<input type="text" id="searchterm" name="searchterm" class="searchterm" {% if term %} value="{{ term }}" {% endif %}/>
+			<input type="submit" class="go" value="Go"/>
+		</form>
 	</div>
 </div>
 
 <div id="highlights">
-	<div id="top" class="recipeList">
+	<!-- div id="top" class="recipeList">
 		<h1>Top Rated Recipes</h1>
 		{# TODO: implement this somehow... #}
-	</div>
+	</div -->
 	<div id="top" class="recipeList">
 		<h1>Recently Added Recipes</h1>
 		<ol>
@@ -29,6 +34,10 @@
 			{% endfor %}
 		</ol>
 	</div>
+</div>
+
+<div class="facebook_like">
+	<fb:like href="http://bendakai.com" show_faces="false" width="450" font="arial"></fb:like>
 </div>
 
 {% endblock %}

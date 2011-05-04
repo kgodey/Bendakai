@@ -3,6 +3,12 @@
 	$leftcolgutter: 40px;
 	$recipepadding: 10px;
 	
+	.page_title{
+		.recipe_title, .recipe_rating{
+			display:inline;
+		}
+	}
+	
 	#commentswrapper{
 		margin-left:$leftcolwidth+$leftcolgutter;
 		header{
@@ -103,4 +109,12 @@
 			}
 		}
 	} /* .recipe */
+	#id_honeypot{
+		height:0;
+		width:0;
+		border:0;
+		padding:0;
+		margin:0;
+		overflow:hidden;
+	}
 } /* .recipeindividualpage */

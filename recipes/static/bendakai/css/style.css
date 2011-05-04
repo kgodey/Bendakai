@@ -1,4 +1,127 @@
 @import "http://fonts.googleapis.com/css?family=Josefin+Sans:100,regular,bold";
+/* Example tokeninput style #1: Token vertical list*/
+/* line 2, ../scss/token-input.scss */
+ul.token-input-list {
+  overflow: hidden;
+  height: auto !important;
+  height: 1%;
+  width: 400px;
+  border: 1px solid #999;
+  cursor: text;
+  font-size: 12px;
+  font-family: "Lucida Grande", sans-serif;
+  z-index: 999;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+/* line 17, ../scss/token-input.scss */
+ul.token-input-list li {
+  list-style-type: none;
+}
+
+/* line 21, ../scss/token-input.scss */
+ul.token-input-list li input {
+  border: 0;
+  width: 350px;
+  padding: 3px 8px;
+  background-color: white;
+}
+
+/* line 28, ../scss/token-input.scss */
+li.token-input-token {
+  overflow: hidden;
+  height: auto !important;
+  height: 1%;
+  margin: 3px;
+  padding: 3px 5px;
+  background-color: #D0D707;
+  color: #000;
+  cursor: default;
+  display: block;
+}
+
+/* line 40, ../scss/token-input.scss */
+li.token-input-token p {
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 46, ../scss/token-input.scss */
+li.token-input-token span {
+  float: right;
+  color: #777;
+  cursor: pointer;
+}
+
+/* line 52, ../scss/token-input.scss */
+li.token-input-selected-token {
+  background-color: #380A17;
+  color: #fff;
+}
+
+/* line 57, ../scss/token-input.scss */
+li.token-input-selected-token span {
+  color: #bbb;
+}
+
+/* line 61, ../scss/token-input.scss */
+div.token-input-dropdown {
+  position: absolute;
+  width: 400px;
+  background-color: #fff;
+  overflow: hidden;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  cursor: default;
+  font-size: 12px;
+  font-family: Warnock Pro;
+  z-index: 1;
+}
+
+/* line 75, ../scss/token-input.scss */
+div.token-input-dropdown p {
+  margin: 0;
+  padding: 5px;
+  color: #777;
+}
+
+/* line 81, ../scss/token-input.scss */
+div.token-input-dropdown ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 86, ../scss/token-input.scss */
+div.token-input-dropdown ul li {
+  background-color: #fff;
+  padding: 3px;
+  list-style-type: none;
+}
+
+/* line 92, ../scss/token-input.scss */
+div.token-input-dropdown ul li.token-input-dropdown-item {
+  background-color: #fafafa;
+}
+
+/* line 96, ../scss/token-input.scss */
+div.token-input-dropdown ul li.token-input-dropdown-item2 {
+  background-color: #fff;
+}
+
+/* line 100, ../scss/token-input.scss */
+div.token-input-dropdown ul li em {
+  font-style: normal;
+}
+
+/* line 104, ../scss/token-input.scss */
+div.token-input-dropdown ul li.token-input-selected-dropdown-item {
+  background-color: #d0efa0;
+}
+
 /* line 17, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -166,14 +289,18 @@ footer, header, hgroup, menu, nav, section {
 .recipeindividualpage {
   /* .recipe */
 }
-/* line 6, ../scss/pages/_recipe_individual.scss */
+/* line 7, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage .page_title .recipe_title, .recipeindividualpage .page_title .recipe_rating {
+  display: inline;
+}
+/* line 12, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage #commentswrapper {
   margin-left: 290px;
   border-top: 3px solid #890000;
   padding-top: 37px;
   margin-top: 40px;
 }
-/* line 8, ../scss/pages/_recipe_individual.scss */
+/* line 14, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage #commentswrapper header {
   font-size: 12px;
   font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
@@ -184,14 +311,14 @@ footer, header, hgroup, menu, nav, section {
   font-size: 18px;
   margin-bottom: 10px;
 }
-/* line 18, ../scss/pages/_recipe_individual.scss */
+/* line 24, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe {
   position: relative;
   padding-left: 290px;
   padding-top: 10px;
   /* .sidebar */
 }
-/* line 23, ../scss/pages/_recipe_individual.scss */
+/* line 29, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar {
   position: absolute;
   top: 0;
@@ -199,7 +326,7 @@ footer, header, hgroup, menu, nav, section {
   width: 250px;
   text-align: right;
 }
-/* line 30, ../scss/pages/_recipe_individual.scss */
+/* line 36, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar .ingredients, .recipeindividualpage .recipe .sidebar .tools {
   margin-bottom: 20px;
   font-size: 13px;
@@ -207,11 +334,11 @@ footer, header, hgroup, menu, nav, section {
   border-right: 1px solid #890000;
   margin-right: -21px;
 }
-/* line 36, ../scss/pages/_recipe_individual.scss */
+/* line 42, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar .ingredients li, .recipeindividualpage .recipe .sidebar .tools li {
   margin-bottom: 5px;
 }
-/* line 39, ../scss/pages/_recipe_individual.scss */
+/* line 45, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar .ingredients header, .recipeindividualpage .recipe .sidebar .tools header {
   font-size: 12px;
   font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
@@ -221,7 +348,7 @@ footer, header, hgroup, menu, nav, section {
   font-weight: bold;
   margin-bottom: 10px;
 }
-/* line 45, ../scss/pages/_recipe_individual.scss */
+/* line 51, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags {
   background: #ffefef;
   margin: 20px -10px;
@@ -239,32 +366,32 @@ footer, header, hgroup, menu, nav, section {
   -o-box-shadow: rgba(0, 0, 0, 0.15) 0 1px 2px inset;
   box-shadow: rgba(0, 0, 0, 0.15) 0 1px 2px inset;
 }
-/* line 53, ../scss/pages/_recipe_individual.scss */
+/* line 59, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags ul, .recipeindividualpage .recipe .sidebar section.tags li, .recipeindividualpage .recipe .sidebar section.tags header, .recipeindividualpage .recipe .sidebar section.tags h1 {
   display: inline;
 }
-/* line 56, ../scss/pages/_recipe_individual.scss */
+/* line 62, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags header {
   font-weight: bold;
 }
-/* line 59, ../scss/pages/_recipe_individual.scss */
+/* line 65, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags h1::after {
   content: ": ";
 }
-/* line 62, ../scss/pages/_recipe_individual.scss */
+/* line 68, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags li::after {
   content: ", ";
 }
-/* line 65, ../scss/pages/_recipe_individual.scss */
+/* line 71, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags li:last-child::after {
   content: "";
 }
-/* line 69, ../scss/pages/_recipe_individual.scss */
+/* line 75, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar .byline {
   font-size: 12px;
   color: #555555;
 }
-/* line 74, ../scss/pages/_recipe_individual.scss */
+/* line 80, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .recipeActions {
   background: #EEE;
   -moz-border-radius: 20px;
@@ -281,7 +408,7 @@ footer, header, hgroup, menu, nav, section {
   padding: 10px 20px;
   margin-top: -10px;
 }
-/* line 82, ../scss/pages/_recipe_individual.scss */
+/* line 88, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details {
   float: right;
   padding: 10px;
@@ -292,11 +419,11 @@ footer, header, hgroup, menu, nav, section {
   font-size: 13px;
   font-style: italic;
 }
-/* line 91, ../scss/pages/_recipe_individual.scss */
+/* line 97, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details strong {
   color: #222222;
 }
-/* line 96, ../scss/pages/_recipe_individual.scss */
+/* line 102, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .main header {
   font-size: 12px;
   font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
@@ -307,9 +434,18 @@ footer, header, hgroup, menu, nav, section {
   font-size: 18px;
   margin-bottom: 10px;
 }
-/* line 101, ../scss/pages/_recipe_individual.scss */
+/* line 107, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .main p {
   margin-bottom: 20px;
+}
+/* line 112, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage #id_honeypot {
+  height: 0;
+  width: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
 
 /* .recipeindividualpage */
@@ -349,54 +485,54 @@ footer, header, hgroup, menu, nav, section {
   font-weight: bold;
 }
 
-/* line 35, ../scss/style.scss */
+/* line 36, ../scss/style.scss */
 q {
   font-style: italic;
 }
-/* line 37, ../scss/style.scss */
+/* line 38, ../scss/style.scss */
 q::before {
   content: "“";
 }
-/* line 40, ../scss/style.scss */
+/* line 41, ../scss/style.scss */
 q::after {
   content: "”";
 }
 
-/* line 44, ../scss/style.scss */
+/* line 45, ../scss/style.scss */
 .clear {
   display: block;
   clear: both;
 }
 
-/* line 45, ../scss/style.scss */
+/* line 46, ../scss/style.scss */
 .empty {
   height: 0;
   overflow: hidden;
 }
 
-/* line 46, ../scss/style.scss */
+/* line 47, ../scss/style.scss */
 a {
   text-decoration: none;
   color: #263366;
 }
-/* line 49, ../scss/style.scss */
+/* line 50, ../scss/style.scss */
 a:visited {
 @extends a;
 }
-/* line 52, ../scss/style.scss */
+/* line 53, ../scss/style.scss */
 a:hover {
   text-decoration: underline;
   color: #182041;
 }
 
-/* line 58, ../scss/style.scss */
+/* line 59, ../scss/style.scss */
 html {
   background: #cebb98 -webkit-gradient(linear, left top, left bottom, from(#f4ead8), to(#cebb98)) left top no-repeat fixed;
   background: #cebb98 -moz-linear-gradient(#f4ead8, #cebb98) left top no-repeat fixed;
   height: 100%;
 }
 
-/* line 63, ../scss/style.scss */
+/* line 64, ../scss/style.scss */
 body {
   padding-top: 1px;
   margin-top: -1px;
@@ -410,35 +546,35 @@ body {
   color: #222222;
 }
 
-/* line 76, ../scss/style.scss */
+/* line 77, ../scss/style.scss */
 .left-50 {
   width: 49%;
   float: left;
 }
 
-/* line 80, ../scss/style.scss */
+/* line 81, ../scss/style.scss */
 .right-50 {
   width: 49%;
   float: right;
 }
 
-/* line 86, ../scss/style.scss */
+/* line 87, ../scss/style.scss */
 .left-67, .front #mainCol {
   width: 66%;
   float: left;
 }
 
-/* line 90, ../scss/style.scss */
+/* line 91, ../scss/style.scss */
 .right-33, .front #highlights {
   width: 32%;
   float: right;
 }
 
-/* line 96, ../scss/style.scss */
+/* line 97, ../scss/style.scss */
 #container {
   margin: 40px 0 40px 180px;
 }
-/* line 99, ../scss/style.scss */
+/* line 100, ../scss/style.scss */
 #container > header > h1 {
   -moz-border-radius: 20px 0 0 0;
   -webkit-border-radius: 20px 0 0 0;
@@ -460,7 +596,7 @@ body {
   letter-spacing: 3px;
   line-height: 60px;
 }
-/* line 115, ../scss/style.scss */
+/* line 116, ../scss/style.scss */
 #container > nav#sideNav {
   position: absolute;
   top: 205px;
@@ -468,35 +604,35 @@ body {
   width: 180px;
   padding: 20px 0;
 }
-/* line 121, ../scss/style.scss */
+/* line 122, ../scss/style.scss */
 #container > nav#sideNav a {
   display: block;
   padding: 5px 20px;
   color: #695531;
   text-align: right;
 }
-/* line 126, ../scss/style.scss */
+/* line 127, ../scss/style.scss */
 #container > nav#sideNav a:hover {
   background: rgba(0, 0, 0, 0.1);
   color: #231d11;
   text-decoration: none;
 }
-/* line 131, ../scss/style.scss */
+/* line 132, ../scss/style.scss */
 #container > nav#sideNav a:active {
   background: rgba(0, 0, 0, 0.2);
 }
-/* line 137, ../scss/style.scss */
+/* line 138, ../scss/style.scss */
 #container > nav#userActions {
   position: absolute;
   top: 52px;
   right: 30px;
 }
-/* line 141, ../scss/style.scss */
+/* line 142, ../scss/style.scss */
 #container > nav#userActions li {
   float: left;
   margin: 5px 0;
 }
-/* line 144, ../scss/style.scss */
+/* line 145, ../scss/style.scss */
 #container > nav#userActions li a {
   display: block;
   color: #ffbcbc;
@@ -505,11 +641,11 @@ body {
   font-size: 13px;
   letter-spacing: 1px;
 }
-/* line 154, ../scss/style.scss */
+/* line 155, ../scss/style.scss */
 #container > nav#userActions li:first-child a {
   float: left;
 }
-/* line 157, ../scss/style.scss */
+/* line 158, ../scss/style.scss */
 #container > nav#userActions li:first-child::after {
   font-size: 11px;
   text-transform: uppercase;
@@ -519,7 +655,7 @@ body {
   content: "or";
   color: #e66f6f;
 }
-/* line 167, ../scss/style.scss */
+/* line 168, ../scss/style.scss */
 #container > nav#userActions li:nth-child(2) {
   margin: 4px;
   border: 1px solid #a30000;
@@ -531,7 +667,7 @@ body {
   border-radius: 5px;
   text-align: center;
 }
-/* line 172, ../scss/style.scss */
+/* line 173, ../scss/style.scss */
 #container > nav#userActions li:nth-child(2) a {
   border: 1px solid #700000;
   padding: 4px 10px;
@@ -547,7 +683,7 @@ body {
   background: -o-linear-gradient(top, #bc0000 0%, #9d0000 25%, #7a0000 100%);
   background: linear-gradient(top, #bc0000 0%, #9d0000 25%, #7a0000 100%);
 }
-/* line 177, ../scss/style.scss */
+/* line 178, ../scss/style.scss */
 #container > nav#userActions li:nth-child(2) a:hover {
   text-decoration: none;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #bc0000), color-stop(100%, #700000));
@@ -556,7 +692,7 @@ body {
   background: -o-linear-gradient(top, #bc0000, #700000);
   background: linear-gradient(top, #bc0000, #700000);
 }
-/* line 181, ../scss/style.scss */
+/* line 182, ../scss/style.scss */
 #container > nav#userActions li:nth-child(2) a:active {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #700000), color-stop(25%, #7f0000), color-stop(100%, #7f0000));
   background: -webkit-linear-gradient(top, #700000 0%, #7f0000 25%, #7f0000 100%);
@@ -564,7 +700,7 @@ body {
   background: -o-linear-gradient(top, #700000 0%, #7f0000 25%, #7f0000 100%);
   background: linear-gradient(top, #700000 0%, #7f0000 25%, #7f0000 100%);
 }
-/* line 189, ../scss/style.scss */
+/* line 190, ../scss/style.scss */
 #container > #main {
   background: white;
   padding: 20px 30px;
@@ -579,7 +715,7 @@ body {
   -o-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px;
   box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px;
 }
-/* line 196, ../scss/style.scss */
+/* line 197, ../scss/style.scss */
 #container > footer {
   text-align: right;
   padding: 20px;
@@ -587,7 +723,7 @@ body {
   font-size: 12px;
 }
 
-/* line 205, ../scss/style.scss */
+/* line 206, ../scss/style.scss */
 .page_title {
   text-transform: uppercase;
   font-size: 20px;

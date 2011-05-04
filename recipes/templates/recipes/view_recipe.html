@@ -13,8 +13,21 @@
 {% block bodyclasses %}recipeindividualpage{% endblock %}
 
 {% block content %}
-
-	<h3 class="recipe_title page_title">{{ recipe.name }}</h3>
+	
+	<header class="page_title">
+		<h1 class="recipe_title">{{ recipe.name }}</h1>
+		{% if recipe.average_rating %}
+		<h2 class="recipe_rating" id="recipe_rating_top_{{ r.id }}"></h2>
+		<script type="text/javascript" charset="utf-8">
+			$('#recipe_rating_top_{{ r.id }}').raty({
+				path: "{{ STATIC_URL }}bendakai/graphics/raty_img/",
+				readOnly: true,
+				half: true,
+				start: {{ recipe.average_rating }},
+			});
+		</script>
+		{% endif %}
+	</header>
 
 	{% with recipe as r %}
 		{% include "recipes/_recipe.html" %}
