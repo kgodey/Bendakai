@@ -27,7 +27,7 @@ def all_recipes(request):
 		recipes = paginator.page(page)
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
-	return render_to_response('recipes/all_recipes.html', {'recipes': recipes,}, context_instance=RequestContext(request))
+	return render_to_response('recipes/recipe_list.html', {'recipes': recipes, 'title': u"All Recipes"}, context_instance=RequestContext(request))
 
 @login_required
 def add_recipe(request):
@@ -163,7 +163,8 @@ def userpage(request, username):
 
 
 def homepage(request):
-	return render_to_response('recipes/index.html', context_instance=RequestContext(request))
+	recent = Recipe.objects.all().order_by('-date_added')
+	return render_to_response('recipes/home.html', {'recent_recipes': recent}, context_instance=RequestContext(request))
 
 
 

@@ -1,0 +1,48 @@
+.front{
+	
+	#container > header > h1{
+		padding:100px 30px 10px 30px;
+	}
+	#container > nav#userActions{
+		top:148px;
+	}
+	
+	.recipeList{
+		padding:10px 10px 15px 10px;
+		background:lighten($primaryaccent, 70%);
+		margin:0 0 20px 0;
+		color: lighten($primaryaccent, 10%);
+		& > h1{
+			color: lighten($primaryaccent, 10%);
+			font-family: $smallheadfont;
+			font-weight:bold;
+			text-transform:uppercase;
+			letter-spacing:1px;
+			font-size:12px;
+			margin-bottom:10px;
+		}
+		time{
+			color:#888;
+			font-style:italic;
+		}
+		a:hover{
+			text-decoration:none;
+		}
+	}
+	
+	
+	#highlights{
+		@extend .right-33;
+	}
+	
+	#mainCol {
+		@extend .left-67;
+		
+		#about{
+			background:#EEE;
+			border-bottom:1px solid #DDD;
+			padding:10px 10px 9px 10px;
+			margin-bottom: 20px;
+		}
+	}
+}
