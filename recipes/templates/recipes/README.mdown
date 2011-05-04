@@ -1,6 +1,8 @@
 The following templates have been updated or written from the ground up by Harris:
 
 * __base.html
+* _recipe.html
+* _recipe_form.html
 * _recipe_list_inner.html
 * _recipe_short.html
 * add_recipe.html
@@ -8,5 +10,6 @@ The following templates have been updated or written from the ground up by Harri
 * modules/side_nav.html
 * module/user_actions.html
 * recipe_list.html
+* view_recipe.html
 
 The remaining templates should be obviated by templates with the new design and then removed.

@@ -16,7 +16,8 @@ $contentwidth: 960px;
 		"base",
 		"pages/front",
 		"pages/recipe_list",
-		"pages/recipe_individual";
+		"pages/recipe_individual",
+		"pages/add_recipe";
 
 @mixin simple-v-gradient($topcolor, $bottomcolor){
 	@include background(linear-gradient(top, $topcolor, $bottomcolor));

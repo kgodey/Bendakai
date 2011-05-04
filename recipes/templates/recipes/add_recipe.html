@@ -2,9 +2,11 @@
 
 {% block page_title %}Add Recipe{% endblock %}
 
-{% block extrahead %}
+{% block bodyclasses %}addrecipepage{% endblock %}
+
+{% block extra_javascript %}
 <script type="text/javascript">
-$(document).ready(function() {
+$(window).load(function() {
 	$(".recipeingredient_ingredient_field").autocomplete({
 		source: "/ajax/ingredient", delay: 30
 	});
@@ -17,8 +19,8 @@ $(document).ready(function() {
 {% endblock %}
 
 {% block content %}
-	<header id="pageTitle">
+	<header class="page_title">
 		<h1>Add a New Recipe</h1>
 	</header>
-	{% include "recipes/recipe_form.html" %}
+	{% include "recipes/_recipe_form.html" %}
 {% endblock %}
