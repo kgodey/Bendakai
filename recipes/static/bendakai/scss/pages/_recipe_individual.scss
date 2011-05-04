@@ -160,4 +160,30 @@
 		margin:0;
 		overflow:hidden;
 	}
+	#commentswrapper{
+		form{
+			margin-top:10px;
+			width:470px;
+			p{
+				@include clearfix;
+				border-top:1px solid #EEE;
+				padding-bottom:4px;
+				padding-top:5px;
+			}
+			label{
+				width:130px;
+				text-align:right;
+				padding-right:20px;
+				float:left;
+			}
+			input, textarea{
+				float:left;
+				width:300px;
+			}
+			input[type="submit"]{
+				width:220px;
+				margin-right:10px;
+			}
+		}
+	}
 } /* .recipeindividualpage */

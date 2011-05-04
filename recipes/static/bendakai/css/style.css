@@ -1,6 +1,6 @@
 @import "http://fonts.googleapis.com/css?family=Josefin+Sans:100,regular,bold";
 /* Example tokeninput style #1: Token vertical list*/
-/* line 2, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 2, ../scss/token-input.scss */
 ul.token-input-list {
   overflow: hidden;
   height: auto !important;
@@ -16,12 +16,12 @@ ul.token-input-list {
   background-color: #fff;
 }
 
-/* line 17, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 17, ../scss/token-input.scss */
 ul.token-input-list li {
   list-style-type: none;
 }
 
-/* line 21, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 21, ../scss/token-input.scss */
 ul.token-input-list li input {
   border: 0;
   width: 350px;
@@ -29,7 +29,7 @@ ul.token-input-list li input {
   background-color: white;
 }
 
-/* line 28, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 28, ../scss/token-input.scss */
 li.token-input-token {
   overflow: hidden;
   height: auto !important;
@@ -42,32 +42,32 @@ li.token-input-token {
   display: block;
 }
 
-/* line 40, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 40, ../scss/token-input.scss */
 li.token-input-token p {
   float: left;
   padding: 0;
   margin: 0;
 }
 
-/* line 46, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 46, ../scss/token-input.scss */
 li.token-input-token span {
   float: right;
   color: #777;
   cursor: pointer;
 }
 
-/* line 52, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 52, ../scss/token-input.scss */
 li.token-input-selected-token {
   background-color: #380A17;
   color: #fff;
 }
 
-/* line 57, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 57, ../scss/token-input.scss */
 li.token-input-selected-token span {
   color: #bbb;
 }
 
-/* line 61, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 61, ../scss/token-input.scss */
 div.token-input-dropdown {
   position: absolute;
   width: 400px;
@@ -82,47 +82,47 @@ div.token-input-dropdown {
   z-index: 1;
 }
 
-/* line 75, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 75, ../scss/token-input.scss */
 div.token-input-dropdown p {
   margin: 0;
   padding: 5px;
   color: #777;
 }
 
-/* line 81, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 81, ../scss/token-input.scss */
 div.token-input-dropdown ul {
   margin: 0;
   padding: 0;
 }
 
-/* line 86, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 86, ../scss/token-input.scss */
 div.token-input-dropdown ul li {
   background-color: #fff;
   padding: 3px;
   list-style-type: none;
 }
 
-/* line 92, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 92, ../scss/token-input.scss */
 div.token-input-dropdown ul li.token-input-dropdown-item {
   background-color: #fafafa;
 }
 
-/* line 96, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 96, ../scss/token-input.scss */
 div.token-input-dropdown ul li.token-input-dropdown-item2 {
   background-color: #fff;
 }
 
-/* line 100, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 100, ../scss/token-input.scss */
 div.token-input-dropdown ul li em {
   font-style: normal;
 }
 
-/* line 104, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/token-input.scss */
+/* line 104, ../scss/token-input.scss */
 div.token-input-dropdown ul li.token-input-selected-dropdown-item {
   background-color: #d0efa0;
 }
 
-/* line 17, /Users/harris/.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -144,82 +144,82 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 20, /Users/harris/.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 20, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
 }
 
-/* line 22, /Users/harris/.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 24, /Users/harris/.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 26, /Users/harris/.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 28, /Users/harris/.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 101, /Users/harris/.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 101, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 30, /Users/harris/.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 115, /Users/harris/.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 115, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-/* line 115, /Users/harris/.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 115, ../../../../../../.gem/ruby/1.8/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-/* line 16, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/_base.scss */
+/* line 16, ../scss/_base.scss */
 #container {
   overflow: hidden;
 }
 
-/* line 20, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/_base.scss */
+/* line 20, ../scss/_base.scss */
 .spaced {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-/* line 3, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 3, ../scss/pages/_front.scss */
 .front #container > header > h1 {
   padding: 100px 30px 10px 30px;
 }
-/* line 6, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 6, ../scss/pages/_front.scss */
 .front #container > nav#userActions {
   top: 148px;
 }
-/* line 10, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 10, ../scss/pages/_front.scss */
 .front .recipeList {
   padding: 10px 10px 15px 20px;
   margin: 0 0 20px 0;
   border-left: 1px solid #890000;
 }
-/* line 14, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 14, ../scss/pages/_front.scss */
 .front .recipeList > h1 {
   font-size: 12px;
   font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
@@ -229,27 +229,27 @@ footer, header, hgroup, menu, nav, section {
   font-weight: bold;
   margin-bottom: 10px;
 }
-/* line 18, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 18, ../scss/pages/_front.scss */
 .front .recipeList time {
   color: #888;
   font-style: italic;
 }
-/* line 22, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 22, ../scss/pages/_front.scss */
 .front .recipeList a:hover {
   text-decoration: none;
 }
-/* line 25, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 25, ../scss/pages/_front.scss */
 .front .recipeList li {
   margin-top: 5px;
 }
-/* line 38, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 38, ../scss/pages/_front.scss */
 .front #mainCol #about {
   background: #EEE;
   border-bottom: 1px solid #DDD;
   padding: 10px 10px 9px 10px;
   margin-bottom: 20px;
 }
-/* line 46, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 46, ../scss/pages/_front.scss */
 .front #plan {
   border-bottom: 3px solid #890000;
   padding-bottom: 17px;
@@ -257,7 +257,7 @@ footer, header, hgroup, menu, nav, section {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 47, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 47, ../scss/pages/_front.scss */
 .front #plan header {
   font-size: 12px;
   font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
@@ -269,7 +269,7 @@ footer, header, hgroup, menu, nav, section {
   line-height: 30px;
   margin-bottom: 10px;
 }
-/* line 56, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 56, ../scss/pages/_front.scss */
 .front #plan input {
   font-size: 20px;
   line-height: 40px;
@@ -280,18 +280,18 @@ footer, header, hgroup, menu, nav, section {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 61, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 61, ../scss/pages/_front.scss */
 .front #plan input[type='text'] {
   width: 70%;
   float: left;
   border: 2px solid #CCC;
 }
-/* line 65, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 65, ../scss/pages/_front.scss */
 .front #plan input[type='text']:focus {
   outline: none;
   border-color: #263366;
 }
-/* line 70, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 70, ../scss/pages/_front.scss */
 .front #plan input[type='submit'] {
   width: 25%;
   float: right;
@@ -300,21 +300,21 @@ footer, header, hgroup, menu, nav, section {
   background: #890000;
   color: #FFF;
 }
-/* line 77, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 77, ../scss/pages/_front.scss */
 .front #plan input[type='submit']:hover {
   background: #700000;
 }
-/* line 80, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_front.scss */
+/* line 80, ../scss/pages/_front.scss */
 .front #plan input[type='submit']:active {
   background: #560000;
 }
 
-/* line 2, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_list.scss */
+/* line 2, ../scss/pages/_recipe_list.scss */
 .recipelistpage .recipeShort {
   background: #f4ead8;
   margin-bottom: 20px;
 }
-/* line 5, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_list.scss */
+/* line 5, ../scss/pages/_recipe_list.scss */
 .recipelistpage .recipeShort header {
   background: #890000;
   color: #FFF;
@@ -327,11 +327,11 @@ footer, header, hgroup, menu, nav, section {
   padding-left: 10px;
   padding-right: 10px;
 }
-/* line 18, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_list.scss */
+/* line 18, ../scss/pages/_recipe_list.scss */
 .recipelistpage .recipeShort header h1, .recipelistpage .recipeShort header h2 {
   display: inline;
 }
-/* line 21, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_list.scss */
+/* line 21, ../scss/pages/_recipe_list.scss */
 .recipelistpage .recipeShort header h2 {
   color: #ee6767;
   font-family: Georgia, serif;
@@ -340,41 +340,41 @@ footer, header, hgroup, menu, nav, section {
   font-style: italic;
   line-height: 0;
 }
-/* line 29, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_list.scss */
+/* line 29, ../scss/pages/_recipe_list.scss */
 .recipelistpage .recipeShort header a {
   color: #FFF;
 }
-/* line 31, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_list.scss */
+/* line 31, ../scss/pages/_recipe_list.scss */
 .recipelistpage .recipeShort header a:hover {
   text-decoration: none;
 }
-/* line 36, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_list.scss */
+/* line 36, ../scss/pages/_recipe_list.scss */
 .recipelistpage .recipeShort .content {
   padding: 10px;
 }
-/* line 39, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_list.scss */
+/* line 39, ../scss/pages/_recipe_list.scss */
 .recipelistpage .recipeShort footer {
   padding: 5px 10px;
   background: #e9d5b0;
   font-size: 80%;
 }
 
-/* line 1, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 1, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage {
   /* .recipe */
 }
-/* line 7, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 7, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .page_title .recipe_title, .recipeindividualpage .page_title .recipe_rating {
   display: inline;
 }
-/* line 12, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 12, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage #commentswrapper {
   margin-left: 290px;
   border-top: 3px solid #890000;
   padding-top: 37px;
   margin-top: 40px;
 }
-/* line 14, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 14, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage #commentswrapper header {
   font-size: 12px;
   font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
@@ -385,14 +385,14 @@ footer, header, hgroup, menu, nav, section {
   font-size: 18px;
   margin-bottom: 10px;
 }
-/* line 24, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 24, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe {
   position: relative;
   padding-left: 290px;
   padding-top: 10px;
   /* .sidebar */
 }
-/* line 29, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 29, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar {
   position: absolute;
   top: 0;
@@ -402,16 +402,16 @@ footer, header, hgroup, menu, nav, section {
   border-right: 1px solid #890000;
   padding: 10px 20px 10px 0;
 }
-/* line 37, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 37, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar .ingredients, .recipeindividualpage .recipe .sidebar .tools {
   margin-bottom: 20px;
   font-size: 13px;
 }
-/* line 40, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 40, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar .ingredients li, .recipeindividualpage .recipe .sidebar .tools li {
   margin-bottom: 5px;
 }
-/* line 43, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 43, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar .ingredients header, .recipeindividualpage .recipe .sidebar .tools header {
   font-size: 12px;
   font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
@@ -421,7 +421,7 @@ footer, header, hgroup, menu, nav, section {
   font-weight: bold;
   margin-bottom: 10px;
 }
-/* line 49, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 49, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags {
   font-family: Helvetica, sans-serif;
   background: #EEE;
@@ -434,33 +434,33 @@ footer, header, hgroup, menu, nav, section {
   -o-box-shadow: rgba(0, 0, 0, 0.15) 0 1px 2px inset;
   box-shadow: rgba(0, 0, 0, 0.15) 0 1px 2px inset;
 }
-/* line 57, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 57, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags ul, .recipeindividualpage .recipe .sidebar section.tags li, .recipeindividualpage .recipe .sidebar section.tags header, .recipeindividualpage .recipe .sidebar section.tags h1 {
   display: inline;
 }
-/* line 60, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 60, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags header {
   font-weight: bold;
 }
-/* line 63, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 63, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags h1::after {
   content: ": ";
 }
-/* line 66, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 66, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags li::after {
   content: ", ";
 }
-/* line 69, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 69, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar section.tags li:last-child::after {
   content: "";
 }
-/* line 73, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 73, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .sidebar .byline {
   font-size: 12px;
   color: #555555;
   margin-top: 20px;
 }
-/* line 79, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 79, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .recipeActions {
   background: #EEE;
   -moz-border-radius: 20px;
@@ -477,18 +477,18 @@ footer, header, hgroup, menu, nav, section {
   padding: 10px 20px;
   margin-top: -10px;
 }
-/* line 86, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 86, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .recipeActions .recipe_rating {
   display: inline-block;
   position: relative;
   top: 3px;
 }
-/* line 91, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 91, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .recipeActions > a {
   border-left: 1px solid #CCC;
   padding-left: 9px;
 }
-/* line 96, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 96, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details {
   float: right;
   background: #EEE;
@@ -507,43 +507,43 @@ footer, header, hgroup, menu, nav, section {
   border-radius: 3px;
   white-space: nowrap;
 }
-/* line 108, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 108, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details ul {
   padding: 10px;
 }
-/* line 111, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 111, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-/* line 115, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 115, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-button:start:decrement, .recipeindividualpage .recipe .details::-webkit-scrollbar-button:end:increment {
   display: block;
   height: 0;
   width: 0;
 }
-/* line 121, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 121, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-track-piece {
   background-color: transparent;
   -webkit-border-radius: 3px;
 }
-/* line 126, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 126, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-thumb:vertical {
   height: 0;
   background-color: rgba(0, 0, 0, 0.35);
   -webkit-border-radius: 3px;
 }
-/* line 132, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 132, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details::-webkit-scrollbar-thumb:horizontal {
   width: 0;
   background-color: rgba(0, 0, 0, 0.35);
   -webkit-border-radius: 3px;
 }
-/* line 140, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 140, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .details strong {
   color: #222222;
 }
-/* line 145, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 145, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .main header {
   font-size: 12px;
   font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
@@ -554,11 +554,11 @@ footer, header, hgroup, menu, nav, section {
   font-size: 18px;
   margin-bottom: 10px;
 }
-/* line 150, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 150, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage .recipe .main p {
   margin-bottom: 20px;
 }
-/* line 155, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_recipe_individual.scss */
+/* line 155, ../scss/pages/_recipe_individual.scss */
 .recipeindividualpage #id_honeypot {
   height: 0;
   width: 0;
@@ -567,39 +567,69 @@ footer, header, hgroup, menu, nav, section {
   margin: 0;
   overflow: hidden;
 }
+/* line 164, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage #commentswrapper form {
+  margin-top: 10px;
+  width: 470px;
+}
+/* line 167, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage #commentswrapper form p {
+  overflow: hidden;
+  *zoom: 1;
+  border-top: 1px solid #EEE;
+  padding-bottom: 4px;
+  padding-top: 5px;
+}
+/* line 173, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage #commentswrapper form label {
+  width: 130px;
+  text-align: right;
+  padding-right: 20px;
+  float: left;
+}
+/* line 179, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage #commentswrapper form input, .recipeindividualpage #commentswrapper form textarea {
+  float: left;
+  width: 300px;
+}
+/* line 183, ../scss/pages/_recipe_individual.scss */
+.recipeindividualpage #commentswrapper form input[type="submit"] {
+  width: 220px;
+  margin-right: 10px;
+}
 
 /* .recipeindividualpage */
-/* line 2, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_add_recipe.scss */
+/* line 2, ../scss/pages/_add_recipe.scss */
 .addrecipepage .helptext_ri, .correctrecipepage .helptext_ri, .addrecipepage .helptext, .correctrecipepage .helptext {
   font-family: Helvetica;
   font-size: 12px;
   color: #888888;
 }
-/* line 7, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_add_recipe.scss */
+/* line 7, ../scss/pages/_add_recipe.scss */
 .addrecipepage table, .correctrecipepage table, .addrecipepage td, .correctrecipepage td, .addrecipepage th, .correctrecipepage th {
   vertical-align: top;
 }
-/* line 10, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_add_recipe.scss */
+/* line 10, ../scss/pages/_add_recipe.scss */
 .addrecipepage table, .correctrecipepage table {
   width: 100%;
   margin: -5px;
 }
-/* line 12, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_add_recipe.scss */
+/* line 12, ../scss/pages/_add_recipe.scss */
 .addrecipepage table input, .correctrecipepage table input {
   width: 100%;
 }
-/* line 17, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_add_recipe.scss */
+/* line 17, ../scss/pages/_add_recipe.scss */
 .addrecipepage td, .correctrecipepage td, .addrecipepage th, .correctrecipepage th {
   padding: 5px;
 }
-/* line 20, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_add_recipe.scss */
+/* line 20, ../scss/pages/_add_recipe.scss */
 .addrecipepage h4, .correctrecipepage h4 {
   margin-bottom: 20px;
   padding-top: 17px;
   margin-top: 20px;
   border-top: 3px solid #890000;
 }
-/* line 26, /Users/harris/Projects/Bendakai/recipes/static/bendakai/scss/pages/_add_recipe.scss */
+/* line 26, ../scss/pages/_add_recipe.scss */
 .addrecipepage .errorlist, .correctrecipepage .errorlist {
   color: #900;
   font-weight: bold;
