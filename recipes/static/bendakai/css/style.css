@@ -226,14 +226,18 @@ footer, header, hgroup, menu, nav, section {
 .front .recipeList a:hover {
   text-decoration: none;
 }
-/* line 35, ../scss/pages/_front.scss */
+/* line 25, ../scss/pages/_front.scss */
+.front .recipeList li {
+  margin-top: 5px;
+}
+/* line 38, ../scss/pages/_front.scss */
 .front #mainCol #about {
   background: #EEE;
   border-bottom: 1px solid #DDD;
   padding: 10px 10px 9px 10px;
   margin-bottom: 20px;
 }
-/* line 43, ../scss/pages/_front.scss */
+/* line 46, ../scss/pages/_front.scss */
 .front #plan {
   border-bottom: 3px solid #890000;
   padding-bottom: 17px;
@@ -241,7 +245,7 @@ footer, header, hgroup, menu, nav, section {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 44, ../scss/pages/_front.scss */
+/* line 47, ../scss/pages/_front.scss */
 .front #plan header {
   font-size: 12px;
   font-family: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
@@ -253,7 +257,7 @@ footer, header, hgroup, menu, nav, section {
   line-height: 30px;
   margin-bottom: 10px;
 }
-/* line 53, ../scss/pages/_front.scss */
+/* line 56, ../scss/pages/_front.scss */
 .front #plan input {
   font-size: 20px;
   line-height: 40px;
@@ -264,18 +268,18 @@ footer, header, hgroup, menu, nav, section {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 58, ../scss/pages/_front.scss */
+/* line 61, ../scss/pages/_front.scss */
 .front #plan input[type='text'] {
   width: 70%;
   float: left;
   border: 2px solid #CCC;
 }
-/* line 62, ../scss/pages/_front.scss */
+/* line 65, ../scss/pages/_front.scss */
 .front #plan input[type='text']:focus {
   outline: none;
   border-color: #263366;
 }
-/* line 67, ../scss/pages/_front.scss */
+/* line 70, ../scss/pages/_front.scss */
 .front #plan input[type='submit'] {
   width: 25%;
   float: right;
@@ -284,11 +288,11 @@ footer, header, hgroup, menu, nav, section {
   background: #890000;
   color: #FFF;
 }
-/* line 74, ../scss/pages/_front.scss */
+/* line 77, ../scss/pages/_front.scss */
 .front #plan input[type='submit']:hover {
   background: #700000;
 }
-/* line 77, ../scss/pages/_front.scss */
+/* line 80, ../scss/pages/_front.scss */
 .front #plan input[type='submit']:active {
   background: #560000;
 }
