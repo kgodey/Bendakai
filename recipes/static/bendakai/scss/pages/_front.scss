@@ -1,4 +1,12 @@
 .front{
+	
+	#container > header > h1{
+		padding:100px 30px 10px 30px;
+	}
+	#container > nav#userActions{
+		top:148px;
+	}
+	
 	.recipeList{
 		padding:10px 10px 15px 10px;
 		background:lighten($primaryaccent, 70%);

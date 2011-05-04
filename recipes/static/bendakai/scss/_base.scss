@@ -1,0 +1,16 @@
+@mixin small-header{
+	font-size:12px;
+	font-family:$headerfont;
+	letter-spacing:1px;
+	text-transform:uppercase;
+	color:$primaryaccent;
+	font-weight:bold;
+}
+
+@mixin light-inset{
+	@include box-shadow(rgba(0,0,0,.15) 0 1px 2px inset);
+}
+
+#container{
+	overflow:hidden;
+}

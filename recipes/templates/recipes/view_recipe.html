@@ -1,40 +1,51 @@
 {% extends "recipes/base.html" %}
-{% load recipes %}
-{% load markup %}
-{% load comments %}
+
+{% load recipes markup comments %}
 
 {% block extraog %}
-<meta property="og:title" content="{{ recipe.name }}" />
-<meta property="og:type" content="food" />
-<meta property="og:url" content="http://bendakai.com{% url view_recipe id=recipe.id %}" />
+	<meta property="og:title" content="{{ recipe.name }}" />
+	<meta property="og:type" content="food" />
+	<meta property="og:url" content="http://bendakai.com{% url view_recipe id=recipe.id %}" />
 {% endblock %}
 
-{% block title %} {{ recipe.name }} on Bendakai {% endblock %}
+{% block page_title %}{{ recipe.name }}{% endblock %}
+
+{% block bodyclasses %}recipeindividualpage{% endblock %}
 
 {% block content %}
-{% with recipe as r %}
-	{% include "recipes/recipe.html" %}
-{% endwith %}
-	{% get_comment_count for recipe as comment_count %}
-	<h4 class="comments">Comments</h4>
-	<p class="comments">{{ comment_count }} comments on this recipe.</p>
-	{% render_comment_list for recipe %}
-	{% if request.user.is_authenticated %}
-	<h5 class="comments">Add a comment!</h5>
-	{% get_comment_form for recipe as form %}
-	    <form action="{% comment_form_target %}" method="POST"> 
-	{{ form.comment }} 
-	{{ form.honeypot }} 
-	{{ form.content_type }} 
-	{{ form.object_pk }} 
-	{{ form.timestamp }} 
-	{{ form.security_hash }} 
-	{% csrf_token %}
-	<input type="hidden" name="next" value="{% url view_recipe id=recipe.id %}" />
+
+	<h3 class="recipe_title page_title">{{ recipe.name }}</h3>
+
+	{% with recipe as r %}
+		{% include "recipes/recipe.html" %}
+	{% endwith %}
+
+	<div id="commentswrapper">
+		{% get_comment_count for recipe as comment_count %}
+		<header>
+			<h1 class="comments">Comments</h1>
+		</header>
+		<p class="comments">{{ comment_count }} comments on this recipe.</p>
 	
-	<br/><input type="submit" value="Add comment" id="id_submit" />
-	</form> 
-	{% else %}
-	{% render_comment_form for recipe %}
-	{% endif %}
+		{% render_comment_list for recipe %}
+	
+		{% if request.user.is_authenticated %}
+			<h5 class="comments">Add a comment!</h5>
+			{% get_comment_form for recipe as form %}
+	
+			<form action="{% comment_form_target %}" method="POST"> 
+				{{ form.comment }} 
+				{{ form.honeypot }} 
+				{{ form.content_type }} 
+				{{ form.object_pk }} 
+				{{ form.timestamp }} 
+				{{ form.security_hash }} 
+				{% csrf_token %}
+				<input type="hidden" name="next" value="{% url view_recipe id=recipe.id %}" />
+				<br/><input type="submit" value="Add comment" id="id_submit" />
+			</form>
+		{% else %}
+			{% render_comment_form for recipe %}
+		{% endif %}
+	</div>
 {% endblock %}

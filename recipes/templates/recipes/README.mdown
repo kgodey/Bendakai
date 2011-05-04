@@ -1,4 +1,4 @@
-The following templates have been written from the ground up by Harris:
+The following templates have been updated or written from the ground up by Harris:
 
 * __base.html
 * _recipe_list_inner.html

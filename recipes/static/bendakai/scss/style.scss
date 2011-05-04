@@ -1,6 +1,7 @@
 $headerfont: "Josefin Sans", HelveticaNeue-UltraLight, Helvetica, Arial, sans-serif;
 $smallheadfont: Helvetica, Arial, sans-serif;
 $textfont: Georgia, serif;
+$textcolor:#222;
 $primaryaccent: #890000;
 $secondaryaccent: #263366;
 $background: #F4EAD8;
@@ -12,19 +13,22 @@ $contentwidth: 960px;
 		"compass/css3/border-radius",
 		"compass/css3/box-shadow",
 		"compass/css3/images",
+		"base",
 		"pages/front",
-		"pages/recipe_list";
+		"pages/recipe_list",
+		"pages/recipe_individual";
 
 @mixin simple-v-gradient($topcolor, $bottomcolor){
-	background: $bottomcolor -webkit-gradient(linear, left top, left bottom, from($topcolor), to($bottomcolor));
+	@include background(linear-gradient(top, $topcolor, $bottomcolor));
 }
 
 @mixin simple-v-gradient-fixed($topcolor, $bottomcolor){
 	background: $bottomcolor -webkit-gradient(linear, left top, left bottom, from($topcolor), to($bottomcolor)) left top no-repeat fixed;
+	background: $bottomcolor -moz-linear-gradient($topcolor, $bottomcolor) left top no-repeat fixed;
 }
 
 @mixin upweighted-gradient($topcolor, $middlecolor, $bottomcolor){
-	background: $bottomcolor -webkit-gradient(linear, left top, left bottom, from($topcolor), to($bottomcolor), color-stop(.25,$middlecolor));
+	@include background(linear-gradient(top, $topcolor 0%, $middlecolor 25%, $bottomcolor 100%));
 }
 
 q{
@@ -65,6 +69,7 @@ body{
 	font-size:15px;
 	line-height:20px;
 	min-height:100%;
+	color:$textcolor;
 }
 
 .left-50{
@@ -95,6 +100,7 @@ body{
 		@include box-shadow(rgba(0,0,0, .25) 0 1px 3px);
 		background:$primaryaccent;
 		color:#FFF;
+		padding:5px 30px 0 30px;
 		font:{
 			family:$headerfont;
 			weight:200;
@@ -103,7 +109,6 @@ body{
 		text-transform:uppercase;
 		letter-spacing:3px;
 		line-height:60px;
-		padding:100px 30px 10px 30px;
 	}
 	
 	& > nav#sideNav {
@@ -130,7 +135,7 @@ body{
 	
 	& > nav#userActions {
 		position:absolute;
-		top:148px;
+		top:52px;
 		right:30px;
 		li{
 			float:left;
@@ -196,19 +201,25 @@ body{
 	
 }
 
-#pageTitle{
-	$color:#D0D9E5;
+.page_title{
+	text-transform:uppercase;
+	font-size:20px;
+	font-family:$headerfont;
+	line-height:50px;
 	margin:{
 		top:-20px;
 		left:-30px;
 		right:-30px;
-		bottom:30px;
+		bottom:20px;
 	};
-	padding:15px 30px;
-	text-shadow:0 1px 0 #FFF;
-	@include background(linear-gradient(top, $color, darken($color, 5%)));
-	border-bottom:1px solid darken($color, 10%);
-	border-top:1px solid #FFF;
-	font-size: 20px;
-	color:darken($color, 70%);
+	padding:{
+		left:30px;
+		right:30px;
+		top:55px;
+		bottom:0;
+	};
+	color:#FFF;
+	font-weight:normal;
+	letter-spacing:2px;
+	background:darken($primaryaccent, 10%);
 }

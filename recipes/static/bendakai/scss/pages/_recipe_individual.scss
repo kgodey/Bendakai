@@ -1,0 +1,106 @@
+.recipeindividualpage{
+	$leftcolwidth: 250px;
+	$leftcolgutter: 40px;
+	$recipepadding: 10px;
+	
+	#commentswrapper{
+		margin-left:$leftcolwidth+$leftcolgutter;
+		header{
+			@include small-header;
+			font-size:18px;
+			margin-bottom:10px;
+		}
+		border-top:3px solid $primaryaccent;
+		padding-top:37px;
+		margin-top:40px;
+	}
+	
+	.recipe{
+		position:relative;
+		padding-left:$leftcolwidth+$leftcolgutter;
+		padding-top:$recipepadding;
+		
+		.sidebar{
+			position:absolute;
+			top:0;
+			left:0;
+			width:$leftcolwidth;
+			text-align:right;
+			
+			.ingredients, .tools{
+				margin-bottom:20px;
+				font-size:13px;
+				padding:$recipepadding #{$leftcolgutter/2} $recipepadding 0;
+				border-right:1px solid $primaryaccent;
+				margin-right:-#{1px + $leftcolgutter / 2};
+				li{
+					margin-bottom:5px;
+				}
+				header{
+					@include small-header;
+					margin-bottom: 10px;
+				}
+			}
+			
+			section.tags{
+				background: lighten($primaryaccent, 70%);
+				margin:20px -10px;
+				padding:10px;
+				font-size:12px;
+				text-align:left;
+				@include border-radius(10px);
+				@include light-inset;
+				ul, li, header, h1{
+					display:inline;
+				}
+				header{
+					font-weight:bold;
+				}
+				h1::after{
+					content:": ";
+				}
+				li::after{
+					content:", ";
+				}
+				li:last-child::after{
+					content:"";
+				}
+			}
+			.byline{
+				font-size:12px;
+				color:lighten($textcolor, 20%);
+			}
+		} /* .sidebar */
+		.recipeActions{
+			background:#EEE;
+			@include border-radius(20px);
+			@include light-inset;
+			margin-bottom:20px;
+			padding:$recipepadding 2*$recipepadding;
+			margin-top:-$recipepadding;
+		}
+		.details{
+			float:right;
+			padding:$recipepadding;
+			background:#EEE;
+			margin-left:2*$recipepadding;
+			margin-bottom:$recipepadding;
+			color:lighten($textcolor, 30%);
+			font-size:13px;
+			font-style:italic;
+			strong{
+				color:$textcolor;
+			}
+		}
+		.main{
+			header{
+				@include small-header;
+				font-size:18px;
+				margin-bottom:10px;
+			}
+			p{
+				margin-bottom:20px;
+			}
+		}
+	} /* .recipe */
+} /* .recipeindividualpage */
