@@ -32,7 +32,7 @@
 		<h1>Recently Added Recipes</h1>
 		<ol>
 			{% for recipe in recent_recipes|slice:":10" %}
-			<li><a href="#"><span class="title">{{ recipe.name|title }}</span> {% if recipe.prep_time %}<time>{{ recipe.prep_time }}m</time>{% endif %}</a></li>
+			<li><a href="{% url view_recipe id=recipe.id %}"><span class="title">{{ recipe.name|title }}</span> {% if recipe.prep_time %}<time>{{ recipe.prep_time }}m</time>{% endif %}</a></li>
 			{% endfor %}
 		</ol>
 	</div>
