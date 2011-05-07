@@ -9,7 +9,7 @@ built on the Django framework. It is a work in progress.
 Features in Progress
 ====================
 
-See `Features Planned <https://github.com/kgodey/Bendakai/wiki/Features-Planned/>`_ 
+See `Features Planned <https://github.com/kgodey/Bendakai/wiki/Features-Planned/>`_. 
 Any comments or suggestions are appreciated.
 
 Installation
