@@ -9,12 +9,7 @@ built on the Django framework. It is a work in progress.
 Features in Progress
 ====================
 
-#. Recipe recommendations.
-#. "User Pantry" to allow users to store ingredients.
-#. Integration of recipes with USDA nutritional database.
-#. Meal plan storage.
-#. Grocery list generation.
-
+See `Features Planned <https://github.com/kgodey/Bendakai/wiki/Features-Planned/>`_ 
 Any comments or suggestions are appreciated.
 
 Installation
