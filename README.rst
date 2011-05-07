@@ -21,6 +21,7 @@ Installation
 ============
 
 Code that Bendakai uses that is not in this repository:
+
 * 'South <http://south.aeracode.org/>'_
 * 'oauth2 <http://pypi.python.org/pypi/oauth2/>'_
 * 'python-openid <http://pypi.python.org/pypi/python-openid>'_
