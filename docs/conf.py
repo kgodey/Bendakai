@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# bendakai documentation build configuration file, created by
+# Bendakai documentation build configuration file, created by
 # sphinx-quickstart on Sat May  7 06:57:02 2011.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'bendakai'
+project = u'Bendakai'
 copyright = u'2011, Kriti Godey'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -91,7 +91,10 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'default'
+html_theme = 'agogo'
+#html_theme_options = {
+#    "headerbg": "true",
+#}
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -164,7 +167,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'bendakaidoc'
+htmlhelp_basename = 'Bendakaidoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -178,7 +181,7 @@ htmlhelp_basename = 'bendakaidoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'bendakai.tex', u'bendakai Documentation',
+  ('index', 'Bendakai.tex', u'Bendakai Documentation',
    u'Kriti Godey', 'manual'),
 ]
 
@@ -211,7 +214,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'bendakai', u'bendakai Documentation',
+    ('index', 'Bendakai', u'Bendakai Documentation',
      [u'Kriti Godey'], 1)
 ]
 

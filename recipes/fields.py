@@ -3,10 +3,25 @@ from fractions import Fraction
 import re
 
 class FractionField(forms.RegexField):
+	"""
+	A class that converts fractional input into floats for storage.
+	
+	"""
+	
 	def __init__(self, *args, **kwargs):
 		super(FractionField, self).__init__(r'^((?:\d+\.?\d*/?\d*)(?: \d+/\d+)?)$', *args, **kwargs)
 	
 	def to_python(self, value):
+		"""
+		Coerces the fractional input into a float. Matches input in the set 
+		[x, x/y, x y/z] where x, y, z are decimal numbers.
+		
+		Keyword arguments:
+		self -- the FractionField instance on which this method is called.
+		value -- the value to be converted into a float.
+		
+		"""
+		
 		if value == '':
 			return None
 		else:
