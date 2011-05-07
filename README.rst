@@ -14,3 +14,14 @@ Features in Progress
 #. Integration of recipes with USDA nutritional database.
 #. Meal plan storage.
 #. Grocery list generation.
+
+Any comments or suggestions are appreciated.
+
+Installation
+============
+
+Code that Bendakai uses that is not in this repository:
+- 'South <http://south.aeracode.org/>'_
+- 'oauth2 <http://pypi.python.org/pypi/oauth2/>'_
+- 'python-openid <http://pypi.python.org/pypi/python-openid>'_
+- 'python-sdk <https://github.com/facebook/python-sdk>'_
