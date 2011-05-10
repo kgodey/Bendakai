@@ -1,3 +1,6 @@
+# Code by Max Rabkin
+# Retrieved from http://code.djangoproject.com/attachment/ticket/4394/fraction3.diff
+
 from django import template
 
 register = template.Library()
