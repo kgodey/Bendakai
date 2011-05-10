@@ -6,14 +6,37 @@ from fields import FractionField
 from tagging.fields import TagField
 
 class RecipeForm(forms.ModelForm):
+	"""
+	A class that defines the form for recipe submission.
+	
+	"""
+	
 	tools = forms.CharField(required=False, help_text=Recipe._meta.get_field('tools').help_text, widget=forms.TextInput(attrs={'class': 'recipe_tools'}))
 	
 	class Meta:
-		model =  Recipe
+		"""
+		A class that defines the properties of the form, including
+		which model to use for creation and which fields to include
+		from it.
+		
+		"""
+		
+		model = Recipe
 		fields = ('name', 'servings', 'prep_time', 'cook_time', 'directions', 'is_public', 'source', 'notes', 'tags')
 	
-	def save(self, force_insert=False, force_update=False, commit=True):
+	def save(self, commit=True):
+		"""
+		An overwrite of the form save method that parses the tools
+		added.
+		
+		Keyword arguments:
+		self -- the RecipeForm instance
+		commit -- whether the changes to the form should be committed
+		
+		"""
+		
 		m = super(RecipeForm, self).save(commit=False)
+		# Parsing the "tools" field in the form
 		tools = str(self.cleaned_data['tools']).split(',')
 		for tool_name in tools:
 			if tool_name != '':
@@ -26,17 +49,40 @@ class RecipeForm(forms.ModelForm):
 
 
 class RecipeIngredientForm(forms.ModelForm):
+	"""
+	A class that defines the form for submission of ingredients
+	associated with a recipe.
+	
+	"""
+	
 	ingredient_name = forms.CharField(help_text=RecipeIngredient._meta.get_field('ingredient').help_text, widget=forms.TextInput(attrs={'class': 'recipeingredient_ingredient_field'}))
 	quantity = FractionField(required=False, help_text=RecipeIngredient._meta.get_field('quantity').help_text,widget=forms.TextInput(attrs={'class': 'recipeingredient_quantity_field'}))
 	max_quantity = FractionField(required=False, help_text=RecipeIngredient._meta.get_field('max_quantity').help_text, widget=forms.TextInput(attrs={'class': 'recipeingredient_max_quantity_field'}))
 	unit_name = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'recipeingredient_unit_field'}))
 	
 	class Meta:
+		"""
+		A class that defines the properties of the form, including
+		which model to use for creation and which fields to include
+		from it.
+		
+		"""
+		
 		model = RecipeIngredient
 		exclude = ('ingredient', 'unit')
 		fields = ('ingredient_name', 'quantity', 'max_quantity', 'unit_name', 'preparation', 'optional')
 	
-	def save(self, force_insert=False, force_update=False, commit=True):
+	def save(self, commit=True):
+		"""
+		An overwrite of the form save method that parses the ingredients,
+		units and optional fields.
+		
+		Keyword arguments:
+		self -- the RecipeIngredientForm instance
+		commit -- whether the changes to the form should be committed
+		
+		"""
+		
 		m = super(RecipeIngredientForm, self).save(commit=False)
 		ingredient_name = self.cleaned_data['ingredient_name']
 		unit_name = self.cleaned_data['unit_name']
@@ -51,6 +97,15 @@ class RecipeIngredientForm(forms.ModelForm):
 		return m
 	
 	def __init__(self, *args, **kwargs):
+		"""
+		An overwrite of the form's initialisation methods that prepopulate
+		the ingredient and unit fields if the data is available.
+		
+		Keyword arguments:
+		self -- the RecipeIngredientForm instance
+		
+		"""
+		
 		instance = kwargs.get('instance', None)
 		initial = kwargs.pop('initial', None)
 		if instance is not None:
@@ -63,15 +118,3 @@ class RecipeIngredientForm(forms.ModelForm):
 		super(RecipeIngredientForm, self).__init__(*args, **kwargs)
 
 RecipeIngredientsFormset = forms.models.inlineformset_factory(Recipe, RecipeIngredient, form=RecipeIngredientForm)
-
-
-# class AdvancedSearchForm(forms.Form):
-# 	name = forms.CharField()
-# 	prep_time = forms.IntegerField()
-# 	cook_time = forms.IntegerField()
-# 	directions = forms.CharField()
-# 	ingredients = forms.CharField()
-# 	tools = forms.CharField()
-# 	tags = TagField()
-# 	source = forms.CharField()
-# 	notes = forms.CharField()
