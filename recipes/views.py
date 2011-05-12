@@ -190,7 +190,7 @@ def recipe_by_tag(request, tag):
 		recipes = paginator.page(page)
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
-	return render_to_response('recipes/recipe_by_tag.html', {'recipes': recipes, 'title': u"Tagged \u201c%s\u201d" % (tag_object.name,),}, context_instance=RequestContext(request))
+	return render_to_response('recipes/recipe_list.html', {'recipes': recipes, 'title': u"Tagged \u201c%s\u201d" % (tag_object.name,),}, context_instance=RequestContext(request))
 
 
 def recipe_by_tool(request, tool):
@@ -208,7 +208,7 @@ def recipe_by_tool(request, tool):
 		recipes = paginator.page(page)
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
-	return render_to_response('recipes/recipe_by_tool.html', {'recipes': recipes, 'title': u"Recipes that use \u201c%s\u201d" % (tool_object.name,),}, context_instance=RequestContext(request))
+	return render_to_response('recipes/recipe_list.html', {'recipes': recipes, 'title': u"Recipes that use \u201c%s\u201d" % (tool_object.name,),}, context_instance=RequestContext(request))
 
 
 def recipe_by_ingredient(request, ingredient):
@@ -222,7 +222,7 @@ def recipe_by_ingredient(request, ingredient):
 		recipes = paginator.page(page)
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
-	return render_to_response('recipes/recipe_by_ingredient.html', {'recipes': recipes, 'title': u"\u201c%s\u201d Recipes" % (ingredient,),}, context_instance=RequestContext(request))
+	return render_to_response('recipes/recipe_list.html', {'recipes': recipes, 'title': u"\u201c%s\u201d Recipes" % (ingredient,),}, context_instance=RequestContext(request))
 
 @login_required
 def get_user_recipe_rating(request, recipe_id):
