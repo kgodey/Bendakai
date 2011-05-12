@@ -148,8 +148,10 @@ def userpage(request, username):
 	recipe_user = User.objects.get(username = username)
 	if request.user == recipe_user:
 		recipes = Recipe.objects.filter(user__username = username)
+		username_displayed = "My "
 	else:
 		recipes = Recipe.objects.filter(user__username = username, is_public=True)
+		username_displayed = u"%s\u0027s" % (recipe_user.get_full_name() if recipe_user.first_name else recipe_user.username,)
 	paginator = Paginator(recipes, 5)
 	try:
 		page = int(request.GET.get('page', '1'))
@@ -159,7 +161,7 @@ def userpage(request, username):
 		recipes = paginator.page(page)
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
-	return render_to_response('recipes/recipe_list.html', {'recipes': recipes, 'title': u"%s\u0027s Recipes" % (recipe_user.get_full_name() if recipe_user.first_name else recipe_user.username,)}, context_instance=RequestContext(request))
+	return render_to_response('recipes/recipe_list.html', {'recipes': recipes, 'title': u"%s Recipes" % (username_displayed,)}, context_instance=RequestContext(request))
 
 
 def homepage(request):
@@ -188,7 +190,7 @@ def recipe_by_tag(request, tag):
 		recipes = paginator.page(page)
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
-	return render_to_response('recipes/recipe_by_tag.html', {'recipes': recipes, 'tag': tag_object,}, context_instance=RequestContext(request))
+	return render_to_response('recipes/recipe_by_tag.html', {'recipes': recipes, 'title': u"Tagged \u201c%s\u201d" % (tag_object.name,),}, context_instance=RequestContext(request))
 
 
 def recipe_by_tool(request, tool):
@@ -206,7 +208,7 @@ def recipe_by_tool(request, tool):
 		recipes = paginator.page(page)
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
-	return render_to_response('recipes/recipe_by_tool.html', {'recipes': recipes, 'tool': tool_object,}, context_instance=RequestContext(request))
+	return render_to_response('recipes/recipe_by_tool.html', {'recipes': recipes, 'title': u"Recipes that use \u201c%s\u201d" % (tool_object.name,),}, context_instance=RequestContext(request))
 
 
 def recipe_by_ingredient(request, ingredient):
@@ -220,7 +222,7 @@ def recipe_by_ingredient(request, ingredient):
 		recipes = paginator.page(page)
 	except (EmptyPage, InvalidPage):
 		recipes = paginator.page(paginator.num_pages)
-	return render_to_response('recipes/recipe_by_ingredient.html', {'recipes': recipes, 'ingredient': ingredient,}, context_instance=RequestContext(request))
+	return render_to_response('recipes/recipe_by_ingredient.html', {'recipes': recipes, 'title': u"\u201c%s\u201d Recipes" % (ingredient,),}, context_instance=RequestContext(request))
 
 @login_required
 def get_user_recipe_rating(request, recipe_id):
