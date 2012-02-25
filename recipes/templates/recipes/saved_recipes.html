@@ -1,5 +1,0 @@
-{% extends "recipes/recipe_list.html" %}
-
-{% block title %} {% ifnotequal request.user recipe_user %} {% firstof recipe_user.get_full_name recipe_user.username %}'s {% else %} My {% endifnotequal %} Saved Recipes on Bendakai {% endblock %}
-
-{% block pagetitle %}<h2 class="page_title">{% ifnotequal request.user recipe_user %} {% firstof recipe_user.get_full_name recipe_user.username %}'s {% else %} My {% endifnotequal %} Saved Recipes</h2>{% endblock %}
