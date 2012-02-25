@@ -20,7 +20,8 @@ class Recipe(models.Model):
     is_public = models.BooleanField(default=True)
     tags = TaggableManager()
     date_added = models.DateTimeField(default=datetime.datetime.now)
-    user = models.ForeignKey(User, blank=True, null=True)
+    owner = models.ForeignKey(User, blank=True, null=True)
+    starred_by = models.ManyToManyField(User, blank=True, null-True)
     
     class Meta:
         ordering = ['-date_added']
@@ -40,3 +41,12 @@ class UserRecipeRating(models.Model):
     
     def __unicode__(self):
         return '%s rates "%s" %d stars'%(self.user.username, self.recipe.name, self.rating)
+
+
+class PantryItem(models.Model):
+    """
+    A class that stores an item in the users' pantry.
+    
+    """
+    name = models.CharField(max_length=255)
+    users = models.ManyToManyField(User, blank=True, null=True)
