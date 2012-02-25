@@ -27,3 +27,16 @@ class Recipe(models.Model):
     
     def __unicode__(self):
         return self.title
+
+
+class UserRecipeRating(models.Model):
+    """
+    A class that stores user ratings for recipes.
+    
+    """
+    user = models.ForeignKey(User)
+    recipe = models.ForeignKey(Recipe, related_name='ratings')
+    rating = models.IntegerField(default=0)
+    
+    def __unicode__(self):
+        return '%s rates "%s" %d stars'%(self.user.username, self.recipe.name, self.rating)
