@@ -50,3 +50,6 @@ class PantryItem(models.Model):
     """
     name = models.CharField(max_length=255)
     users = models.ManyToManyField(User, blank=True, null=True)
+    
+    def __unicode__(self):
+        return self.name
