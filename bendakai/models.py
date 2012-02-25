@@ -21,7 +21,7 @@ class Recipe(models.Model):
 	tags = TaggableManager()
 	date_added = models.DateTimeField(default=datetime.datetime.now)
 	owner = models.ForeignKey(User, blank=True, null=True)
-	starred_by = models.ManyToManyField(User, blank=True, null-True)
+	starred_by = models.ManyToManyField(User, blank=True, null=True, related_name='starred_recipe_set')
 	
 	class Meta:
 		ordering = ['-date_added']
