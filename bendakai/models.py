@@ -45,7 +45,6 @@ class Recipe(models.Model):
 	title = models.CharField(max_length=255)
 	slug = models.SlugField()
 	description = models.TextField(blank=True, null=True)
-	ingredients = models.TextField()
 	directions = models.TextField()
 	servings = models.IntegerField(blank=True, null=True)
 	prep_time = models.IntegerField(blank=True, null=True)
