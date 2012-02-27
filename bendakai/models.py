@@ -13,6 +13,7 @@ class Ingredient(models.Model):
 	slug = models.SlugField()
 	# Ingredients that should be considered the same as this one.
 	equivalent_ingredients = models.ManyToManyField('self', blank=True, null=True)
+	pantry_users = models.ManyToManyField(User, blank=True, null=True, related_name='pantry_items')
 
 	class Meta:
 		ordering = ['name']
@@ -44,6 +45,7 @@ class Recipe(models.Model):
 	title = models.CharField(max_length=255)
 	slug = models.SlugField()
 	description = models.TextField(blank=True, null=True)
+	ingredients = models.TextField()
 	directions = models.TextField()
 	servings = models.IntegerField(blank=True, null=True)
 	prep_time = models.IntegerField(blank=True, null=True)
@@ -103,15 +105,3 @@ class UserRecipeRating(models.Model):
 	
 	def __unicode__(self):
 		return '%s rates "%s" %d stars'%(self.user.username, self.recipe.name, self.rating)
-
-
-class PantryItem(models.Model):
-	"""
-	A class that stores an item in the users' pantry.
-	
-	"""
-	name = models.CharField(max_length=255)
-	users = models.ManyToManyField(User, blank=True, null=True)
-	
-	def __unicode__(self):
-		return self.name
